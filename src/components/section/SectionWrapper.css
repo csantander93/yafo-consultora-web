@@ -1,15 +1,38 @@
+/* Transiciones mejoradas para evitar flashes */
 .section-wrapper {
+  position: relative;
   opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px) scale(0.98);
+  transition: 
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  /* Asegura que el contenido no sea clickeable mientras está oculto */
+  pointer-events: none;
 }
 
 .section-wrapper.visible {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
-  
-  /* Asegura que el scroll sea suave */
+
+/* Fondo de respaldo para evitar flashes */
+.section-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: calc(100% + 2px);
+  background: inherit;
+  z-index: -1;
+}
+
+/* Scroll suave mejorado */
+@media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height, 80px);
   }
+}

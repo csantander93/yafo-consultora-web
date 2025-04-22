@@ -1,0 +1,322 @@
+/* Estilos base para la sección de clientes */
+.clients-section {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  isolation: isolate;
+}
+
+.clients-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+  background-blend-mode: overlay;
+}
+
+.clients-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Encabezado - Estilo similar al hero */
+.clients-header {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.clients-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  display: inline-block;
+}
+
+.clients-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 3px;
+}
+
+.clients-subtitle {
+  font-size: 1.25rem;
+  color: var(--medium);
+  line-height: 1.6;
+  max-width: 56rem;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Grid estático para los logos (ESTRUCTURA ORIGINAL SIN MODIFICAR) */
+.clients-static-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap);
+  margin: 2.4rem 0;
+  padding-bottom: 16px;
+}
+
+.clients-static-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.desktop-version {
+  display: block;
+}
+
+.mobile-version {
+  display: none;
+}
+
+/* Efecto de tarjeta (solo modificaciones de color) */
+.client-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  background: white;
+  border: 1px solid rgba(209, 213, 219, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 9.6px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3.2px 16px rgba(0, 0, 0, 0.1);
+  width: 128px;
+  height: 56px;
+  margin: 4px 0;
+}
+
+.client-item:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 6.4px 24px rgba(59, 130, 246, 0.2);
+  border-color: var(--primary-light);
+}
+
+.client-logo {
+  max-width: 112px;
+  max-height: 48px;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+
+.client-item:hover .client-logo {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Contadores (solo modificaciones de color) */
+.clients-counter-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.additional-counters-container {
+  margin-top: 4rem;
+  text-align: center;
+  width: 100%;
+}
+
+.additional-counters-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.additional-counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid rgba(209, 213, 219, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1.2rem 0.5rem;
+  transition: all 0.3s ease;
+  min-height: 160px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.client-image-container {
+  margin-top: auto;
+  background: rgba(243, 244, 246, 0.8);
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 90px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.additional-client-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Animación solo para el título */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive (MANTENIENDO TODAS LAS MEDIDAS ORIGINALES) */
+@media (max-width: 768px) {
+  .desktop-version {
+    display: none;
+  }
+  
+  .mobile-version {
+    display: block;
+  }
+  
+  .clients-static-row {
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .client-item {
+    width: calc(25% - 16px);
+    height: 96px;
+    padding: 0.8rem;
+    margin: 6px 0;
+    transform: scale(1.6);
+    transform-origin: center;
+    border-radius: 12px;
+  }
+  
+  .client-logo {
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0.9;
+  }
+  
+  @media (max-width: 480px) {
+    .client-item {
+      width: calc(25% - 8px);
+      height: 80px;
+      padding: 0.6rem;
+      transform: scale(1.4);
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --row-height: 64px;
+    --row-gap: 24px;
+  }
+  
+  .clients-track {
+    gap: 32px;
+  }
+  
+  .client-item {
+    padding: 0.8rem 1.6rem;
+    width: 130px;
+    height: 60px;
+  }
+  
+  .client-logo {
+    max-width: 130px;
+    max-height: 45px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .clients-scroller-container {
+    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 32px);
+  }
+}
+
+@media (max-width: 575px) {
+  :root {
+    --row-height: 40px;
+    --row-gap: 8px;
+  }
+  
+  .clients-scroller-container {
+    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 16px);
+    margin: 1.2rem 0;
+  }
+  
+  .clients-track {
+    gap: 8px;
+    animation-duration: calc(var(--duration) * 0.7);
+  }
+  
+  .client-item {
+    padding: 0.32rem 0.48rem;
+    width: 72px;
+    height: 36px;
+    min-width: 72px;
+    margin: 1.6px 0;
+    border-radius: 6.4px;
+  }
+  
+  .client-logo {
+    max-width: 64px;
+    max-height: 24px;
+  }
+  
+  @media (max-width: 400px) {
+    :root {
+      --row-height: 36px;
+      --row-gap: 6.4px;
+    }
+    
+    .client-item {
+      width: 64px;
+      min-width: 64px;
+      height: 32px;
+    }
+    
+    .client-logo {
+      max-width: 56px;
+    }
+  }
+}
