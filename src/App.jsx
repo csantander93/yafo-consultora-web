@@ -3,7 +3,7 @@ import Clients from "./components/clients/Clients"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
-import SectionWrapper from "./components/section/SectionWrapper"
+import CurvedDivider from "./components/section/CurvedDivider"
 
 function App() {
 
@@ -11,17 +11,14 @@ function App() {
     <>
       <Header />
 
-      <SectionWrapper id="inicio">
-        <Intro />
-      </SectionWrapper>
 
-      <SectionWrapper id="nosotros">
-        <About />
-      </SectionWrapper>
+        <Intro id="inicio"/>
 
-      <SectionWrapper id="clientes">
-        <Clients />
-      </SectionWrapper>
+        <CurvedDivider position="bottom" />
+        <About id="nosotros"/>
+        <CurvedDivider position="top" />
+
+        <Clients id="clientes"/>
 
       <Footer />
     </>

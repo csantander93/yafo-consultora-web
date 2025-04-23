@@ -2,23 +2,21 @@ import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import './SectionWrapper.css';
 
-const SectionWrapper = ({ children, id }) => {
+const SectionWrapper = ({ children, id, alternate = false, fullWidth = false }) => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   
   const [inViewRef, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
-    rootMargin: '-50px 0px' // Compensa el header
+    rootMargin: '-50px 0px'
   });
 
-  // Combina las refs y maneja el estado de visibilidad
   useEffect(() => {
     if (sectionRef.current) {
       inViewRef(sectionRef.current);
     }
     
-    // Retraso mínimo para asegurar que la animación se vea bien
     if (inView && !isVisible) {
       const timer = setTimeout(() => {
         setIsVisible(true);
@@ -31,10 +29,12 @@ const SectionWrapper = ({ children, id }) => {
     <section 
       id={id}
       ref={sectionRef}
-      className={`section-wrapper ${isVisible ? 'visible' : ''}`}
+      className={`section-wrapper ${isVisible ? 'visible' : ''} ${alternate ? 'alternate' : ''} ${fullWidth ? 'full-width' : ''}`}
       aria-hidden={!isVisible}
     >
-      {children}
+      <div className="section-content">
+        {children}
+      </div>
     </section>
   );
 };

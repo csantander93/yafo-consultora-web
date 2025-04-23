@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Intro.css';
 
 const Intro = () => {
-  
+  useEffect(() => {
+    document.querySelector('.intro-hero').classList.add('loaded');
+  }, []);
+
   return (
     <section id="inicio" className="intro-hero">
       <div className="hero-container">
         <div className="hero-content">
-          {/* Títulos principales con YAFO destacado */}
           <div className="hero-titles">
             <h1 className="hero-main-title">
               <span className="yafo-super">YAFO</span>
@@ -20,7 +22,6 @@ const Intro = () => {
               Soluciones proactivas de identidad y prevención de ciberamenazas
             </h3>
           </div>
-          
         </div>
       </div>
     </section>

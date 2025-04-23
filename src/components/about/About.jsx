@@ -1,123 +1,125 @@
 import React, { useEffect } from 'react';
 import teamImage from '../../assets/aleph-about.png';
+import mockupImage from '../../assets/mockuper.png';
 import './About.css';
 
 const About = () => {
   useEffect(() => {
-    const animateGradient = () => {
-      const element = document.querySelector('.about-title');
-      if (element) {
-        element.style.backgroundPosition = '0% 50%';
-        setTimeout(() => {
-          element.style.backgroundPosition = '100% 50%';
-        }, 100);
-      }
-    };
-    animateGradient();
+    // Efecto de aparición suave sin complicaciones
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const elements = document.querySelectorAll('[data-animate]');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="sobre-nosotros" className="about-section" itemScope itemType="https://schema.org/AboutPage">
-      {/* Datos estructurados */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          "description": "Equipo especializado en sistemas financieros complejos y gestión de compliance",
-          "mainEntity": [
-            {
-              "@type": "Service",
-              "serviceType": "Consultoría financiera",
-              "description": "Método de trabajo basado en metodologías testeadas y verificadas en el mercado"
-            },
-            {
-              "@type": "SoftwareApplication",
-              "name": "Aleph Manager",
-              "description": "Plataforma para gestión integrada de normas internacionales"
-            }
-          ]
-        })}
-      </script>
-
+    <section id="sobre-nosotros" className="about-section">
+      {/* Fondo con efecto de cuadrícula */}
       <div className="about-background">
-        <div className="about-background-gradient-1"></div>
-        <div className="about-background-gradient-2"></div>
+        <div className="about-grid-pattern"></div>
+        <div className="about-gradient-overlay"></div>
       </div>
 
       <div className="about-container">
-        <div className="about-header">
-          <h2 className="about-title animate-gradient" itemProp="headline">
-            Transformamos la gestión de compliance con tecnología de vanguardia
-          </h2>
-          <p className="about-subtitle" itemProp="description">
+        {/* Encabezado */}
+        <div className="about-header" data-animate>
+          <h1 className="about-title">
+            <span className="title-line">Transformamos la gestión</span>
+            <span className="title-line">de compliance con tecnología</span>
+            <span className="title-line accent-line">de vanguardia</span>
+          </h1>
+          <p className="about-subtitle">
             Expertos en sistemas financieros complejos donde la precisión y adaptabilidad son clave
           </p>
         </div>
 
-        <div className="about-content">
-          <div className="about-text-column">
-            <div className="space-y-6">
-              <div className="about-text-block" itemProp="description">
-                <p>
-                  Somos profesionales calificados y especializados en la Industria financiera caracterizada por su complejidad y competitividad.
-                </p>
-              </div>
-              
-              <div className="about-text-block about-text-block-emerald">
-                <p itemProp="description">
-                  Nuestro diferencial es brindar un servicio personalizado, flexible, profesional y adecuado a cada necesidad.
-                </p>
-              </div>
+        {/* Sección 1 - Texto izquierda, imagen derecha */}
+        <div className="about-content-block" data-animate>
+          <div className="about-text-content">
+            <h2 className="about-block-title">
+              <span className="title-decoration"></span>
+              Equipo especializado
+            </h2>
+            <div className="about-text-block">
+              <p>
+                Profesionales calificados en la industria financiera, caracterizada por su complejidad y competitividad.
+              </p>
             </div>
-            
-            <div className="about-services">
+            <div className="about-text-block accent-block">
+              <p>
+                Servicio personalizado, flexible y profesional adaptado a cada necesidad.
+              </p>
+            </div>
+          </div>
+          
+          <div className="about-image-content">
+            <div className="about-image-container">
+              <img 
+                src={teamImage} 
+                alt="Equipo de consultores financieros" 
+                className="about-image"
+              />
+              <div className="image-highlight"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Sección 2 - Imagen izquierda, texto derecha */}
+        <div className="about-content-block reversed" data-animate>
+          <div className="about-image-content">
+            <div className="about-image-container">
+              <img 
+                src={mockupImage} 
+                alt="Plataforma Aleph Manager" 
+                className="about-image"
+              />
+              <div className="image-highlight reverse-highlight"></div>
+            </div>
+          </div>
+
+          <div className="about-text-content">
+            <h2 className="about-block-title">
+              <span className="title-decoration"></span>
+              Nuestra tecnología
+            </h2>
+            <div className="about-features">
               {[
                 {
                   title: "Consultoría",
-                  description: "Método de trabajo basado en metodologías testeadas y verificadas en el mercado.",
+                  description: "Metodologías testeadas y verificadas en el mercado.",
                   icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 },
                 {
                   title: "Gestión integrada",
-                  description: "Aleph Manager permite la implantación integrada, gestión, mantenimiento y despliegue de múltiples normas nacionales e internacionales.",
+                  description: "Implantación y despliegue de normas internacionales.",
                   icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
                 },
                 {
                   title: "Servicios",
-                  description: "Nuestro equipo propone un enfoque práctico y didáctico en cada uno de los proyectos que realizamos.",
+                  description: "Enfoque práctico y didáctico en cada proyecto.",
                   icon: "M5 13l4 4L19 7"
                 }
               ].map((item, index) => (
-                <div key={index} className="about-service-item" itemScope itemType="https://schema.org/Service">
-                  <div className="about-service-icon">
-                    <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div key={index} className="about-feature">
+                  <div className="feature-icon-container">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon} />
                     </svg>
                   </div>
-                  <div>
-                    <h4 className="about-service-title" itemProp="name">
-                      {item.title}
-                    </h4>
-                    <p className="about-service-description" itemProp="description">{item.description}</p>
+                  <div className="feature-text">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-          
-          <div className="about-image-column">
-            <div className="about-image-container">
-              <img 
-                src={teamImage} 
-                alt="Equipo de consultores financieros de Aleph Manager trabajando en sistemas de compliance" 
-                itemProp="image"
-              />
-              <div className="about-image-overlay"></div>
-              <div className="about-image-caption">
-                <p itemProp="slogan">
-                  "Somos especialistas en la implementación e integración de procesos de mejora organizacional basados en estándares internacionales"
-                </p>
-              </div>
             </div>
           </div>
         </div>
