@@ -21,7 +21,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="sobre-nosotros" className="about-section">
+    <section id="nosotros" className="about-section">
       {/* Fondo con efecto de cuadrícula */}
       <div className="about-background">
         <div className="about-grid-pattern"></div>

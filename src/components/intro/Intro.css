@@ -1,4 +1,4 @@
-/* Intro.css actualizado con las líneas restauradas */
+/* Intro.css con líneas curvas metalizadas */
 :root {
   --primary: #2563EB;
   --primary-light: #3B82F6;
@@ -9,10 +9,11 @@
   --medium: #374151;
   --light: #F3F4F6;
   --header-height: 80px;
+  --metal-gray: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 50%, #a0a0a0 100%);
 }
 
 .intro-hero {
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  background: #ffffff;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -26,6 +27,58 @@
 
 .intro-hero.loaded {
   opacity: 1;
+}
+
+/* Líneas curvas metalizadas */
+.intro-hero::before,
+.intro-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.intro-hero::before {
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(192, 192, 192, 0.15) 0%, transparent 20%),
+    radial-gradient(circle at 70% 60%, rgba(192, 192, 192, 0.15) 0%, transparent 20%);
+}
+
+.intro-hero::after {
+  background: 
+    /* Línea curva 1 */
+    linear-gradient(transparent, transparent),
+    /* Línea curva 2 */
+    linear-gradient(transparent, transparent),
+    /* Línea curva 3 */
+    linear-gradient(transparent, transparent);
+  
+  background-repeat: no-repeat;
+  background-image: 
+    /* Línea curva 1 */
+    url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-50 450C100 300 250 550 400 400C550 250 700 500 850 350C1000 200 1150 450 1300 300' stroke='url(%23metal1)' stroke-width='2' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='metal1' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23c0c0c0'/%3E%3Cstop offset='50%25' stop-color='%23e0e0e0'/%3E%3Cstop offset='100%25' stop-color='%23a0a0a0'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"),
+    /* Línea curva 2 */
+    url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-100 600C50 400 200 700 350 500C500 300 650 600 800 400C950 200 1100 500 1250 300' stroke='url(%23metal2)' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='5,3'/%3E%3Cdefs%3E%3ClinearGradient id='metal2' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23a0a0a0' stop-opacity='0.7'/%3E%3Cstop offset='50%25' stop-color='%23d0d0d0' stop-opacity='0.7'/%3E%3Cstop offset='100%25' stop-color='%23909090' stop-opacity='0.7'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"),
+    /* Línea curva 3 */
+    url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 300C150 450 300 200 450 350C600 500 750 250 900 400C1050 550 1200 300 1350 450' stroke='url(%23metal3)' stroke-width='1' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='metal3' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23e0e0e0' stop-opacity='0.6'/%3E%3Cstop offset='50%25' stop-color='%23c0c0c0' stop-opacity='0.6'/%3E%3Cstop offset='100%25' stop-color='%23f0f0f0' stop-opacity='0.6'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+  
+  background-size: 120% 120%, 110% 110%, 100% 100%;
+  background-position: -10% 30%, 10% 70%, 0% 50%;
+  opacity: 0.7;
+  animation: subtleMove 30s infinite linear;
+}
+
+@keyframes subtleMove {
+  0%, 100% {
+    background-position: -10% 30%, 10% 70%, 0% 50%;
+  }
+  50% {
+    background-position: -5% 35%, 15% 65%, 5% 55%;
+  }
 }
 
 .hero-container {
@@ -186,6 +239,10 @@
   .hero-tagline {
     font-size: 2rem;
   }
+  
+  .intro-hero::after {
+    background-size: 150% 120%, 130% 110%, 120% 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -206,6 +263,11 @@
   .consultora-sub::after {
     width: 1.5rem;
   }
+  
+  .intro-hero::after {
+    opacity: 0.5;
+    background-size: 180% 120%, 160% 110%, 140% 100%;
+  }
 }
 
 @media (max-width: 576px) {
@@ -225,5 +287,9 @@
   .consultora-sub::before,
   .consultora-sub::after {
     width: 1rem;
+  }
+  
+  .intro-hero::after {
+    opacity: 0.4;
   }
 }

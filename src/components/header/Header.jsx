@@ -11,19 +11,35 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
       
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 150 && window.scrollY < sectionTop + sectionHeight - 150) {
-          setActiveSection(`#${section.id}`);
+      const menuSectionIds = ["inicio", "servicios", "productos", "soluciones", "nosotros", "clientes", "contacto"];
+      const sections = Array.from(document.querySelectorAll('section[id]'))
+        .filter(section => menuSectionIds.includes(section.id));
+      
+      let current = activeSection;
+      const viewportMiddle = window.innerHeight / 2;
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        const sectionId = `#${section.id}`;
+        
+        // Verificar si la sección está en el área central del viewport
+        if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
+          current = sectionId;
+          break;
         }
-      });
+      }
+
+      if (current !== activeSection) {
+        setActiveSection(current);
+      }
     };
+    
+    // Ejecutar al montar para detectar la sección inicial
+    handleScroll();
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection]);
 
   const menuItems = [
     { name: "Inicio", href: "#inicio" },
@@ -49,8 +65,12 @@ const Header = () => {
                 <a
                   href={item.href}
                   className={`nav-link ${activeSection === item.href ? 'active' : ''}`}
+                  onClick={() => setActiveSection(item.href)}
                 >
                   {item.name}
+                  {activeSection === item.href && (
+                    <span className="active-indicator"></span>
+                  )}
                 </a>
               </li>
             ))}
@@ -75,7 +95,10 @@ const Header = () => {
               <a
                 href={item.href}
                 className={`mobile-nav-link ${activeSection === item.href ? 'active' : ''}`}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setActiveSection(item.href);
+                }}
               >
                 {item.name}
               </a>
