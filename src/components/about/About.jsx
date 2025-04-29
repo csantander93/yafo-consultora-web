@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import teamImage from '../../assets/aleph-about.png';
+import teamImage from '../../assets/development.jpg';
 import mockupImage from '../../assets/mockuper.png';
 import './About.css';
 
