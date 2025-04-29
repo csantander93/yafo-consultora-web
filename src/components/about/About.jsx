@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import teamImage from '../../assets/aleph-about.png';
 import mockupImage from '../../assets/mockuper.png';
-import './about.css';
+import './About.css';
 
 const About = () => {
   useEffect(() => {
