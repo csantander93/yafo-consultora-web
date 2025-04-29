@@ -20,12 +20,14 @@ const About = () => {
         <div className="curve curve-2"></div>
         <div className="curve curve-3"></div>
         <div className="curve curve-4"></div>
+        <div className="tech-dots"></div>
+        <div className="tech-grid"></div>
       </div>
       <div className="about-container">
         {/* Mission Section */}
         <div className="about-header">
           <h2 className="about-title">
-            Transformamos la gestión de compliance y seguridad con tecnología
+            <span className="title-highlight">Transformamos</span> la gestión de compliance y seguridad con tecnología
           </h2>
           <p className="about-description">
             Somos un equipo de expertos en sistemas financieros, ciberseguridad y continuidad del negocio. Más de 50 clientes en Argentina y el mundo confían en nuestras soluciones para proteger y optimizar sus operaciones.
@@ -35,15 +37,19 @@ const About = () => {
         {/* Team Section */}
         <div className="about-row">
           <div className="about-image-wrapper">
-            <img
-              src={teamImage}
-              alt="Equipo de Yafo Consultora"
-              className="about-image"
-            />
+            <div className="image-tech-border">
+              <img
+                src={teamImage}
+                alt="Equipo de Yafo Consultora"
+                className="about-image"
+              />
+            </div>
             <p className="image-caption">Nuestro equipo de consultores especializados</p>
           </div>
           <div className="about-content">
-            <h3 className="content-title">Quiénes somos</h3>
+            <h3 className="content-title">
+              <span className="title-decoration">Quiénes somos</span>
+            </h3>
             <p className="content-text">
               En Yafo Consultora, combinamos experiencia técnica y estratégica para ofrecer soluciones integrales en gestión de riesgos, ciberseguridad y cumplimiento normativo. Nuestro enfoque está alineado con estándares internacionales, garantizando resultados confiables y adaptados a las necesidades de cada cliente.
             </p>
@@ -56,33 +62,37 @@ const About = () => {
         {/* Services Section */}
         <div className="about-row reverse-row">
           <div className="about-image-wrapper">
-            <img
-              src={mockupImage}
-              alt="Plataforma de Yafo Consultora"
-              className="about-image"
-            />
+            <div className="image-tech-border">
+              <img
+                src={mockupImage}
+                alt="Plataforma de Yafo Consultora"
+                className="about-image"
+              />
+            </div>
             <p className="image-caption">Soluciones tecnológicas innovadoras</p>
           </div>
           <div className="about-content">
-            <h3 className="content-title">Lo que ofrecemos</h3>
+            <h3 className="content-title">
+              <span className="title-decoration">Lo que ofrecemos</span>
+            </h3>
             <ul className="services-list">
               <li className="service-item">
-                Consultoría en gestión de riesgos y continuidad del negocio
+                <span className="service-icon">⟫</span> Consultoría en gestión de riesgos y continuidad del negocio
               </li>
               <li className="service-item">
-                Penetration Testing y simulaciones de adversarios (Red Team)
+                <span className="service-icon">⟫</span> Penetration Testing y simulaciones de adversarios (Red Team)
               </li>
               <li className="service-item">
-                Plataformas SIEM para monitoreo de eventos de seguridad
+                <span className="service-icon">⟫</span> Plataformas SIEM para monitoreo de eventos de seguridad
               </li>
               <li className="service-item">
-                Identity & Access Management (IAM) para datos críticos
+                <span className="service-icon">⟫</span> Identity & Access Management (IAM) para datos críticos
               </li>
               <li className="service-item">
-                Desarrollo de software y soluciones personalizadas
+                <span className="service-icon">⟫</span> Desarrollo de software y soluciones personalizadas
               </li>
               <li className="service-item">
-                Productos líderes como Core Impact y Cobalt Strike
+                <span className="service-icon">⟫</span> Productos líderes como Core Impact y Cobalt Strike
               </li>
             </ul>
           </div>
