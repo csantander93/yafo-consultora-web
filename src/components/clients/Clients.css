@@ -1,20 +1,65 @@
-/* Estilos base para la sección de clientes */
+/* Estilos para la sección de clientes con fondo animado */
 .clients-section {
   position: relative;
   padding: 6rem 0;
   overflow: hidden;
-  background: #ffffff; /* Fondo blanco */
+  background-color: var(--main-bg);
   isolation: isolate;
 }
 
 .clients-background {
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
-  background-blend-mode: overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Círculos animados */
+.clients-curve {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.08;
+  filter: blur(20px);
+  animation: float 12s ease-in-out infinite;
+}
+
+.clients-curve-1 {
+  width: 800px;
+  height: 800px;
+  background: var(--primary-blue);
+  top: -300px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.clients-curve-2 {
+  width: 600px;
+  height: 600px;
+  background: var(--innovative-blue);
+  bottom: -200px;
+  right: -100px;
+  animation-delay: 2s;
+}
+
+.clients-curve-3 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary-blue);
+  top: 50%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+.clients-curve-4 {
+  width: 500px;
+  height: 500px;
+  background: var(--innovative-blue);
+  bottom: 20%;
+  right: 30%;
+  animation-delay: 6s;
 }
 
 .clients-container {
@@ -25,10 +70,11 @@
   z-index: 1;
 }
 
-/* Encabezado - Estilo similar al hero */
+/* Encabezado */
 .clients-header {
   text-align: center;
   margin-bottom: 3.2rem;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .clients-title {
@@ -36,55 +82,52 @@
   line-height: 1.1;
   font-weight: 900;
   margin-bottom: 1.2rem;
-  color: #2563eb; /* Azul sólido que contrasta con el fondo blanco */
+  color: var(--dark-blue);
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 8px rgba(37, 99, 235, 0.2); /* Sombra suave para profundidad */
   position: relative;
   display: inline-block;
-  padding: 0.2rem 0.8rem; /* Ligero padding para el fondo */
-  background: rgba(59, 130, 246, 0.1); /* Fondo azul claro para destacar */
-  border-radius: 8px; /* Bordes redondeados */
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.clients-title:hover {
-  transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
-  background: rgba(59, 130, 246, 0.15); /* Fondo ligeramente más oscuro */
+  padding: 0.5rem 1.5rem;
+  background: rgba(--primary-blue);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .clients-title::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%; /* Subrayado más corto y centrado */
+  width: 60%;
   height: 4px;
-  background: #2563eb; /* Mismo azul sólido */
+  background: var(--metal-gradient);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
 
 .clients-title:hover::after {
-  width: 80%; /* Subrayado se expande al pasar el mouse */
+  width: 80%;
 }
 
 .clients-subtitle {
   font-size: 1.25rem;
-  color: var(--medium);
+  color: var(--secondary-text);
   line-height: 1.6;
   max-width: 56rem;
   margin: 0 auto;
   font-weight: 400;
 }
 
-/* Grid estático para los logos (ESTRUCTURA ORIGINAL SIN MODIFICAR) */
+/* Grid de clientes */
 .clients-static-grid {
   display: flex;
   flex-direction: column;
   gap: var(--row-gap);
   margin: 2.4rem 0;
   padding-bottom: 16px;
+  animation: fadeIn 0.8s ease-out 0.2s both;
 }
 
 .clients-static-row {
@@ -105,15 +148,15 @@
   display: none;
 }
 
-/* Efecto de tarjeta (solo modificaciones de color) */
+/* Items de clientes */
 .client-item {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.6rem 1.2rem;
-  background: white;
-  border: 1px solid rgba(209, 213, 219, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 9.6px;
@@ -126,8 +169,8 @@
 
 .client-item:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 6.4px 24px rgba(59, 130, 246, 0.2);
-  border-color: var(--primary-light);
+  box-shadow: 0 6.4px 24px rgba(0, 123, 255, 0.2);
+  border-color: var(--primary-blue);
 }
 
 .client-logo {
@@ -144,7 +187,7 @@
   filter: brightness(1.1);
 }
 
-/* Contadores (solo modificaciones de color) */
+/* Contadores */
 .clients-counter-container {
   display: flex;
   justify-content: center;
@@ -172,8 +215,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: white;
-  border: 1px solid rgba(209, 213, 219, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.2rem 0.5rem;
@@ -203,19 +246,18 @@
   transition: transform 0.3s ease;
 }
 
-/* Animación solo para el título */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive (MANTENIENDO TODAS LAS MEDIDAS ORIGINALES) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .desktop-version {
     display: none;
@@ -266,10 +308,6 @@
     --row-gap: 24px;
   }
   
-  .clients-track {
-    gap: 32px;
-  }
-  
   .client-item {
     padding: 0.8rem 1.6rem;
     width: 130px;
@@ -282,26 +320,10 @@
   }
 }
 
-@media (min-width: 1200px) {
-  .clients-scroller-container {
-    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 32px);
-  }
-}
-
 @media (max-width: 575px) {
   :root {
     --row-height: 40px;
     --row-gap: 8px;
-  }
-  
-  .clients-scroller-container {
-    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 16px);
-    margin: 1.2rem 0;
-  }
-  
-  .clients-track {
-    gap: 8px;
-    animation-duration: calc(var(--duration) * 0.7);
   }
   
   .client-item {

@@ -15,6 +15,12 @@ const About = () => {
 
   return (
     <section id="nosotros" className="about-section">
+      <div className="about-background-curves">
+        <div className="curve curve-1"></div>
+        <div className="curve curve-2"></div>
+        <div className="curve curve-3"></div>
+        <div className="curve curve-4"></div>
+      </div>
       <div className="about-container">
         {/* Mission Section */}
         <div className="about-header">
