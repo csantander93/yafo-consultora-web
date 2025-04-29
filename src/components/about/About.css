@@ -1,310 +1,191 @@
 :root {
-  /* Paleta de colores específica para about */
-  --about-main-bg: #FFFFFF;
-  --about-primary-blue: #2563EB;
-  --about-text-dark: #1E293B;
-  --about-text-light: #E6F0FF;
-  --about-button-bg: #F0F7FF;
-  --about-accent-blue: #3B82F6;
-  --about-secondary-text: #475569;
-  --about-border-light: #E2E8F0;
-  --about-highlight-bg: rgba(59, 130, 246, 0.1);
-  
-  /* Efectos específicos para about */
-  --about-soft-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --about-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --about-gradient: linear-gradient(135deg, var(--about-primary-blue) 0%, var(--about-accent-blue) 100%);
+  --text-dark: #111827;
+  --text-secondary: #4b5563;
+  --accent-blue: #2563eb;
+  --background-light: #ffffff;
+  --border-light: #e5e7eb;
+  --hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Estructura base */
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Base Section */
 .about-section {
-  background: var(--about-main-bg);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  background-color: var(--background-light);
+  padding: 4rem 1rem;
   opacity: 0;
-  transition: opacity 1s ease-out;
-  color: var(--about-text-dark);
-  padding: 4rem 0;
+  transition: opacity 0.5s ease-out;
 }
 
 .about-section.loaded {
   opacity: 1;
 }
 
-/* Eliminado el grid overlay */
-.cyber-grid-overlay {
-  display: none;
-}
-
-/* Contenedor principal */
+/* Container */
 .about-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
-  padding: 2rem 1.5rem;
-  position: relative;
-}
-
-.about-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 6rem;
 }
 
+/* Header */
 .about-header {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
-  animation: fadeIn 1s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .about-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
+  color: var(--text-dark);
   margin-bottom: 1.5rem;
-  color: var(--about-text-dark);
-}
-
-.about-text-highlight {
-  position: relative;
-  display: inline-block;
-  color: var(--about-accent-blue);
-}
-
-.about-text-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 0.1em;
-  left: 0;
-  width: 100%;
-  height: 0.35em;
-  background: var(--about-highlight-bg);
-  z-index: -1;
-  border-radius: 2px;
 }
 
 .about-description {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.6;
-  color: var(--about-secondary-text);
-  position: relative;
-  padding: 0 2rem;
+  color: var(--text-secondary);
 }
 
-/* Filas de contenido */
+/* Content Rows */
 .about-row {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  animation: fadeIn 1s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  align-items: center;
+  animation: fadeIn 0.8s ease-out 0.2s both;
 }
 
-.about-reverse-row {
-  flex-direction: row-reverse;
+.reverse-row {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
 }
 
-/* Imágenes */
+.reverse-row > * {
+  direction: ltr;
+}
+
+/* Images */
 .about-image-wrapper {
-  flex: 1;
   position: relative;
 }
 
 .about-image {
   width: 100%;
   height: auto;
-  border-radius: 12px;
-  box-shadow: var(--about-soft-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--about-border-light);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
-.about-image:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--about-hover-shadow);
+.about-image-wrapper:hover .about-image {
+  transform: scale(1.02);
 }
 
-.about-image-caption {
+.image-caption {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
   text-align: center;
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  color: var(--about-secondary-text);
-  font-weight: 500;
+  margin-top: 0.75rem;
 }
 
-/* Sección de características */
-.about-features {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-.about-feature-card {
-  background: var(--about-main-bg);
-  border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid var(--about-border-light);
-  transition: all 0.3s ease;
-  box-shadow: var(--about-soft-shadow);
-}
-
-.about-feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--about-hover-shadow);
-  border-color: var(--about-accent-blue);
-}
-
-.about-feature-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--about-accent-blue);
+/* Content */
+.about-content {
   display: flex;
-  align-items: center;
-  gap: 0.8rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.about-feature-icon {
-  font-size: 1.8rem;
+.content-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-dark);
 }
 
-.about-feature-text {
-  font-size: 1.1rem;
+.content-text {
+  font-size: 1rem;
   line-height: 1.6;
-  color: var(--about-secondary-text);
+  color: var(--text-secondary);
 }
 
-/* Sección de servicios */
-.about-services {
-  flex: 1;
-  background: var(--about-main-bg);
-  border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid var(--about-border-light);
-  box-shadow: var(--about-soft-shadow);
-}
-
-.about-services-title {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: var(--about-accent-blue);
-  text-align: center;
-}
-
-.about-services-list {
+/* Services List */
+.services-list {
   list-style: none;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.2rem;
-}
-
-.about-service-item {
-  display: flex;
-  align-items: center;
   gap: 1rem;
-  font-size: 1.1rem;
-  color: var(--about-secondary-text);
-  padding: 0.8rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  background: var(--about-main-bg);
-  border: 1px solid var(--about-border-light);
 }
 
-.about-service-item:hover {
-  background: var(--about-highlight-bg);
-  transform: translateX(5px);
-  border-color: var(--about-accent-blue);
+.service-item {
+  font-size: 1rem;
+  color: var(--text-dark);
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.about-service-icon {
-  font-size: 1.3rem;
-  color: var(--about-accent-blue);
-  flex-shrink: 0;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.service-item:hover {
+  background: rgba(37, 99, 235, 0.05);
+  transform: translateX(4px);
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-  .about-title {
-    font-size: 2.5rem;
-  }
-  
-  .about-description {
-    font-size: 1.3rem;
-  }
-}
-
 @media (max-width: 992px) {
-  .about-row, .about-reverse-row {
-    flex-direction: column;
+  .about-row, .reverse-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-  
-  .about-image-wrapper {
-    max-width: 600px;
-    margin: 0 auto 2rem;
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-description {
+    font-size: 1.125rem;
   }
 }
 
 @media (max-width: 768px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+
+  .about-container {
+    gap: 4rem;
+  }
+
   .about-title {
-    font-size: 2.2rem;
+    font-size: 1.75rem;
   }
-  
-  .about-description {
-    font-size: 1.2rem;
-    padding: 0 1rem;
-  }
-  
-  .about-feature-title {
-    font-size: 1.3rem;
-  }
-  
-  .about-feature-text {
-    font-size: 1rem;
-  }
-  
-  .about-services-title {
+
+  .content-title {
     font-size: 1.5rem;
-  }
-  
-  .about-service-item {
-    font-size: 1rem;
-  }
-  
-  .about-image-caption {
-    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 576px) {
   .about-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
-  
+
   .about-description {
-    font-size: 1.1rem;
-  }
-  
-  .about-feature-card {
-    padding: 1.5rem;
-  }
-  
-  .about-services {
-    padding: 1.5rem;
-  }
-  
-  .about-image-caption {
     font-size: 1rem;
+  }
+
+  .content-title {
+    font-size: 1.25rem;
+  }
+
+  .content-text, .service-item {
+    font-size: 0.875rem;
   }
 }

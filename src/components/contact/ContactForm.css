@@ -4,9 +4,6 @@
 :root {
   --primary: #2563EB;
   --primary-light: #3B82F6;
-  --secondary: #10B981;
-  --tertiary: #8B5CF6;
-  --accent: #EC4899;
   --dark: #111827;
   --medium: #374151;
   --light: #F3F4F6;
@@ -52,7 +49,7 @@
   line-height: 1.1;
   font-weight: 900;
   margin-bottom: 1.2rem;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  background: #2563eb; /* Azul sólido que contrasta con el fondo blanco */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
