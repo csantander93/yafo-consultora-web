@@ -1,5 +1,6 @@
 import About from "./components/about/About"
 import Clients from "./components/clients/Clients"
+import ContactForm from "./components/contact/ContactForm"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
@@ -14,11 +15,11 @@ function App() {
 
         <Intro id="inicio"/>
 
-        <CurvedDivider position="bottom" />
         <About id="nosotros"/>
-        <CurvedDivider position="top" />
 
         <Clients id="clientes"/>
+
+        <ContactForm id="contacto"/>
 
       <Footer />
     </>

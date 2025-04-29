@@ -1,50 +1,57 @@
-// CurvedDivider.jsx
+// CurvedDivider.jsx - Versión Transición Orgánica
 import React from "react";
 
 const CurvedDivider = ({ 
   position = "bottom", // 'top' | 'bottom'
-  colorAbove = "#fff", 
-  colorBelow = "#f0f0f0",
+  colorTop = "#FFFFFF",    // Blanco (para Intro)
+  colorBottom = "#0F2D44", // Azul petróleo (para About)
   height = 120,
-  waveOpacity = {
-    top: 0.25,
-    middle: 0.5,
-    bottom: 1
-  }
+  intensity = 0.6 // 0.1 a 1 (controla la curvatura)
 }) => {
   const isTopPosition = position === "top";
   
+  // Ajustamos la curvatura basada en la intensidad
+  const waveIntensity = Math.min(Math.max(intensity, 0.1), 1);
+  const waveHeight = waveIntensity * 100;
+
   return (
     <div style={{ 
-      marginTop: isTopPosition ? "-1px" : 0,
-      marginBottom: isTopPosition ? 0 : "-1px",
-      lineHeight: 0 // Para eliminar espacio extra
+      lineHeight: 0,
+      backgroundColor: colorTop,
+      marginBottom: isTopPosition ? 0 : `-${waveHeight * 0.2}px`,
+      marginTop: isTopPosition ? `-${waveHeight * 0.2}px` : 0
     }}>
       <svg
-        viewBox="0 0 1200 120"
+        viewBox={`0 0 1200 ${waveHeight}`}
         preserveAspectRatio="none"
         style={{
           width: "100%",
           height: `${height}px`,
           display: "block",
-          transform: isTopPosition ? "rotate(180deg)" : "none"
+          transform: isTopPosition ? "rotate(180deg)" : "none",
+          marginBottom: isTopPosition ? `-${waveHeight * 0.1}px` : 0
         }}
       >
+        {/* Onda principal con curvatura dinámica */}
         <path
-          d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-          fill={isTopPosition ? colorBelow : colorAbove}
-          opacity={waveOpacity.top}
-        ></path>
+          d={`M0,0 C200,${waveHeight * 0.8} 400,${waveHeight} 600,${waveHeight * 0.8} C800,${waveHeight * 0.6} 1000,${waveHeight * 0.3} 1200,0 L1200,${waveHeight} L0,${waveHeight} Z`}
+          fill={colorBottom}
+          opacity="1"
+        />
+        
+        {/* Onda secundaria para profundidad */}
         <path
-          d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-          fill={isTopPosition ? colorBelow : colorAbove}
-          opacity={waveOpacity.middle}
-        ></path>
+          d={`M0,${waveHeight * 0.3} C150,${waveHeight * 0.5} 300,${waveHeight * 0.7} 450,${waveHeight * 0.6} C600,${waveHeight * 0.5} 750,${waveHeight * 0.4} 900,${waveHeight * 0.3} C1050,${waveHeight * 0.2} 1150,${waveHeight * 0.1} 1200,0 L1200,${waveHeight} L0,${waveHeight} Z`}
+          fill={colorBottom}
+          opacity="0.7"
+        />
+        
+        {/* Detalle de espuma (transición suave) */}
         <path
-          d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-          fill={isTopPosition ? colorBelow : colorAbove}
-          opacity={waveOpacity.bottom}
-        ></path>
+          d={`M0,${waveHeight * 0.1} C100,${waveHeight * 0.2} 250,${waveHeight * 0.15} 400,${waveHeight * 0.1} C550,${waveHeight * 0.05} 700,0 800,0 C900,0 1000,${waveHeight * 0.05} 1100,${waveHeight * 0.1} L1200,0 L1200,${waveHeight * 0.3} L0,${waveHeight * 0.3} Z`}
+          fill={colorTop}
+          opacity="0.4"
+        />
       </svg>
     </div>
   );

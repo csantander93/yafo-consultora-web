@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from '../../assets/Logo Yafo PNG.png';
+import logo from '../../assets/Logo Yafo JPG_grises 300 dpi.jpg';
 import './Header.css';
 
 const Header = () => {
@@ -9,7 +9,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      // Cambia el umbral a 0 para que se active inmediatamente al hacer scroll
+      setIsScrolled(window.scrollY > 0);
       
       const menuSectionIds = ["inicio", "servicios", "productos", "soluciones", "nosotros", "clientes", "contacto"];
       const sections = Array.from(document.querySelectorAll('section[id]'))
@@ -17,24 +18,22 @@ const Header = () => {
       
       let current = activeSection;
       const viewportMiddle = window.innerHeight / 2;
-
+  
       for (const section of sections) {
         const rect = section.getBoundingClientRect();
         const sectionId = `#${section.id}`;
         
-        // Verificar si la sección está en el área central del viewport
         if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
           current = sectionId;
           break;
         }
       }
-
+  
       if (current !== activeSection) {
         setActiveSection(current);
       }
     };
     
-    // Ejecutar al montar para detectar la sección inicial
     handleScroll();
     
     window.addEventListener('scroll', handleScroll);
@@ -43,10 +42,10 @@ const Header = () => {
 
   const menuItems = [
     { name: "Inicio", href: "#inicio" },
+    { name: "Nosotros", href: "#nosotros" },
     { name: "Servicios", href: "#servicios" },
     { name: "Productos", href: "#productos" },
     { name: "Soluciones", href: "#soluciones" },
-    { name: "Nosotros", href: "#nosotros" },
     { name: "Clientes", href: "#clientes" },
     { name: "Contacto", href: "#contacto" }
   ];
@@ -54,10 +53,13 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
+        {/* Logo con fondo claro para mejor contraste */}
         <a href="#inicio" className="logo-link">
+          <div className="logo-glow"></div>
           <img src={logo} alt="YAFO Consultora" className="header-logo" />
         </a>
 
+        {/* Navegación desktop */}
         <nav className="desktop-nav">
           <ul className="nav-list">
             {menuItems.map((item) => (
@@ -68,6 +70,7 @@ const Header = () => {
                   onClick={() => setActiveSection(item.href)}
                 >
                   {item.name}
+                  <span className="nav-link-glow"></span>
                   {activeSection === item.href && (
                     <span className="active-indicator"></span>
                   )}
@@ -77,6 +80,7 @@ const Header = () => {
           </ul>
         </nav>
 
+        {/* Menú móvil */}
         <button 
           className={`mobile-menu-btn ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -101,6 +105,9 @@ const Header = () => {
                 }}
               >
                 {item.name}
+                {activeSection === item.href && (
+                  <span className="mobile-active-indicator"></span>
+                )}
               </a>
             </li>
           ))}

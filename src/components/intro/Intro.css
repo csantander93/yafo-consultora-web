@@ -1,191 +1,169 @@
-/* Intro.css con líneas curvas metalizadas */
 :root {
-  --primary: #2563EB;
-  --primary-light: #3B82F6;
-  --secondary: #10B981;
-  --tertiary: #8B5CF6;
-  --accent: #EC4899;
-  --dark: #111827;
-  --medium: #374151;
-  --light: #F3F4F6;
-  --header-height: 80px;
-  --metal-gray: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 50%, #a0a0a0 100%);
+  /* Paleta de colores */
+  --main-bg: #050f21;
+  --primary-blue: #007BFF;
+  --dark-blue: #E6F0FF;
+  --button-bg: #E6F0FF;
+  --innovative-blue: #00AEEF;
+  --secondary-text: #B0C4DE;
+  --light-border: #D1D5DB;
+  
+  /* Efectos */
+  --cyber-glow: 0 0 10px rgba(0, 123, 255, 0.7);
+  --cyber-glow-intense: 0 0 20px rgba(0, 174, 239, 0.9);
+  --metal-gradient: linear-gradient(135deg, var(--primary-blue) 0%, var(--innovative-blue) 50%, var(--primary-blue) 100%);
 }
 
+/* Estructura base */
 .intro-hero {
-  background: #ffffff;
+  background: var(--main-bg);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: var(--header-height);
   position: relative;
   overflow: hidden;
   opacity: 0;
-  transition: opacity 0.8s ease-out;
+  transition: opacity 1s ease-out;
+  color: var(--dark-blue);
 }
 
 .intro-hero.loaded {
   opacity: 1;
 }
 
-/* Líneas curvas metalizadas */
-.intro-hero::before,
-.intro-hero::after {
-  content: '';
+/* Fondo de partículas */
+.particle-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-  pointer-events: none;
+  opacity: 0.8;
 }
 
+/* Fondo con ondas */
 .intro-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 174, 239, 0.1), transparent 70%);
+  animation: waveMove 15s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes waveMove {
+  0% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0.3; }
+}
+
+/* Grid tecnológico */
+.cyber-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: 
-    radial-gradient(circle at 30% 40%, rgba(192, 192, 192, 0.15) 0%, transparent 20%),
-    radial-gradient(circle at 70% 60%, rgba(192, 192, 192, 0.15) 0%, transparent 20%);
+    linear-gradient(rgba(0, 123, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 123, 255, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  pointer-events: none;
+  animation: gridMove 60s linear infinite;
+  opacity: 0.5;
 }
 
-.intro-hero::after {
-  background: 
-    /* Línea curva 1 */
-    linear-gradient(transparent, transparent),
-    /* Línea curva 2 */
-    linear-gradient(transparent, transparent),
-    /* Línea curva 3 */
-    linear-gradient(transparent, transparent);
-  
-  background-repeat: no-repeat;
-  background-image: 
-    /* Línea curva 1 */
-    url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-50 450C100 300 250 550 400 400C550 250 700 500 850 350C1000 200 1150 450 1300 300' stroke='url(%23metal1)' stroke-width='2' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='metal1' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23c0c0c0'/%3E%3Cstop offset='50%25' stop-color='%23e0e0e0'/%3E%3Cstop offset='100%25' stop-color='%23a0a0a0'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"),
-    /* Línea curva 2 */
-    url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-100 600C50 400 200 700 350 500C500 300 650 600 800 400C950 200 1100 500 1250 300' stroke='url(%23metal2)' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='5,3'/%3E%3Cdefs%3E%3ClinearGradient id='metal2' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23a0a0a0' stop-opacity='0.7'/%3E%3Cstop offset='50%25' stop-color='%23d0d0d0' stop-opacity='0.7'/%3E%3Cstop offset='100%25' stop-color='%23909090' stop-opacity='0.7'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"),
-    /* Línea curva 3 */
-    url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 300C150 450 300 200 450 350C600 500 750 250 900 400C1050 550 1200 300 1350 450' stroke='url(%23metal3)' stroke-width='1' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='metal3' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23e0e0e0' stop-opacity='0.6'/%3E%3Cstop offset='50%25' stop-color='%23c0c0c0' stop-opacity='0.6'/%3E%3Cstop offset='100%25' stop-color='%23f0f0f0' stop-opacity='0.6'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
-  
-  background-size: 120% 120%, 110% 110%, 100% 100%;
-  background-position: -10% 30%, 10% 70%, 0% 50%;
-  opacity: 0.7;
-  animation: subtleMove 30s infinite linear;
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
 }
 
-@keyframes subtleMove {
-  0%, 100% {
-    background-position: -10% 30%, 10% 70%, 0% 50%;
-  }
-  50% {
-    background-position: -5% 35%, 15% 65%, 5% 55%;
-  }
-}
-
+/* Contenedor principal */
 .hero-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   padding: 2rem 1.5rem;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  backdrop-filter: blur(2px);
 }
 
 .hero-content {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+/* Sección de texto */
+.hero-text-content {
+  flex: 0 0 60%;
+  max-width: 60%;
 }
 
 .hero-titles {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 3rem 0;
+  text-align: left;
+  margin: 0;
+  padding: 2rem 0;
 }
 
-/* Textos más grandes manteniendo las líneas decorativas */
-.yafo-super {
-  font-size: 8.5rem;
+.yafo-text {
+  font-size: 6.5rem;
   font-weight: 900;
-  line-height: 0.85;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  letter-spacing: -0.03em;
-  display: block;
-  margin-bottom: -1.2rem;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  position: relative;
+  line-height: 0.9;
+  color: var(--primary-blue);
+  text-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  margin-bottom: 0.5rem;
   animation: fadeInUp 0.8s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .consultora-sub {
-  font-size: 2.8rem;
+  position: relative;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--primary-blue);
   letter-spacing: 0.35em;
   text-indent: 0.35em;
   text-transform: uppercase;
   display: inline-block;
-  margin-top: -0.8rem;
-  position: relative;
   padding: 0 0.5rem;
   animation: fadeInUp 0.8s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Líneas decorativas restauradas y mejoradas */
-.consultora-sub::before,
-.consultora-sub::after {
-  content: '';
+.cyber-line {
   position: absolute;
-  top: 50%;
-  width: 2.5rem; /* Ligeramente más largas */
+  bottom: -10px;
+  left: 0;
+  width: 80%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--primary));
-  transform: translateY(-50%);
+  background: var(--metal-gradient);
+  box-shadow: var(--cyber-glow);
   animation: lineExpand 0.8s 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.consultora-sub::before {
-  left: 100%;
-}
-
-.consultora-sub::after {
-  right: 100%;
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
-
-@keyframes lineExpand {
-  from { width: 0; opacity: 0; }
-  to { width: 2.5rem; opacity: 1; }
-}
-
+/* Tagline */
 .hero-tagline {
   font-size: 2.25rem;
-  color: var(--dark);
   font-weight: 600;
   line-height: 1.3;
-  margin: 3rem auto 0.5rem;
-  max-width: 80%;
-  animation: fadeInUp 0.8s 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  margin: 2rem 0 0.5rem;
+  color: var(--dark-blue);
+  animation: fadeIn 1s 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--medium);
-  font-weight: 400;
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto;
-  animation: fadeInUp 0.8s 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Efecto de highlight mejorado */
 .text-highlight {
   position: relative;
   display: inline-block;
+  color: var(--innovative-blue);
+  text-shadow: var(--cyber-glow-intense);
 }
 
 .text-highlight::after {
@@ -195,11 +173,403 @@
   left: 0;
   width: 100%;
   height: 0.35em;
-  background: rgba(37, 99, 235, 0.2);
+  background: rgba(0, 174, 239, 0.3);
   z-index: -1;
   border-radius: 2px;
   transform-origin: left;
-  animation: highlightGrow 1s 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: highlightGrow 1s 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Subtítulo */
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary-text);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0 0 1.5rem;
+  animation: fadeIn 1s 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Botón CTA */
+.cyber-button {
+  position: relative;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  background: var(--button-bg);
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  animation: fadeIn 1s 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cyber-button:hover {
+  background: rgba(0, 123, 255, 0.1);
+  box-shadow: var(--cyber-glow-intense);
+  transform: translateY(-2px);
+  color: var(--dark-blue);
+  border-color: var(--innovative-blue);
+}
+
+.cyber-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.cyber-button-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--innovative-blue);
+  opacity: 0;
+  z-index: 1;
+  animation: glitch-flash 3s infinite;
+}
+
+@keyframes glitch-flash {
+  0%, 100% { opacity: 0; }
+  25%, 75% { opacity: 0; }
+  50% { opacity: 0.2; }
+}
+
+/* HOLOGRAMA PROFESIONAL MEJORADO */
+.hologram-container {
+  flex: 0 0 35%;
+  max-width: 35%;
+  position: relative;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px; /* Increased for a stronger 3D effect */
+  overflow: visible;
+}
+
+.hologram-display {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Efecto de proyector (linterna) */
+.hologram-projector {
+  position: absolute;
+  bottom: -150px;
+  width: 280px;
+  height: 250px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 174, 239, 0) 0%,
+    rgba(0, 174, 239, 0.9) 20%,
+    rgba(0, 174, 239, 0.5) 60%,
+    rgba(0, 174, 239, 0) 100%
+  );
+  clip-path: polygon(0% 100%, 15% 0%, 85% 0%, 100% 100%);
+  transform: perspective(300px) rotateX(65deg);
+  z-index: 1;
+  filter: blur(25px);
+  animation: projectorPulse 3s ease-in-out infinite;
+}
+
+/* Base luminosa con efecto de luz ascendente */
+.hologram-base {
+  position: absolute;
+  bottom: 0;
+  width: 120%;
+  height: 120px;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 174, 239, 0.9) 0%,
+    rgba(0, 174, 239, 0.4) 50%,
+    transparent 80%
+  );
+  filter: blur(30px);
+  opacity: 0.8;
+  border-radius: 50%;
+  z-index: 1;
+  animation: basePulse 2.5s ease-in-out infinite alternate;
+}
+
+/* Efecto de partículas ascendentes */
+.hologram-rising-particles {
+  position: absolute;
+  width: 80%;
+  height: 60%;
+  bottom: -20px;
+  z-index: 3;
+}
+
+.rising-particle {
+  position: absolute;
+  background: rgba(0, 174, 239, 0.8);
+  border-radius: 50%;
+  filter: blur(3px);
+  opacity: 0;
+  animation: riseParticle 5s linear infinite;
+}
+
+.rising-particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-duration: 4s; animation-delay: 0s; }
+.rising-particle:nth-child(2) { width: 3px; height: 3px; left: 20%; animation-duration: 5s; animation-delay: 0.5s; }
+.rising-particle:nth-child(3) { width: 5px; height: 5px; left: 30%; animation-duration: 4.5s; animation-delay: 1s; }
+.rising-particle:nth-child(4) { width: 2px; height: 2px; left: 40%; animation-duration: 5s; animation-delay: 1.5s; }
+.rising-particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-duration: 4s; animation-delay: 2s; }
+.rising-particle:nth-child(6) { width: 3px; height: 3px; left: 60%; animation-duration: 5s; animation-delay: 2.5s; }
+.rising-particle:nth-child(7) { width: 5px; height: 5px; left: 70%; animation-duration: 4.5s; animation-delay: 3s; }
+.rising-particle:nth-child(8) { width: 2px; height: 2px; left: 80%; animation-duration: 5s; animation-delay: 3.5s; }
+
+@keyframes riseParticle {
+  0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: translateY(-200px) translateX(calc(-20px + (40px * var(--random-direction, 1)))); opacity: 0; }
+}
+
+/* Neblina de partículas */
+.hologram-particle-fog {
+  position: absolute;
+  bottom: -70px;
+  width: 220%;
+  height: 180px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 174, 239, 0.7) 0%,
+    rgba(0, 174, 239, 0.4) 50%,
+    transparent 80%
+  );
+  filter: blur(35px);
+  z-index: 2;
+  animation: fogPulse 4s ease-in-out infinite alternate;
+}
+
+/* Icono holográfico */
+.hologram-icon {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  animation: floatHologram 7s ease-in-out infinite;
+  z-index: 4;
+  filter: drop-shadow(0 0 30px rgba(0, 174, 239, 0.7)); /* Enhanced shadow for depth */
+}
+
+.hologram-image {
+  width: 70%;
+  height: auto;
+  z-index: 5;
+  filter: 
+    drop-shadow(0 0 25px rgba(0, 174, 239, 0.9))
+    brightness(1.6) /* Increased brightness for better illumination */
+    contrast(1.3);
+  animation: floatIcon 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg); /* Initial rotation for 3D effect */
+}
+
+/* Grid holográfico */
+.hologram-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at center, transparent 50%, rgba(0, 174, 239, 0.25) 100%),
+    linear-gradient(0deg, transparent 47%, rgba(0, 174, 239, 0.6) 49%, rgba(0, 174, 239, 0.6) 51%, transparent 53%),
+    linear-gradient(90deg, transparent 47%, rgba(0, 174, 239, 0.6) 49%, rgba(0, 174, 239, 0.6) 51%, transparent 53%);
+  background-size: 20px 20px;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 60px rgba(0, 174, 239, 0.9),
+    inset 0 0 100px rgba(0, 174, 239, 0.7);
+  animation: 
+    rotateGrid 15s linear infinite,
+    pulseGrid 2.5s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+/* Partículas */
+.hologram-particles {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.hologram-particle {
+  position: absolute;
+  background: var(--innovative-blue);
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0;
+  animation: floatParticle linear infinite;
+}
+
+/* Configuración de 25 partículas */
+.hologram-particle:nth-child(1) { width: 2px; height: 2px; top: 10%; left: 15%; animation-duration: 15s; animation-delay: 0s; }
+.hologram-particle:nth-child(2) { width: 3px; height: 3px; top: 20%; left: 75%; animation-duration: 18s; animation-delay: 1s; }
+.hologram-particle:nth-child(3) { width: 2px; height: 2px; top: 15%; left: 40%; animation-duration: 14s; animation-delay: 2s; }
+.hologram-particle:nth-child(4) { width: 4px; height: 4px; top: 25%; left: 60%; animation-duration: 16s; animation-delay: 0.5s; }
+.hologram-particle:nth-child(5) { width: 3px; height: 3px; top: 30%; left: 30%; animation-duration: 17s; animation-delay: 1.5s; }
+.hologram-particle:nth-child(6) { width: 2px; height: 2px; top: 35%; left: 80%; animation-duration: 13s; animation-delay: 0.8s; }
+.hologram-particle:nth-child(7) { width: 3px; height: 3px; top: 40%; left: 20%; animation-duration: 19s; animation-delay: 2.5s; }
+.hologram-particle:nth-child(8) { width: 2px; height: 2px; top: 45%; left: 50%; animation-duration: 15s; animation-delay: 1.2s; }
+.hologram-particle:nth-child(9) { width: 4px; height: 4px; top: 20%; left: 10%; animation-duration: 14s; animation-delay: 0.3s; }
+.hologram-particle:nth-child(10) { width: 3px; height: 3px; top: 50%; left: 70%; animation-duration: 16s; animation-delay: 2s; }
+.hologram-particle:nth-child(11) { width: 2px; height: 2px; top: 55%; left: 90%; animation-duration: 12s; animation-delay: 1.7s; }
+.hologram-particle:nth-child(12) { width: 3px; height: 3px; top: 25%; left: 30%; animation-duration: 15s; animation-delay: 0.9s; }
+.hologram-particle:nth-child(13) { width: 2px; height: 2px; top: 60%; left: 60%; animation-duration: 13s; animation-delay: 2.2s; }
+.hologram-particle:nth-child(14) { width: 4px; height: 4px; top: 65%; left: 40%; animation-duration: 16s; animation-delay: 1.1s; }
+.hologram-particle:nth-child(15) { width: 3px; height: 3px; top: 70%; left: 10%; animation-duration: 14s; animation-delay: 0.6s; }
+.hologram-particle:nth-child(16) { width: 2px; height: 2px; top: 75%; left: 80%; animation-duration: 18s; animation-delay: 1.8s; }
+.hologram-particle:nth-child(17) { width: 3px; height: 3px; top: 30%; left: 25%; animation-duration: 15s; animation-delay: 0.7s; }
+.hologram-particle:nth-child(18) { width: 2px; height: 2px; top: 80%; left: 55%; animation-duration: 17s; animation-delay: 2.3s; }
+.hologram-particle:nth-child(19) { width: 4px; height: 4px; top: 35%; left: 85%; animation-duration: 14s; animation-delay: 1.4s; }
+.hologram-particle:nth-child(20) { width: 3px; height: 3px; top: 40%; left: 15%; animation-duration: 16s; animation-delay: 0.4s; }
+.hologram-particle:nth-child(21) { width: 2px; height: 2px; top: 85%; left: 65%; animation-duration: 13s; animation-delay: 2.1s; }
+.hologram-particle:nth-child(22) { width: 3px; height: 3px; top: 45%; left: 35%; animation-duration: 15s; animation-delay: 1.3s; }
+.hologram-particle:nth-child(23) { width: 2px; height: 2px; top: 50%; left: 95%; animation-duration: 17s; animation-delay: 0.8s; }
+.hologram-particle:nth-child(24) { width: 4px; height: 4px; top: 55%; left: 45%; animation-duration: 14s; animation-delay: 2.4s; }
+.hologram-particle:nth-child(25) { width: 3px; height: 3px; top: 60%; left: 5%; animation-duration: 16s; animation-delay: 1.5s; }
+
+/* Etiqueta mejorada */
+.hologram-label {
+  margin-top: 3.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  background: rgba(0, 174, 239, 0.2); /* Semi-transparent background */
+  border-radius: 20px;
+  box-shadow: 
+    0 0 20px rgba(0, 174, 239, 0.9),
+    inset 0 0 10px rgba(0, 174, 239, 0.5);
+  text-shadow: 
+    0 0 20px var(--innovative-blue),
+    0 0 40px rgba(0, 174, 239, 0.9);
+  opacity: 0;
+  animation: fadeInGlow 1s 1s ease-in-out forwards;
+  z-index: 5;
+  letter-spacing: 1px;
+  transition: all 0.5s ease; /* Smooth transition for hologram changes */
+}
+
+/* ANIMACIONES MEJORADAS */
+@keyframes projectorPulse {
+  0%, 100% { opacity: 0.7; height: 220px; bottom: -140px; }
+  50% { opacity: 0.95; height: 280px; bottom: -180px; }
+}
+
+@keyframes basePulse {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 0.95; transform: scale(1.1); }
+}
+
+@keyframes fogPulse {
+  0% { opacity: 0.5; transform: scale(0.9); }
+  100% { opacity: 0.8; transform: scale(1.15); }
+}
+
+@keyframes floatHologram {
+  0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1); }
+  25% { transform: translateY(-30px) rotateX(15deg) rotateY(15deg) scale(1.08); } /* Enhanced rotation */
+  50% { transform: translateY(0) rotateX(0deg) rotateY(30deg) scale(1); }
+  75% { transform: translateY(-25px) rotateX(-15deg) rotateY(15deg) scale(1.05); }
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateZ(0) scale(1) rotateY(0deg); }
+  25% { transform: translateZ(40px) scale(1.1) rotateY(15deg); } /* Increased depth */
+  50% { transform: translateZ(0) scale(1) rotateY(30deg); }
+  75% { transform: translateZ(30px) scale(1.07) rotateY(15deg); }
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-250px) translateX(40px); opacity: 0; }
+}
+
+@keyframes rotateGrid {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGrid {
+  0% { 
+    box-shadow: 
+      0 0 50px rgba(0, 174, 239, 0.7),
+      inset 0 0 80px rgba(0, 174, 239, 0.6);
+  }
+  100% { 
+    box-shadow: 
+      0 0 80px rgba(0, 174, 239, 1),
+      inset 0 0 120px rgba(0, 174, 239, 0.9);
+  }
+}
+
+@keyframes fadeInGlow {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Indicador de scroll */
+.scrolling-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: fadeIn 1s 2s both;
+}
+
+.scroll-text {
+  display: block;
+  color: var(--secondary-text);
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.scroll-line {
+  height: 40px;
+  width: 1px;
+  margin: 0 auto;
+  background: var(--innovative-blue);
+  animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(20px); opacity: 0; }
+}
+
+/* Animaciones base */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes highlightGrow {
@@ -207,89 +577,92 @@
   to { transform: scaleX(1); }
 }
 
-/* Animaciones */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes lineExpand {
+  from { width: 0; opacity: 0; }
+  to { width: 80%; opacity: 1; }
 }
 
-/* Responsive ajustado */
+/* Responsive */
 @media (max-width: 1200px) {
-  .yafo-super {
-    font-size: 7.5rem;
-  }
-  .consultora-sub {
-    font-size: 2.5rem;
-  }
+  .yafo-text { font-size: 5.5rem; }
+  .consultora-sub { font-size: 2rem; }
+  .hologram-icon { width: 280px; height: 280px; }
+  .hologram-projector { width: 240px; height: 210px; bottom: -130px; }
 }
 
 @media (max-width: 992px) {
-  .yafo-super {
-    font-size: 6.5rem;
-  }
-  .consultora-sub {
-    font-size: 2.2rem;
-  }
-  .hero-tagline {
-    font-size: 2rem;
+  .hero-content {
+    flex-direction: column;
   }
   
-  .intro-hero::after {
-    background-size: 150% 120%, 130% 110%, 120% 100%;
+  .hero-text-content,
+  .hologram-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .hero-titles {
+    text-align: center;
+  }
+  
+  .tagline-words {
+    justify-content: center;
+  }
+  
+  .consultora-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cyber-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hologram-container {
+    height: 400px;
+    margin-top: 3rem;
+  }
+  
+  .hologram-icon {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .hologram-projector {
+    width: 220px;
+    height: 180px;
+    bottom: -120px;
   }
 }
 
 @media (max-width: 768px) {
-  .yafo-super {
-    font-size: 5rem;
-  }
-  .consultora-sub {
-    font-size: 1.8rem;
-  }
-  .hero-tagline {
-    font-size: 1.75rem;
-  }
-  .hero-subtitle {
-    font-size: 1.25rem;
-  }
-  
-  .consultora-sub::before,
-  .consultora-sub::after {
-    width: 1.5rem;
-  }
-  
-  .intro-hero::after {
-    opacity: 0.5;
-    background-size: 180% 120%, 160% 110%, 140% 100%;
-  }
+  .yafo-text { font-size: 4.5rem; }
+  .consultora-sub { font-size: 1.6rem; }
+  .hero-tagline { font-size: 1.8rem; }
+  .hero-subtitle { font-size: 1.3rem; }
+  .hologram-label { font-size: 1.4rem; }
+  .hologram-icon { width: 220px; height: 220px; }
 }
 
 @media (max-width: 576px) {
-  .yafo-super {
-    font-size: 4rem;
+  .yafo-text { font-size: 3.5rem; }
+  .consultora-sub { font-size: 1.3rem; }
+  .hero-tagline { font-size: 1.5rem; }
+  .hero-subtitle { font-size: 1.1rem; }
+  .cyber-button { padding: 0.8rem 1.5rem; font-size: 1rem; }
+  .hologram-icon { width: 200px; height: 200px; }
+  .hologram-projector {
+    width: 180px;
+    height: 150px;
+    bottom: -100px;
+    filter: blur(20px);
   }
-  .consultora-sub {
-    font-size: 1.4rem;
-  }
-  .hero-tagline {
-    font-size: 1.5rem;
-  }
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .consultora-sub::before,
-  .consultora-sub::after {
-    width: 1rem;
-  }
-  
-  .intro-hero::after {
-    opacity: 0.4;
-  }
+  .hologram-label { font-size: 1.3rem; }
 }

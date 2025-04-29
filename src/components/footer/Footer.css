@@ -1,5 +1,5 @@
 .footer-container {
-  background-color: #ffffff6b;
+  background-color: #000000;
   color: #fff;
   padding: 2.7rem 1.8rem 0;
   font-family: 'Inter Tight', sans-serif;
@@ -29,7 +29,7 @@
 .footer-title {
   font-size: 1.35rem; /* 10% menos que 1.5rem */
   margin-bottom: 0.9rem; /* 10% menos que 1rem */
-  color: #000000;
+  color: #007BFF;
   font-family: 'TWK Everett', sans-serif;
   font-weight: 500;
 }
@@ -37,7 +37,7 @@
 .footer-subtitle {
   font-size: 0.99rem; /* 10% menos que 1.1rem */
   margin-bottom: 0.9rem; /* 10% menos que 1rem */
-  color: #000000;
+  color: #007BFF;
   font-weight: 600;
 }
 

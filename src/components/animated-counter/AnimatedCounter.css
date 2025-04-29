@@ -1,10 +1,25 @@
+:root {
+  --primary-dark: #0A0C2C;       /* Azul oscuro profundo */
+  --primary: #7329FF;           /* Púrpura vibrante */
+  --secondary: #FF00C7;         /* Rosa neón */
+  --cyber-turquoise: #00E5C0;   /* Turquesa cibernético */
+  --accent: #FFFFFF;            /* Blanco puro */
+  --light-bg: #F3F4F6;          /* Gris claro */
+  --secondary-dark: #1B1F3B;    /* Azul acero */
+  --cyber-glow: 0 0 10px rgba(115, 41, 255, 0.5);
+  --cyber-glow-intense: 0 0 20px rgba(255, 0, 199, 0.7);
+  --cyber-glow-turquoise: 0 0 15px rgba(0, 229, 192, 0.5);
+  --metal-gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%);
+  --text-gradient: linear-gradient(90deg, var(--primary), var(--cyber-turquoise));
+}
+
 /* AnimatedCounter.css - Versión Modificada */
 .counter-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(209, 213, 219, 0.5); /* Borde más visible */
+  border: 1px solid rgba(243, 244, 246, 0.5); /* Borde alineado con light-bg */
   border-radius: 11.2px;
   width: 120px;
   height: 90px !important;
@@ -18,17 +33,13 @@
   box-sizing: border-box;
   margin-bottom: 10px;
   
-  /* Fondo blanco con ligero gradiente */
-  background: linear-gradient(
-      135deg, 
-      rgba(249, 250, 251, 0.9) 0%, 
-      rgba(243, 244, 246, 0.9) 100%
-  );
+  /* Fondo blanco sólido */
+  background: var(--accent);
   
   /* Sombras más sutiles */
   box-shadow: 
       0 3.2px 12px rgba(0, 0, 0, 0.1),
-      inset 0 0 8px rgba(255, 255, 255, 0.2);
+      inset 0 0 8px rgba(243, 244, 246, 0.2);
 }
 
 /* Contador mejorado */
@@ -36,10 +47,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   font-family: 'Inter Tight', sans-serif;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--primary);
   line-height: 1;
   margin-bottom: 0.2rem;
   position: relative;
@@ -55,7 +63,7 @@
   text-align: center;
   width: 100%;
   font-size: 0.7rem;
-  color: var(--medium); /* Color más oscuro para mejor contraste */
+  color: var(--light-bg);
   text-transform: uppercase;
   letter-spacing: 0.6px;
   font-weight: 500;
@@ -70,7 +78,7 @@
 .country-name {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--dark); /* Color oscuro para mejor contraste */
+  color: var(--secondary-dark);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   line-height: 1.2;
@@ -120,7 +128,7 @@
       transform: translateY(-6.4px) scale(1.08);
       box-shadow: 
           0 9.6px 24px rgba(0, 0, 0, 0.15),
-          inset 0 0 12px rgba(255, 255, 255, 0.3);
-      border-color: var(--primary-light);
+          inset 0 0 12px rgba(243, 244, 246, 0.3);
+      border-color: color-mix(in srgb, var(--primary), transparent 70%);
   }
 }
