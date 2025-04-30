@@ -4,7 +4,7 @@ import ContactForm from "./components/contact/ContactForm"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
-import CurvedDivider from "./components/section/CurvedDivider"
+import Products from "./components/product/Products"
 
 function App() {
 
@@ -12,10 +12,11 @@ function App() {
     <>
       <Header />
 
-
         <Intro id="inicio"/>
 
         <About id="nosotros"/>
+
+        <Products id="productos"/>
 
         <Clients id="clientes"/>
 

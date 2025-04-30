@@ -1,0 +1,310 @@
+/* Product.css */
+.products-section {
+    position: relative;
+    padding: 8rem 0;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    overflow: hidden;
+    isolation: isolate;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .products-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  .products-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.2), transparent 70%);
+    animation: pulse 20s ease-in-out infinite;
+  }
+  
+  .products-noise {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.05;
+  }
+  
+  .products-particle {
+    position: absolute;
+    background: rgba(59, 130, 246, 0.4);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: float 12s ease-in-out infinite;
+  }
+  
+  .products-particle-1 {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  
+  .products-particle-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 15%;
+    right: 15%;
+    animation-delay: 4s;
+  }
+  
+  .products-particle-3 {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 70%;
+    animation-delay: 8s;
+  }
+  
+  .products-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .products-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .products-title {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .products-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  
+  .products-title:hover::after {
+    width: 150px;
+  }
+  
+  .products-subtitle {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 400;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .product-card {
+    perspective: 1000px;
+    height: 100%;
+  }
+  
+  .product-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2.5rem;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card:hover .product-card-inner {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+  }
+  
+  .product-card[data-category="cybersecurity"]:hover .product-card-inner {
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+  }
+  
+  .product-card[data-category="consulting"]:hover .product-card-inner {
+    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+  }
+  
+  .product-card[data-category="development"]:hover .product-card-inner {
+    box-shadow: 0 10px 40px rgba(236, 72, 153, 0.4);
+  }
+  
+  .product-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border-radius: 16px;
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    transition: all 0.4s ease;
+  }
+  
+  .product-card:hover .product-icon {
+    background: rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+    transform: scale(1.15) rotate(5deg);
+  }
+  
+  .product-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .product-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #f8fafc;
+    position: relative;
+  }
+  
+  .product-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  
+  .product-card:hover .product-title::after {
+    width: 100px;
+  }
+  
+  .product-description {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    font-size: 1rem;
+  }
+  
+  .product-description strong {
+    color: #f8fafc;
+    font-weight: 600;
+  }
+  
+  .product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+  
+  .product-feature {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+  }
+  
+  .product-card:hover .product-feature {
+    background: rgba(59, 130, 246, 0.3);
+    color: #93c5fd;
+  }
+  
+  .product-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+  }
+  
+  .product-card:hover .product-glow {
+    opacity: 1;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.4; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .products-header {
+      margin-bottom: 3rem;
+    }
+  
+    .product-card-inner {
+      padding: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .products-section {
+      padding: 5rem 0;
+    }
+  
+    .products-title {
+      font-size: 2.25rem;
+    }
+  
+    .products-subtitle {
+      font-size: 1.125rem;
+    }
+  
+    .product-card-inner {
+      padding: 1.5rem;
+    }
+  }
