@@ -1,101 +1,22 @@
 .footer-container {
   background-color: #000000;
   color: #fff;
-  padding: 2.7rem 1.8rem 0;
+  padding: 1.5rem 1rem 0;
   font-family: 'Inter Tight', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra todo el contenido horizontalmente */
+  align-items: center;
 }
 
 .footer-content {
   max-width: 1080px;
-  width: 100%; /* Asegura que ocupe todo el ancho disponible hasta el máximo */
+  width: 100%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.8rem;
-  padding-bottom: 1.8rem;
-}
-
-.footer-section {
-  margin-bottom: 1.35rem;
-  text-align: center; /* Centra el texto en todas las secciones */
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra los elementos hijos horizontalmente */
+  justify-content: center;
+  padding-bottom: 1rem;
 }
 
-.footer-title {
-  font-size: 1.35rem; /* 10% menos que 1.5rem */
-  margin-bottom: 0.9rem; /* 10% menos que 1rem */
-  color: #007BFF;
-  font-family: 'TWK Everett', sans-serif;
-  font-weight: 500;
-}
-
-.footer-subtitle {
-  font-size: 0.99rem; /* 10% menos que 1.1rem */
-  margin-bottom: 0.9rem; /* 10% menos que 1rem */
-  color: #007BFF;
-  font-weight: 600;
-}
-
-.footer-text {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin-bottom: 1.35rem; /* 10% menos que 1.5rem */
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 0.45rem; /* 10% menos que 0.5rem */
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #67e8f9;
-}
-
-.footer-contact {
-  list-style: none;
-  padding: 0;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-}
-
-.social-icons {
-  display: flex;
-  gap: 0.9rem; /* 10% menos que 1rem */
-  margin-top: 0.9rem; /* 10% menos que 1rem */
-}
-
-.social-icon {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.35rem; /* 10% menos que 1.5rem */
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: translateY(-2.7px); /* 10% menos que 3px */
-  animation: shake 0.5s ease;
-}
-
-.social-icon:nth-child(1):hover { /* LinkedIn */
-  color: #0a66c2;
-  text-shadow: 0 0 9px #0a66c2, 0 0 18px #0a66c2;
-}
-
-/* Reutiliza el mismo estilo del logo de contacto */
 .footer-logo-section {
   display: flex;
   flex-direction: column;
@@ -103,24 +24,34 @@
   justify-content: center;
 }
 
+.social-icons {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.social-icon {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.35rem;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-2.7px);
+  animation: shake 0.5s ease;
+  color: #0a66c2;
+  text-shadow: 0 0 9px #0a66c2, 0 0 18px #0a66c2;
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.35rem 0;
+  padding: 1rem 0;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.81rem;
-  width: 100%; /* Asegura que ocupe todo el ancho */
+  width: 100%;
 }
 
-/* Asegúrate que las listas también estén centradas */
-.footer-links, .footer-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-}
-
-/* Añadir al final de tu archivo CSS */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -133,49 +64,26 @@
   border: 0;
 }
 
-/* Animación de sacudida */
 @keyframes shake {
   0%, 100% {
-      transform: translateY(-2.7px) rotate(0deg);
+    transform: translateY(-2.7px) rotate(0deg);
   }
   20% {
-      transform: translateY(-2.7px) rotate(-10deg);
+    transform: translateY(-2.7px) rotate(-10deg);
   }
   40% {
-      transform: translateY(-2.7px) rotate(10deg);
+    transform: translateY(-2.7px) rotate(10deg);
   }
   60% {
-      transform: translateY(-2.7px) rotate(-5deg);
+    transform: translateY(-2.7px) rotate(-5deg);
   }
   80% {
-      transform: translateY(-2.7px) rotate(5deg);
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-content {
-      grid-template-columns: 1fr 1fr;
-  }
-  
-  .footer-title {
-      font-size: 1.17rem; /* 10% menos que 1.3rem */
-  }
-  
-  .footer-subtitle {
-      font-size: 0.9rem; /* 10% menos que 1rem */
+    transform: translateY(-2.7px) rotate(5deg);
   }
 }
 
 @media (max-width: 480px) {
-  .footer-content {
-      grid-template-columns: 1fr;
-  }
-  
-  .footer-section {
-      text-align: center;
-  }
-  
-  .social-icons {
-      justify-content: center;
+  .footer-container {
+    padding: 1rem 0.5rem 0;
   }
 }

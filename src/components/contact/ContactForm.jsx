@@ -149,9 +149,6 @@ const ContactForm = () => {
             <p className="info-text">
               Estamos a disposición para responder cualquier duda o consulta que pueda surgirle.
             </p>
-            <p className="info-email">
-              <a href="mailto:gerencia@alephmanager.com">gerencia@alephmanager.com</a>
-            </p>
           </div>
         </div>
       </div>
