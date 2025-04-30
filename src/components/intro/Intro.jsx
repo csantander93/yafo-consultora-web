@@ -28,7 +28,7 @@ const Intro = () => {
     // Rotación de hologramas
     const hologramInterval = setInterval(() => {
       setCurrentHologram((prev) => (prev + 1) % holograms.length);
-    }, 3000);
+    }, 5000); // Changed from 3000ms to 5000ms
 
     return () => clearInterval(hologramInterval);
   }, []);
@@ -158,33 +158,41 @@ const Intro = () => {
             <div className="hologram-display">
               <div className="hologram-base"></div>
               <div className="hologram-light-rays"></div>
-              <div className="hologram-icon active">
-                <img
-                  src={holograms[currentHologram].icon}
-                  alt={holograms[currentHologram].label}
-                  className="hologram-image"
-                />
-                <div className="hologram-grid"></div>
-                <div className="hologram-particles">
-                  <div className="hologram-particle"></div>
-                  <div className="hologram-particle"></div>
-                  <div className="hologram-particle"></div>
-                  <div className="hologram-particle"></div>
-                  <div className="hologram-particle"></div>
-                </div>
-                {/* Added rising particles for the illumination effect */}
-                <div className="hologram-rising-particles">
-                  <div className="rising-particle"></div>
-                  <div className="rising-particle"></div>
-                  <div className="rising-particle"></div>
-                  <div className="rising-particle"></div>
-                  <div className="rising-particle"></div>
-                  <div className="rising-particle"></div>
-                  <div className="rising-particle"></div>
-                  <div className="rising-particle"></div>
-                </div>
+              <div className="hologram-icon-container">
+                {holograms.map((hologram, index) => (
+                  <div
+                    key={index}
+                    className={`hologram-icon ${index === currentHologram ? 'fade' : ''}`}
+                  >
+                    <img
+                      src={hologram.icon}
+                      alt={hologram.label}
+                      className="hologram-image"
+                    />
+                    <div className="hologram-grid"></div>
+                    <div className="hologram-particles">
+                      <div className="hologram-particle"></div>
+                      <div className="hologram-particle"></div>
+                      <div className="hologram-particle"></div>
+                      <div className="hologram-particle"></div>
+                      <div className="hologram-particle"></div>
+                    </div>
+                    <div className="hologram-rising-particles">
+                      <div className="rising-particle"></div>
+                      <div className="rising-particle"></div>
+                      <div className="rising-particle"></div>
+                      <div className="rising-particle"></div>
+                      <div className="rising-particle"></div>
+                      <div className="rising-particle"></div>
+                      <div className="rising-particle"></div>
+                      <div className="rising-particle"></div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="hologram-label">{holograms[currentHologram].label}</div>
+              <div className={`hologram-label ${currentHologram === currentHologram ? 'fade' : ''}`}>
+                {holograms[currentHologram].label}
+              </div>
             </div>
           </div>
         </div>
