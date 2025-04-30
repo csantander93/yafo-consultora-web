@@ -13,7 +13,7 @@ const Products = () => {
 
       <div className="products-container">
         <div className="products-header">
-          <h2 className="products-title">Nuestros Servicios</h2>
+          <h2 className="products-title">Nuestros Productos</h2>
           <p className="products-subtitle">Soluciones tecnológicas diseñadas para proteger y potenciar tu negocio</p>
         </div>
 
