@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ContactForm.css';
-import logoYafo from '../../assets/Logo Yafo JPG_grises 300 dpi.jpg'; // Asegúrate de que esta ruta sea correcta
+import logoYafo from '../../assets/Logo Yafo JPG_grises 300 dpi.jpg'; // Verify this path is correct
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,12 @@ const ContactForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Add loaded class after component mounts to trigger fade-in animation
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,17 +46,18 @@ const ContactForm = () => {
   };
 
   return (
-  <section id='contacto'>
-    <div className="contact-section">
+    <section id='contacto' className={`contact-section ${isLoaded ? 'loaded' : ''}`}>
       <div className="contact-background">
-        <div className="contact-background-gradient-1"></div>
-        <div className="contact-background-gradient-2"></div>
+        <div className="contact-background-curves">
+          <div className="curve curve-1"></div>
+          <div className="curve curve-2"></div>
+        </div>
       </div>
       
       <div className="contact-container">
         <div className="contact-header">
-            <h2 className="contact-title">CONTACTO</h2>
-            <p className="contact-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
+          <h2 className="contact-title">CONTACTO</h2>
+          <p className="contact-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
         </div>
 
         <div className="contact-row">
@@ -58,8 +65,8 @@ const ContactForm = () => {
             {submitSuccess ? (
               <div className="success-message">
                 <svg className="success-icon" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M22 4 12 14.01l-3-3" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M22 4 12 14.01l-3-3" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 <h4>¡Mensaje enviado!</h4>
                 <p>Nos pondremos en contacto contigo pronto.</p>
@@ -152,8 +159,7 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 };
 
