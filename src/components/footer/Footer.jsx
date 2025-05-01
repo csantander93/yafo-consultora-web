@@ -32,7 +32,6 @@ const Footer = () => {
               itemProp="sameAs"
             >
               <FaLinkedin />
-              <span className="sr-only">LinkedIn de Aleph Manager</span>
             </a>
           </div>
         </div>
@@ -40,7 +39,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p itemProp="copyrightYear">
-          &copy; {new Date().getFullYear()} <span itemProp="copyrightHolder">Aleph Manager</span>. Todos los derechos reservados.
+          &copy; {new Date().getFullYear()} <span itemProp="copyrightHolder">YAFO CONSULTORA S.R.L</span>. Todos los derechos reservados.
         </p>
       </div>
     </footer>

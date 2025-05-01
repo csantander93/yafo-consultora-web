@@ -151,7 +151,7 @@ const ContactForm = () => {
             <img 
               src={logoYafo} 
               alt="Aleph Manager Logo" 
-              className="info-logo"
+              className="info-logo-contact"
             />
             <p className="info-text">
               Estamos a disposición para responder cualquier duda o consulta que pueda surgirle.
