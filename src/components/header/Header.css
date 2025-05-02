@@ -1,35 +1,15 @@
-:root {
-  --header-height: 65px;
-  /* Colores alineados con Intro.css */
-  --primary-dark: #003366;       /* --dark-blue */
-  --primary: #007BFF;            /* --primary-blue */
-  --secondary: #00AEEF;          /* --innovative-blue */
-  --cyber-turquoise: #00AEEF;    /* --innovative-blue */
-  --accent: #FFFFFF;             /* Blanco puro, mantenido */
-  --light-bg: #F9FAFB;           /* --main-bg */
-  --secondary-bg: #E6F0FF;       /* --button-bg */
-  --secondary-dark: #003366;     /* --dark-blue para hover oscuros */
-  --border-color: #D1D5DB;       /* --light-border */
-  --header-transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  --cyber-glow: 0 0 10px rgba(0, 123, 255, 0.7); /* Alineado con Intro.css */
-  --cyber-glow-intense: 0 0 20px rgba(0, 174, 239, 0.9); /* Alineado con Intro.css */
-  --cyber-glow-turquoise: 0 0 10px rgba(0, 174, 239, 0.7); /* Alineado con Intro.css */
-  --text-primary: #003366;       /* --dark-blue */
-  --text-secondary: #4A4A4A;     /* --secondary-text */
-}
-
 /* Header base - Blanco desde el inicio */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
-  background-color: var(--light-bg);
+  height: 65px;
+  background-color: #F9FAFB;
   z-index: 1000;
-  transition: var(--header-transition);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #D1D5DB;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -107,15 +87,15 @@
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--text-primary);
+  color: #003366;
   padding: 0.5rem 0.75rem;
-  transition: var(--header-transition);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 .nav-link:hover {
-  color: var(--secondary);
+  color: #00AEEF;
   transform: translateY(-2px);
 }
 
@@ -125,7 +105,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--secondary);
+  background: #00AEEF;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -143,12 +123,12 @@
   transform: translateX(-50%);
   width: 60%;
   height: 2px;
-  background: var(--primary);
+  background: #007BFF;
   border-radius: 2px;
 }
 
 .nav-link.active {
-  color: var(--primary);
+  color: #007BFF;
   font-weight: 700;
 }
 
@@ -171,14 +151,14 @@
   display: block;
   width: 100%;
   height: 2.5px;
-  background-color: var(--text-primary);
-  transition: var(--header-transition);
+  background-color: #003366;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   transform-origin: center;
 }
 
 .mobile-menu-btn.open span:nth-child(1) {
   transform: translateY(8.5px) rotate(45deg);
-  background-color: var(--secondary);
+  background-color: #00AEEF;
 }
 
 .mobile-menu-btn.open span:nth-child(2) {
@@ -187,20 +167,20 @@
 
 .mobile-menu-btn.open span:nth-child(3) {
   transform: translateY(-8.5px) rotate(-45deg);
-  background-color: var(--secondary);
+  background-color: #00AEEF;
 }
 
 /* Menú móvil - Panel */
 .mobile-menu {
   position: fixed;
-  top: var(--header-height);
+  top: 65px;
   left: 0;
   width: 100%;
-  height: calc(100vh - var(--header-height));
-  background-color: var(--light-bg);
+  height: calc(100vh - 65px);
+  background-color: #F9FAFB;
   backdrop-filter: blur(12px);
   transform: translateX(100%);
-  transition: var(--header-transition);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 1000;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -225,15 +205,15 @@
   display: block;
   font-size: 1.25rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: #003366;
   text-decoration: none;
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border-color);
-  transition: var(--header-transition);
+  border-bottom: 1px solid #D1D5DB;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .mobile-nav-link:hover {
-  color: var(--secondary);
+  color: #00AEEF;
   transform: translateX(8px);
 }
 
@@ -243,11 +223,11 @@
   bottom: 0;
   width: 20px;
   height: 2px;
-  background: var(--primary);
+  background: #007BFF;
 }
 
 .mobile-nav-link.active {
-  color: var(--primary);
+  color: #007BFF;
   font-weight: 600;
 }
 

@@ -15,8 +15,9 @@ const Services = () => {
       <div className="products-container">
         <div className="products-header">
           <h2 className="products-title">
-            <span className="title-word title-word-1">Nuestros</span>
-            <span className="title-word title-word-2">Servicios</span>
+            <span className="title-word title-word-1">NUESTROS</span>
+            <span> </span>
+            <span className="title-word title-word-2">SERVICIOS</span>
           </h2>
           <p className="products-subtitle">
             Soluciones integrales para <span className="highlight">proteger</span>, <span className="highlight">evaluar</span> y <span className="highlight">desarrollar</span> tu infraestructura tecnológica
@@ -39,12 +40,13 @@ const Services = () => {
                 Servicios expertos para gestionar riesgos, asegurar la continuidad del negocio y optimizar tu infraestructura tecnológica.
               </p>
               <div className="product-features">
-                <span className="product-feature">Gestión de Riesgos</span>
-                <span className="product-feature">Seguridad TI</span>
-                <span className="product-feature">Continuidad</span>
-                <span className="product-feature">Infraestructura</span>
-                <span className="product-feature">Ciberincidentes</span>
-                <span className="product-feature">Servicios Financieros</span>
+                <span className="product-feature">Gestión de Riesgos de Tecnología y Seguridad de la Información</span>
+                <span className="product-feature">Gestión de Tecnología y Seguridad de la Información</span>
+                <span className="product-feature">Gestión de Continuidad del Negocio</span>
+                <span className="product-feature">Infraestructura tecnológica y procesamiento</span>
+                <span className="product-feature">Gestión de ciberincidentes</span>
+                <span className="product-feature">Gestión de la relación con terceras partes</span>
+                <span className="product-feature">Gestión de Servicios Financieros Digitales</span>
               </div>
               <div className="product-glow"></div>
             </div>
@@ -65,12 +67,12 @@ const Services = () => {
                 Evaluaciones exhaustivas para identificar vulnerabilidades y fortalecer tus defensas contra amenazas cibernéticas.
               </p>
               <div className="product-features">
-                <span className="product-feature">OSINT + Discovery</span>
-                <span className="product-feature">Pentesting Externo</span>
-                <span className="product-feature">Web App Assessment</span>
-                <span className="product-feature">Pentesting Interno</span>
-                <span className="product-feature">Seguridad Móvil</span>
-                <span className="product-feature">Vulnerability Mgmt</span>
+                <span className="product-feature">OSINT + Discovery Assessment</span>
+                <span className="product-feature">Test de intrusión externo</span>
+                <span className="product-feature">Web Application Assessment</span>
+                <span className="product-feature">Test de Intrusión Interno</span>
+                <span className="product-feature">Análisis de seguridad aplicaciones móviles</span>
+                <span className="product-feature">Vulnerability Management</span>
               </div>
               <div className="product-glow"></div>
             </div>

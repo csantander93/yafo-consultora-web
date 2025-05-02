@@ -1,40 +1,56 @@
 import { useEffect, useRef, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import './SectionWrapper.css';
+import './SectionWrapper.css'; // Archivo CSS para las animaciones
 
-const SectionWrapper = ({ children, id, alternate = false, fullWidth = false }) => {
-  const sectionRef = useRef(null);
+const SectionWrapper = ({ id, children, animationType = 'fade', delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  
-  const [inViewRef, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-    rootMargin: '-50px 0px'
-  });
+  const sectionRef = useRef(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Opcional: desconectar después de la primera animación
+          // observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
     if (sectionRef.current) {
-      inViewRef(sectionRef.current);
+      observer.observe(sectionRef.current);
     }
-    
-    if (inView && !isVisible) {
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 100);
-      return () => clearTimeout(timer);
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const getAnimationClass = () => {
+    switch (animationType) {
+      case 'slideUp':
+        return isVisible ? 'slide-up-visible' : 'slide-up-hidden';
+      case 'slideLeft':
+        return isVisible ? 'slide-left-visible' : 'slide-left-hidden';
+      case 'slideRight':
+        return isVisible ? 'slide-right-visible' : 'slide-right-hidden';
+      case 'zoom':
+        return isVisible ? 'zoom-visible' : 'zoom-hidden';
+      default: // fade
+        return isVisible ? 'fade-visible' : 'fade-hidden';
     }
-  }, [inView, inViewRef, isVisible]);
+  };
 
   return (
     <section 
       id={id}
       ref={sectionRef}
-      className={`section-wrapper ${isVisible ? 'visible' : ''} ${alternate ? 'alternate' : ''} ${fullWidth ? 'full-width' : ''}`}
-      aria-hidden={!isVisible}
+      className={`section-wrapper ${getAnimationClass()}`}
+      style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="section-content">
-        {children}
-      </div>
+      {children}
     </section>
   );
 };

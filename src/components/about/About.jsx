@@ -27,7 +27,7 @@ const About = () => {
         {/* Mission Section */}
         <div className="about-header">
           <h2 className="about-title">
-            <span className="title-highlight">Transformamos</span> la gestión de compliance y seguridad con tecnología
+            <span className="title-highlight">TRANSFORMAMOS</span> LA GESTIÓN DE COMPLIANCE Y SEGURIDAD CON TECNOLOGÍA
           </h2>
           <p className="about-description">
             Somos un equipo de expertos en sistemas financieros, ciberseguridad y continuidad del negocio. Más de 50 clientes en Argentina y el mundo confían en nuestras soluciones para proteger y optimizar sus operaciones.

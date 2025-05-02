@@ -4,6 +4,7 @@
   padding: 6rem 0;
   overflow: hidden;
   background-color: var(--main-bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   isolation: isolate;
 }
 

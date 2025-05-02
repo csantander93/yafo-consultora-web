@@ -2,7 +2,7 @@
 
 .modulos-header {
   text-align: center;
-  max-width: 56rem; /* Añadido para coincidir con features */
+  max-width: 56rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -10,31 +10,41 @@
 .modulos-title {
   font-size: 2.4rem;
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: 900;
   margin-bottom: 1.2rem;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   background-image: linear-gradient(to right, #67e8f9, #6ee7b7, #67e8f9);
   background-size: 300% 300%;
-  font-family: 'Corbel', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
-  'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   display: inline-block;
+  animation: gradientShift 8s ease infinite;
 }
 
 .modulos-subtitle {
   font-size: 1rem;
   line-height: 1.6;
-  color: rgba(219, 234, 254, 0.8); /* Cambiado para coincidir con features-subtitle */
-  max-width: 48rem; /* Igual que features-subtitle */
+  color: #cbd5e1; /* sv-gray-light */
+  max-width: 48rem;
   margin: 0 auto;
-  font-family: 'Inter Tight', sans-serif; /* Añadida misma fuente */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   margin-bottom: 20px;
 }
 
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @media (min-width: 768px) {
   .modulos-title {
-    font-size: 3.6rem; /* Igual que features-title en media query */
+    font-size: 3.6rem;
+  }
+  
+  .modulos-subtitle {
+    font-size: 1.2rem;
   }
 }
