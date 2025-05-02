@@ -4,7 +4,8 @@ import ContactForm from "./components/contact/ContactForm"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
-import Products from "./components/product/Products"
+import SolutionsManager from "./components/modules/SolutionManager"
+import Services from "./components/product/Services"
 
 function App() {
 
@@ -16,7 +17,9 @@ function App() {
 
         <About id="nosotros"/>
 
-        <Products id="productos"/>
+        <Services id="servicios"/>
+
+        <SolutionsManager id="soluciones"/>
 
         <Clients id="clientes"/>
 

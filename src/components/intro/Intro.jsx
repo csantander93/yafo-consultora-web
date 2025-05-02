@@ -199,7 +199,7 @@ const Intro = () => {
       </div>
 
       <div className="scrolling-indicator">
-        <span className="scroll-text">Scroll</span>
+        <span className="scroll-text">Descubre Más</span>
         <div className="scroll-line"></div>
       </div>
     </section>

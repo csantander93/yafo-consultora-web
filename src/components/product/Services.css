@@ -1,0 +1,545 @@
+/* Product.css - Versión sin "Saber más" */
+:root {
+  --sv-primary: #3b82f6;
+  --sv-primary-light: #60a5fa;
+  --sv-primary-dark: #2563eb;
+  --sv-secondary: #a855f7;
+  --sv-secondary-light: #c084fc;
+  --sv-dark: #0f172a;
+  --sv-darker: #020617;
+  --sv-light: #f8fafc;
+  --sv-gray: #94a3b8;
+  --sv-gray-light: #cbd5e1;
+  --sv-consulting: #8b5cf6;
+  --sv-cybersecurity: #3b82f6;
+  --sv-development: #ec4899;
+}
+
+.products-section {
+  position: relative;
+  padding: 10rem 0;
+  background: linear-gradient(180deg, var(--sv-darker) 0%, var(--sv-dark) 100%);
+  overflow: hidden;
+  isolation: isolate;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.products-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.products-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.15), transparent 70%);
+  animation: pulse 15s ease-in-out infinite alternate;
+}
+
+.products-noise {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.1"/%3E%3C/svg%3E');
+}
+
+.products-particle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float 15s ease-in-out infinite;
+  opacity: 0.7;
+  mix-blend-mode: screen;
+}
+
+.products-particle-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+  background: var(--sv-primary);
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.products-particle-2 {
+  width: 300px;
+  height: 300px;
+  bottom: 5%;
+  right: 5%;
+  background: var(--sv-secondary);
+  animation-delay: 3s;
+  animation-duration: 22s;
+}
+
+.products-particle-3 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: 70%;
+  background: var(--sv-development);
+  animation-delay: 6s;
+  animation-duration: 15s;
+}
+
+.products-particle-4 {
+  width: 250px;
+  height: 250px;
+  top: 70%;
+  left: 20%;
+  background: var(--sv-consulting);
+  animation-delay: 9s;
+  animation-duration: 20s;
+}
+
+.products-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.products-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.products-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.title-word {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--sv-primary), var(--sv-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.title-word-1 {
+  animation: slideInLeft 0.8s ease-out both;
+}
+
+.title-word-2 {
+  animation: slideInRight 0.8s ease-out both;
+  animation-delay: 0.3s;
+  margin-left: 0.5rem;
+}
+
+.products-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sv-primary), var(--sv-secondary));
+  border-radius: 2px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.products-title:hover::after {
+  width: 180px;
+  height: 5px;
+}
+
+.products-subtitle {
+  font-size: 1.35rem;
+  color: var(--sv-gray-light);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 400;
+  animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.highlight {
+  background: linear-gradient(90deg, var(--sv-primary), var(--sv-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  position: relative;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sv-primary), var(--sv-secondary));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+
+.products-subtitle:hover .highlight::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+.product-card {
+  perspective: 1200px;
+  height: 100%;
+  position: relative;
+}
+
+.product-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 2.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+}
+
+.product-card:hover .product-card-inner {
+  transform: translateY(-15px) scale(1.03);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 15px 50px rgba(59, 130, 246, 0.25);
+}
+
+.product-card[data-category="consulting"]:hover .product-card-inner {
+  box-shadow: 0 15px 50px rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.product-card[data-category="cybersecurity"]:hover .product-card-inner {
+  box-shadow: 0 15px 50px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.product-card[data-category="development"]:hover .product-card-inner {
+  box-shadow: 0 15px 50px rgba(236, 72, 153, 0.3);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.product-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--sv-light);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+}
+
+.product-card:hover .product-badge {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.product-card[data-category="consulting"] .product-badge {
+  background: rgba(139, 92, 246, 0.2);
+  color: var(--sv-secondary-light);
+}
+
+.product-card[data-category="cybersecurity"] .product-badge {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--sv-primary-light);
+}
+
+.product-card[data-category="development"] .product-badge {
+  background: rgba(236, 72, 153, 0.2);
+  color: #f472b6;
+}
+
+.product-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  border-radius: 18px;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--sv-primary);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-icon {
+  background: rgba(59, 130, 246, 0.3);
+  color: var(--sv-primary-light);
+  transform: scale(1.2) rotate(8deg);
+}
+
+.product-card[data-category="consulting"] .product-icon {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--sv-secondary);
+}
+
+.product-card[data-category="consulting"]:hover .product-icon {
+  background: rgba(139, 92, 246, 0.3);
+  color: var(--sv-secondary-light);
+}
+
+.product-card[data-category="development"] .product-icon {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+}
+
+.product-card[data-category="development"]:hover .product-icon {
+  background: rgba(236, 72, 153, 0.3);
+  color: #f472b6;
+}
+
+.product-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.product-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  color: var(--sv-light);
+  position: relative;
+  line-height: 1.3;
+}
+
+.product-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sv-primary), var(--sv-secondary));
+  border-radius: 2px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-title::after {
+  width: 120px;
+}
+
+.product-card[data-category="consulting"] .product-title::after {
+  background: linear-gradient(90deg, var(--sv-consulting), #d946ef);
+}
+
+.product-card[data-category="development"] .product-title::after {
+  background: linear-gradient(90deg, var(--sv-development), #f97316);
+}
+
+.product-description {
+  color: var(--sv-gray-light);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  flex-grow: 1;
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .product-description {
+  color: var(--sv-light);
+}
+
+.product-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.product-feature {
+  font-size: 0.8rem;
+  padding: 0.45rem 0.9rem;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--sv-primary-light);
+  border-radius: 8px;
+  transition: all 0.4s ease;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.product-card:hover .product-feature {
+  background: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+  transform: translateY(-3px);
+}
+
+.product-card[data-category="consulting"] .product-feature {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--sv-secondary-light);
+}
+
+.product-card[data-category="consulting"]:hover .product-feature {
+  background: rgba(139, 92, 246, 0.3);
+  color: #c084fc;
+}
+
+.product-card[data-category="development"] .product-feature {
+  background: rgba(236, 72, 153, 0.15);
+  color: #f472b6;
+}
+
+.product-card[data-category="development"]:hover .product-feature {
+  background: rgba(236, 72, 153, 0.3);
+  color: #f9a8d4;
+}
+
+.product-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+}
+
+.product-card:hover .product-glow {
+  opacity: 1;
+}
+
+.product-card[data-category="consulting"] .product-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15), transparent 70%);
+}
+
+.product-card[data-category="development"] .product-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.15), transparent 70%);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .products-section {
+    padding: 8rem 0;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-section {
+    padding: 6rem 0;
+  }
+  
+  .products-header {
+    margin-bottom: 3rem;
+  }
+  
+  .products-title {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+  }
+  
+  .products-subtitle {
+    font-size: 1.15rem;
+  }
+  
+  .product-card-inner {
+    padding: 2rem;
+  }
+  
+  .product-features {
+    gap: 0.5rem;
+  }
+  
+  .product-feature {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-section {
+    padding: 5rem 0;
+  }
+  
+  .products-title {
+    font-size: 2.5rem;
+  }
+  
+  .products-subtitle {
+    font-size: 1.05rem;
+  }
+  
+  .product-card-inner {
+    padding: 1.75rem;
+  }
+  
+  .product-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.25rem;
+  }
+  
+  .product-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .product-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
