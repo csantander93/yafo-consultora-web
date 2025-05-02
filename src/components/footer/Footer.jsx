@@ -32,6 +32,7 @@ const Footer = () => {
               itemProp="sameAs"
             >
               <FaLinkedin />
+              <span className="sr-only">LinkedIn de Yafo Consultora</span>
             </a>
           </div>
         </div>

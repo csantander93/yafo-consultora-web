@@ -1,5 +1,5 @@
 :root {
-  --header-height: 80px;
+  --header-height: 65px;
   /* Colores alineados con Intro.css */
   --primary-dark: #003366;       /* --dark-blue */
   --primary: #007BFF;            /* --primary-blue */
@@ -35,7 +35,7 @@
 
 /* Header cuando tiene scroll - Solo cambia la altura */
 .header.scrolled {
-  height: 70px;
+  height: 55px;
 }
 
 .header-container {
@@ -80,7 +80,7 @@
 }
 
 .header-logo {
-  height: 42px;
+  height: 38px;
   width: auto;
   transition: all 0.3s ease;
   filter: none;
@@ -262,7 +262,7 @@
   }
   
   .header-logo {
-    height: 45px;
+    height: 40px;
   }
   
   .nav-list {
@@ -276,7 +276,7 @@
   }
   
   .header-logo {
-    height: 36px;
+    height: 32px;
   }
   
   .mobile-menu {
