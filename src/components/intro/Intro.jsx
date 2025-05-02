@@ -4,14 +4,14 @@ import './Intro.css';
 // Importamos las imágenes nuevas
 import padlockImg from '../../assets/padlock.png';
 import shieldImg from '../../assets/shield.png';
-import iaImg from '../../assets/IA.png';
+import firewall from '../../assets/firewall.png';
 
 const Intro = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentHologram, setCurrentHologram] = useState(0);
 
   const holograms = [
-    { icon: iaImg, label: 'Inteligencia Artificial' },
+    { icon: firewall, label: 'Defensa Proactiva Digital' },
     { icon: padlockImg, label: 'Seguridad Avanzada' },
     { icon: shieldImg, label: 'Protección Integral' }
   ];

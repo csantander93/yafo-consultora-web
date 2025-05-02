@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import teamImage from '../../assets/development.jpg';
-import mockupImage from '../../assets/mockuper.png';
+import alephabout from '../../assets/aleph-about.png';
 import './About.css';
 
 const About = () => {
@@ -64,7 +64,7 @@ const About = () => {
           <div className="about-image-wrapper">
             <div className="image-tech-border">
               <img
-                src={mockupImage}
+                src={alephabout}
                 alt="Plataforma de Yafo Consultora"
                 className="about-image"
               />
