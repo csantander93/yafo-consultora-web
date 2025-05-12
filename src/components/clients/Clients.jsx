@@ -1,4 +1,3 @@
-import React from 'react';
 import './Clients.css';
 
 // Importamos todas las imágenes directamente (se mantienen igual)

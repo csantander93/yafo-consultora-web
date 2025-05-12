@@ -3,20 +3,20 @@
 
 :root {
   /* Theme variables */
-  --primary-blue: #0056b3;
-  --innovative-blue: #0088cc;
-  --cyber-blue: #007a9e;
-  --secondary-text: #B0C4DE;
-  --text-dark: #111827;
-  --text-secondary: #4b5563;
-  --background-light: #f8fafc;
-  --border-light: #e5e7eb;
+  --contact-primary-blue: #0056b3;
+  --contact-innovative-blue: #0088cc;
+  --contact-cyber-blue: #007a9e;
+  --contact-secondary-text: #B0C4DE;
+  --contact-text-dark: #111827;
+  --contact-text-secondary: #4b5563;
+  --contact-background-light: #f8fafc;
+  --contact-border-light: #e5e7eb;
   
   /* Form-specific variables */
-  --form-bg: rgba(255, 255, 255, 0.95);
-  --form-shadow: 0 10px 25px rgba(0, 86, 179, 0.15);
-  --input-focus-glow: 0 0 0 2px rgba(0, 136, 204, 0.3);
-  --button-hover-glow: 0 0 10px rgba(0, 136, 204, 0.5);
+  --contact-form-bg: rgba(255, 255, 255, 0.95);
+  --contact-form-shadow: 0 10px 25px rgba(0, 86, 179, 0.15);
+  --contact-input-focus-glow: 0 0 0 2px rgba(0, 136, 204, 0.3);
+  --contact-button-hover-glow: 0 0 10px rgba(0, 136, 204, 0.5);
 }
 
 /* Animations */
@@ -72,14 +72,14 @@
 .contact-curve-1 {
   top: 10%;
   left: -50%;
-  background: var(--innovative-blue);
+  background: var(--contact-innovative-blue);
   animation-delay: 0s;
 }
 
 .contact-curve-2 {
   top: 40%;
   left: -50%;
-  background: var(--primary-blue);
+  background: var(--contact-primary-blue);
   animation-delay: -3s;
 }
 
@@ -121,14 +121,14 @@
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--text-dark);
+  color: var(--contact-text-dark);
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
 }
 
 .title-highlight {
-  background: linear-gradient(90deg, var(--primary-blue), var(--innovative-blue));
+  background: linear-gradient(90deg, var(--contact-primary-blue), var(--contact-innovative-blue));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -142,23 +142,23 @@
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary-blue), var(--innovative-blue));
+  background: linear-gradient(90deg, var(--contact-primary-blue), var(--contact-innovative-blue));
   border-radius: 2px;
 }
 
 .contact-subtitle {
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--text-secondary);
+  color: var(--contact-text-secondary);
 }
 
 /* Form container */
 .contact-row {
   display: flex;
-  background: var(--form-bg);
+  background: var(--contact-form-bg);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: var(--form-shadow);
+  box-shadow: var(--contact-form-shadow);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   animation: fadeIn 0.6s ease-out 0.2s both;
 }
@@ -208,7 +208,7 @@
 .info-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--contact-text-dark);
   text-align: center;
   position: relative;
 }
@@ -221,14 +221,14 @@
   transform: translateX(-50%);
   width: 50px;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary-blue), var(--innovative-blue));
+  background: linear-gradient(90deg, var(--contact-primary-blue), var(--contact-innovative-blue));
   border-radius: 2px;
 }
 
 .info-text {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--text-secondary);
+  color: var(--contact-text-secondary);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -236,7 +236,7 @@
 .info-email {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  color: var(--contact-primary-blue);
   text-align: center;
   margin-top: auto;
   transition: all 0.3s ease;
@@ -279,9 +279,9 @@
 .floating-input textarea {
   width: 100%;
   padding: 0.9rem 1rem 0.6rem;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--contact-border-light);
   font-size: 0.9rem;
-  color: var(--text-dark);
+  color: var(--contact-text-dark);
   background-color: white;
   transition: all 0.3s ease;
   font-family: 'Inter', sans-serif;
@@ -292,19 +292,20 @@
 .floating-input input:focus,
 .floating-input textarea:focus {
   outline: none;
-  border-color: var(--innovative-blue);
-  box-shadow: var(--input-focus-glow);
+  border-color: var(--contact-innovative-blue);
+  box-shadow: var(--contact-input-focus-glow);
 }
 
 .floating-input.textarea-input textarea {
   min-height: 100px;
-  resize: none; /* Esto desactiva el redimensionamiento */}
+  resize: none;
+}
 
 .floating-input label {
   position: absolute;
   top: 0.9rem;
   left: 1rem;
-  color: var(--text-secondary);
+  color: var(--contact-text-secondary);
   pointer-events: none;
   transition: all 0.3s ease;
   font-size: 0.9rem;
@@ -320,7 +321,7 @@
   top: -0.5rem;
   left: 0.7rem;
   font-size: 0.65rem;
-  color: var(--innovative-blue);
+  color: var(--contact-innovative-blue);
   font-weight: 500;
 }
 
@@ -330,7 +331,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--innovative-blue) 100%);
+  background: linear-gradient(90deg, var(--contact-primary-blue) 0%, var(--contact-innovative-blue) 100%);
   border: none;
   border-radius: 6px;
   color: white;
@@ -367,7 +368,7 @@
 
 .form-submit.submitting {
   pointer-events: none;
-  background: var(--text-secondary);
+  background: var(--contact-text-secondary);
 }
 
 .submit-icon {
@@ -411,18 +412,18 @@
   width: 48px;
   height: 48px;
   margin-bottom: 1rem;
-  color: var(--innovative-blue);
+  color: var(--contact-innovative-blue);
 }
 
 .success-message h4 {
   font-size: 1.25rem;
-  color: var(--text-dark);
+  color: var(--contact-text-dark);
   margin-bottom: 0.4rem;
   font-weight: 600;
 }
 
 .success-message p {
-  color: var(--text-secondary);
+  color: var(--contact-text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
 }

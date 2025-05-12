@@ -1,9 +1,9 @@
-/* Estilos para la sección de clientes con fondo animado */
+/* Estilos para la sección de clientes con fondo animado - Versión Light Mejorada */
 .clients-section {
   position: relative;
   padding: 6rem 0;
   overflow: hidden;
-  background-color: var(--main-bg);
+  background-color: #f8fafc;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   isolation: isolate;
 }
@@ -18,7 +18,7 @@
   overflow: hidden;
 }
 
-/* Círculos animados */
+/* Círculos animados - versión light */
 .clients-curve {
   position: absolute;
   border-radius: 50%;
@@ -30,7 +30,7 @@
 .clients-curve-1 {
   width: 800px;
   height: 800px;
-  background: var(--primary-blue);
+  background: #93c5fd;
   top: -300px;
   left: -200px;
   animation-delay: 0s;
@@ -39,7 +39,7 @@
 .clients-curve-2 {
   width: 600px;
   height: 600px;
-  background: var(--innovative-blue);
+  background: #bfdbfe;
   bottom: -200px;
   right: -100px;
   animation-delay: 2s;
@@ -48,7 +48,7 @@
 .clients-curve-3 {
   width: 400px;
   height: 400px;
-  background: var(--primary-blue);
+  background: #93c5fd;
   top: 50%;
   left: 30%;
   animation-delay: 4s;
@@ -57,7 +57,7 @@
 .clients-curve-4 {
   width: 500px;
   height: 500px;
-  background: var(--innovative-blue);
+  background: #bfdbfe;
   bottom: 20%;
   right: 30%;
   animation-delay: 6s;
@@ -83,38 +83,20 @@
   line-height: 1.1;
   font-weight: 900;
   margin-bottom: 1.2rem;
-  color: var(--dark-blue);
+  color: #1e40af;
   letter-spacing: -0.02em;
   position: relative;
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  background: rgba(--primary-blue);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
-.clients-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 4px;
-  background: var(--metal-gradient);
-  border-radius: 2px;
-  transition: width 0.3s ease;
-}
-
-.clients-title:hover::after {
-  width: 80%;
-}
-
 .clients-subtitle {
   font-size: 1.25rem;
-  color: var(--secondary-text);
+  color: #4b5563;
   line-height: 1.6;
   max-width: 56rem;
   margin: 0 auto;
@@ -149,43 +131,80 @@
   display: none;
 }
 
-/* Items de clientes */
+/* Items de clientes - versión mejorada */
 .client-item {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.6rem 1.2rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e5e7eb;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 9.6px;
+  border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 3.2px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
   width: 128px;
   height: 56px;
   margin: 2px 0;
+  overflow: hidden;
+  position: relative;
 }
 
-.client-item:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 6.4px 24px rgba(0, 123, 255, 0.2);
-  border-color: var(--primary-blue);
+/* Efecto de borde animado en hover */
+.client-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.client-item:hover::before {
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .client-logo {
   max-width: 112px;
   max-height: 48px;
   object-fit: contain;
-  opacity: 0.8;
+  opacity: 0.9;
   transition: all 0.4s ease;
+  filter: 
+    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1))
+    contrast(1.05);
+  padding: 2px;
 }
 
 .client-item:hover .client-logo {
   opacity: 1;
   transform: scale(1.1);
-  filter: brightness(1.1);
+  filter: 
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15))
+    contrast(1.1);
+}
+
+/* Versión para logos con fondo blanco */
+.client-item.has-white-bg {
+  background: #f1f5f9;
+  box-shadow: 
+    inset 0 0 0 1px #e5e7eb,
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.client-item.has-white-bg .client-logo {
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 /* Contadores */
@@ -216,19 +235,38 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e5e7eb;
   backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.2rem 0.5rem;
   transition: all 0.3s ease;
   min-height: 160px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.additional-counter-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.additional-counter-item:hover::before {
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .client-image-container {
   margin-top: auto;
-  background: rgba(243, 244, 246, 0.8);
+  background: rgba(229, 231, 235, 0.8);
   border-radius: 8px;
   padding: 0.5rem;
   width: 90px;
@@ -245,6 +283,12 @@
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.additional-counter-item:hover .additional-client-logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
 }
 
 /* Animaciones */
@@ -289,11 +333,19 @@
     opacity: 0.9;
   }
   
+  .client-item.has-white-bg {
+    transform: scale(1.6);
+  }
+  
   @media (max-width: 480px) {
     .client-item {
       width: calc(25% - 8px);
       height: 80px;
       padding: 0.6rem;
+      transform: scale(1.4);
+    }
+
+    .client-item.has-white-bg {
       transform: scale(1.4);
     }
 
@@ -339,6 +391,14 @@
   .client-logo {
     max-width: 64px;
     max-height: 24px;
+  }
+  
+  .client-item.has-white-bg {
+    padding: 0.25rem;
+  }
+  
+  .client-item.has-white-bg .client-logo {
+    padding: 2px;
   }
   
   @media (max-width: 400px) {

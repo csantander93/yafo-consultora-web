@@ -4,7 +4,6 @@ import ContactForm from "./components/contact/ContactForm"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
-import SolutionsManager from "./components/modules/SolutionManager"
 import Services from "./components/product/Services"
 
 function App() {
@@ -18,8 +17,6 @@ function App() {
         <About id="nosotros"/>
 
         <Services id="servicios"/>
-
-        <SolutionsManager id="soluciones"/>
 
         <Clients id="clientes"/>
 
