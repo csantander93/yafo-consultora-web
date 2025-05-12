@@ -1,0 +1,946 @@
+/* ModulosPopup.css - Rediseñado con paleta de Product.css */
+
+:root {
+  /* Paleta de colores alineada con Product.css */
+  --popup-main-bg: #050f21;
+  --popup-primary-blue: #007BFF;
+  --popup-dark-blue: #E6F0FF;
+  --popup-button-bg: #E6F0FF;
+  --popup-innovative-blue: #00AEEf;
+  --popup-secondary-text: #B0C4DE;
+  --popup-light-border: #D1D5DB;
+  
+  /* Efectos consistentes */
+  --popup-cyber-glow: 0 0 9px rgba(0, 123, 255, 0.7);
+  --popup-cyber-glow-intense: 0 0 18px rgba(0, 174, 239, 0.9);
+  --popup-metal-gradient: linear-gradient(135deg, var(--popup-primary-blue) 0%, var(--popup-innovative-blue) 50%, var(--popup-primary-blue) 100%);
+  
+  /* Espaciados proporcionales */
+  --popup-space-xs: 0.315rem;
+  --popup-space-sm: 0.63rem;
+  --popup-space-md: 1.26rem;
+  --popup-space-lg: 1.89rem;
+  --popup-space-xl: 2.52rem;
+  
+  /* Bordes */
+  --popup-radius-sm: 0.315rem;
+  --popup-radius-md: 0.63rem;
+  --popup-radius-lg: 1.26rem;
+  
+  /* Transiciones */
+  --popup-transition-fast: 0.27s ease;
+  --popup-transition-normal: 0.45s ease;
+  --popup-transition-slow: 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================================================
+Estilos para el overlay (fondo futurista)
+========================================================================== */
+.popup-modulos-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(5, 15, 33, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--popup-space-md);
+  animation: fadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================================================================
+Contenedor principal del popup (estilo futurista)
+========================================================================== */
+.popup-modulos-popup-container {
+  width: 100%;
+  max-width: 920px;
+  height: 90vh;
+  max-height: 620px !important;
+  background: rgba(5, 15, 33, 0.72);
+  border-radius: var(--popup-radius-lg);
+  box-shadow:
+    0 12.6px 40px rgba(0, 123, 255, 0.27),
+    inset 0 0 12.6px rgba(0, 174, 239, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  border: 0.9px solid rgba(0, 123, 255, 0.27);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(31.5px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* ==========================================================================
+Encabezado del popup
+========================================================================== */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--popup-space-md) var(--popup-space-lg);
+  background: rgba(0, 123, 255, 0.09);
+  border-bottom: 0.9px solid rgba(0, 123, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.popup-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.25) 70%,
+    transparent 100%
+  );
+  animation: metalShine 6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform: skewX(-20deg);
+  opacity: 0.9;
+  mix-blend-mode: overlay;
+}
+
+.popup-header h3 {
+  color: var(--popup-dark-blue);
+  text-shadow: var(--popup-cyber-glow);
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  margin: 0;
+  font-size: 1.17rem;
+  background: var(--popup-metal-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+Botón de cerrar mejorado (estilo futurista)
+========================================================================== */
+.close-button {
+  position: absolute;
+  top: 50%;
+  right: var(--popup-space-md);
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  background-color: rgba(255, 68, 68, 0.72);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--popup-transition-fast);
+  box-shadow:
+    0 3.6px 9px rgba(0, 0, 0, 0.27),
+    0 0 9px rgba(255, 68, 68, 0.45);
+  z-index: 20;
+  outline: none;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 0, 0, 0.9);
+  transform: scale(1.12) translateY(-50%);
+  box-shadow:
+    0 4.5px 11.7px rgba(0, 0, 0, 0.31),
+    0 0 13.5px rgba(255, 0, 0, 0.54);
+}
+
+.close-button:active {
+  transform: scale(0.96) translateY(-50%);
+}
+
+.close-button svg {
+  width: 17px;
+  height: 17px;
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+/* ==========================================================================
+Contenido principal (estilo futurista)
+========================================================================== */
+.popup-modulos-popup-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 123, 255, 0.4) rgba(5, 15, 33, 0.5);
+  height: calc(100% - 63px);
+  transition: all var(--popup-transition-slow);
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.popup-modulos-popup-content:not(.panel-animated) {
+  justify-content: center;
+}
+
+.popup-modulos-popup-content:not(.panel-animated) .popup-modules-panel {
+  flex: 0 0 100%;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transition: all var(--popup-transition-slow);
+}
+
+.popup-modulos-popup-content:not(.panel-animated) .popup-module-detail-panel {
+  display: none;
+}
+
+.popup-modulos-popup-content.panel-animated {
+  justify-content: flex-start;
+}
+
+.popup-modulos-popup-content.panel-animated .popup-modules-panel {
+  flex: 0 0 100%;
+  transform: translateX(0);
+  transition: all var(--popup-transition-slow);
+  display: none;
+}
+
+.popup-modulos-popup-content.panel-animated .popup-module-detail-panel {
+  display: block;
+  animation: gentleSlideIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  flex: 1;
+}
+
+@keyframes gentleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(54px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scrollbar para Webkit */
+.popup-modulos-popup-content::-webkit-scrollbar {
+  width: 6px;
+}
+.popup-modulos-popup-content::-webkit-scrollbar-track {
+  background: rgba(5, 15, 33, 0.5);
+  border-radius: 3px;
+}
+.popup-modulos-popup-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 123, 255, 0.4);
+  border-radius: 3px;
+}
+.popup-modulos-popup-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 123, 255, 0.6);
+}
+
+/* ==========================================================================
+Panel de módulos (estilo futurista)
+========================================================================== */
+.popup-modules-panel {
+  border-right: none;
+  overflow-y: auto;
+  padding: var(--popup-space-md);
+  background-color: rgba(5, 15, 33, 0.54);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+}
+
+.panel-header {
+  margin-bottom: var(--popup-space-md);
+  flex-shrink: 0;
+}
+
+.panel-header h3 {
+  font-size: 1.17rem;
+  color: var(--popup-dark-blue);
+  margin-bottom: var(--popup-space-sm);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.panel-header h3::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--popup-innovative-blue);
+  margin-right: var(--popup-space-sm);
+}
+
+.panel-header p {
+  color: var(--popup-secondary-text);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.popup-modulos-count {
+  display: inline-block;
+  background-color: rgba(0, 123, 255, 0.18);
+  color: var(--popup-dark-blue);
+  padding: var(--popup-space-xs) var(--popup-space-sm);
+  border-radius: 9999px;
+  font-size: 0.81rem;
+  margin-left: var(--popup-space-sm);
+  font-weight: 600;
+  box-shadow: inset 0 0 4.5px rgba(0, 123, 255, 0.27);
+}
+
+.popup-modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--popup-space-sm);
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: var(--popup-space-md);
+}
+
+.popup-modules-list::-webkit-scrollbar {
+  width: 4px;
+}
+.popup-modules-list::-webkit-scrollbar-track {
+  background: rgba(5, 15, 33, 0.3);
+  border-radius: 2px;
+}
+.popup-modules-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 123, 255, 0.3);
+  border-radius: 2px;
+}
+.popup-modules-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 123, 255, 0.5);
+}
+
+.popup-module-item {
+  display: flex;
+  align-items: center;
+  padding: var(--popup-space-sm) var(--popup-space-md);
+  background-color: rgba(0, 123, 255, 0.09);
+  border-radius: var(--popup-radius-sm);
+  cursor: pointer;
+  transition: all var(--popup-transition-normal);
+  border-left: 4px solid transparent;
+  opacity: 0;
+  animation: fadeInItem 0.45s ease-out forwards;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 9px rgba(0, 123, 255, 0.09);
+}
+
+@keyframes fadeInItem {
+  to { opacity: 1; }
+}
+
+.popup-module-item:hover {
+  background-color: rgba(0, 123, 255, 0.18);
+  transform: translateY(-2.7px);
+  box-shadow: 
+    inset 0 0 13.5px rgba(0, 123, 255, 0.18),
+    0 4.5px 9px rgba(0, 123, 255, 0.18);
+}
+
+.popup-module-item.selected {
+  border-left-color: var(--popup-innovative-blue);
+  background-color: rgba(0, 123, 255, 0.27);
+  color: var(--popup-dark-blue);
+  box-shadow: 
+    inset 0 0 18px rgba(0, 123, 255, 0.27),
+    0 0 9px rgba(0, 123, 255, 0.27);
+}
+
+.popup-module-icon {
+  margin-right: var(--popup-space-sm);
+  width: 22.5px;
+  height: 22.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22.5px;
+  min-height: 22.5px;
+  flex-shrink: 0;
+  background: rgba(0, 123, 255, 0.18);
+  border-radius: 6px;
+  padding: 4.5px;
+  transition: all var(--popup-transition-normal);
+  box-shadow: inset 0 0 6px rgba(0, 123, 255, 0.27);
+}
+
+.popup-module-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--popup-primary-blue);
+  stroke-width: 2;
+  display: block;
+  flex-shrink: 0;
+  overflow: visible;
+  transition: all var(--popup-transition-normal);
+}
+
+.popup-module-item.selected .popup-module-icon {
+  background: rgba(0, 123, 255, 0.36);
+  box-shadow: inset 0 0 9px rgba(0, 123, 255, 0.45);
+}
+
+.popup-module-item.selected .popup-module-icon svg {
+  stroke: var(--popup-dark-blue);
+}
+
+.popup-module-item h4 {
+  margin: 0;
+  font-size: 0.945rem;
+  color: var(--popup-dark-blue);
+  font-weight: 600;
+}
+
+.popup-module-item.selected h4 {
+  font-weight: 700;
+  color: var(--popup-dark-blue);
+}
+
+/* ==========================================================================
+Panel de detalles (estilo futurista)
+========================================================================== */
+.popup-module-detail-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--popup-space-md);
+  background-color: rgba(5, 15, 33, 0.54);
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+}
+
+.popup-module-detail-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--popup-space-lg);
+  flex-wrap: wrap;
+  gap: var(--popup-space-sm);
+}
+
+.popup-module-detail-header h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--popup-dark-blue);
+  font-weight: 700;
+  line-height: 1.3;
+  background: var(--popup-metal-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.popup-module-category-badge {
+  background-color: rgba(0, 123, 255, 0.18);
+  color: var(--popup-dark-blue);
+  padding: var(--popup-space-xs) var(--popup-space-sm);
+  border-radius: 9999px;
+  font-size: 0.855rem;
+  font-weight: 600;
+  box-shadow: inset 0 0 4.5px rgba(0, 123, 255, 0.27);
+}
+
+.popup-module-description {
+  color: var(--popup-secondary-text);
+  line-height: 1.7;
+  margin-bottom: var(--popup-space-lg);
+  font-size: 0.945rem;
+}
+
+.popup-module-detail-panel {
+  flex: 1;
+  overflow: auto;
+  padding: var(--popup-space-md);
+  background-color: rgba(5, 15, 33, 0.54);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-module-detail-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: var(--popup-space-lg);
+  scrollbar-gutter: stable;
+}
+
+.popup-module-features {
+  margin-top: var(--popup-space-lg);
+  border-top: 0.9px dashed rgba(0, 123, 255, 0.18);
+  padding-top: var(--popup-space-md);
+  padding-bottom: var(--popup-space-lg);
+}
+
+.popup-module-features h4 {
+  color: var(--popup-dark-blue);
+  margin-bottom: var(--popup-space-md);
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.popup-module-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--popup-space-sm);
+}
+
+.popup-module-features li {
+  display: flex;
+  align-items: flex-start;
+  color: var(--popup-secondary-text);
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.popup-module-features li svg {
+  flex-shrink: 0;
+  margin-right: var(--popup-space-sm);
+  margin-top: 0.135rem;
+  width: 18px;
+  height: 18px;
+  stroke: var(--popup-innovative-blue);
+  stroke-width: 2.5;
+}
+
+/* ==========================================================================
+Estado vacío (estilo futurista)
+========================================================================== */
+.popup-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: var(--popup-space-lg);
+}
+
+.popup-empty-state-icon svg {
+  width: 63px;
+  height: 63px;
+  stroke: var(--popup-primary-blue);
+  margin-bottom: var(--popup-space-md);
+  opacity: 0.7;
+}
+
+.popup-empty-state h4 {
+  color: var(--popup-dark-blue);
+  font-size: 1.17rem;
+  margin-bottom: var(--popup-space-sm);
+  font-weight: 700;
+}
+
+.popup-empty-state p {
+  color: var(--popup-secondary-text);
+  max-width: 315px;
+  line-height: 1.6;
+  font-size: 0.945rem;
+}
+
+/* ==========================================================================
+Breadcrumbs (estilo futurista)
+========================================================================== */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--popup-space-xs);
+  font-size: 0.855rem;
+  margin-bottom: var(--popup-space-sm);
+}
+
+.breadcrumb {
+  color: var(--popup-secondary-text);
+  transition: color var(--popup-transition-fast);
+  text-transform: uppercase;
+  font-size: 0.81rem;
+}
+
+.breadcrumb.active {
+  color: var(--popup-dark-blue);
+  font-weight: 600;
+}
+
+.breadcrumb-divider {
+  color: rgba(176, 196, 222, 0.4);
+  font-size: 0.81rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--popup-secondary-text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-right: var(--popup-space-sm);
+  padding: var(--popup-space-xs) 0;
+  transition: all var(--popup-transition-fast);
+}
+
+.back-button:hover {
+  color: var(--popup-dark-blue);
+}
+
+.back-button svg {
+  width: 18px;
+  height: 18px;
+  margin-right: var(--popup-space-sm);
+  stroke: currentColor;
+  stroke-width: 2.5;
+  transition: stroke var(--popup-transition-fast);
+}
+
+/* ==========================================================================
+Animaciones para los items del módulo
+========================================================================== */
+.popup-module-item {
+  animation-delay: var(--delay);
+}
+
+/* ==========================================================================
+Media Queries para pantallas medianas (tablets)
+========================================================================== */
+
+.popup-mobile-back-button-container {
+  display: none;
+  width: 100%;
+  margin-bottom: var(--popup-space-md);
+}
+
+.popup-mobile-back-button {
+  display: flex;
+  align-items: center;
+  gap: var(--popup-space-sm);
+  padding: var(--popup-space-sm) var(--popup-space-md);
+  background: rgba(5, 15, 33, 0.54);
+  border: 0.9px solid rgba(0, 123, 255, 0.27);
+  border-radius: var(--popup-radius-md);
+  color: var(--popup-dark-blue);
+  font-size: 0.945rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--popup-transition-fast);
+  width: fit-content;
+  box-shadow: inset 0 0 9px rgba(0, 123, 255, 0.18);
+}
+
+.popup-mobile-back-button:hover {
+  background: rgba(0, 123, 255, 0.18);
+  border-color: var(--popup-primary-blue);
+  color: var(--popup-dark-blue);
+  transform: translateY(-1.35px);
+  box-shadow: 
+    inset 0 0 13.5px rgba(0, 123, 255, 0.27),
+    0 0 9px rgba(0, 123, 255, 0.18);
+}
+
+.popup-mobile-back-button:active {
+  transform: translateY(0);
+  box-shadow: inset 0 0 9px rgba(0, 123, 255, 0.18);
+}
+
+.popup-mobile-back-button svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--popup-dark-blue);
+  stroke-width: 2.5;
+  transition: stroke var(--popup-transition-fast);
+}
+
+@media (max-width: 768px) {
+  .popup-mobile-back-button-container {
+    display: block;
+  }
+}
+
+@media (min-width: 640px) {
+  .popup-modulos-popup-container {
+    height: 80vh;
+    max-height: 700px;
+  }
+  
+  .popup-header h3 {
+    font-size: 1.35rem;
+  }
+  
+  .close-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .close-button svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .popup-modules-panel {
+    padding: var(--popup-space-lg);
+  }
+  
+  .panel-header h3 {
+    font-size: 1.35rem;
+  }
+  
+  .panel-header p {
+    font-size: 0.945rem;
+  }
+  
+  .popup-module-item {
+    padding: var(--popup-space-md) var(--popup-space-lg);
+  }
+  
+  .popup-module-item h4 {
+    font-size: 1rem;
+  }
+  
+  .popup-module-detail-panel {
+    padding: var(--popup-space-lg);
+  }
+  
+  .popup-module-detail-header h3 {
+    font-size: 1.44rem;
+  }
+  
+  .popup-module-description {
+    font-size: 1rem;
+  }
+  
+  .popup-module-features li {
+    font-size: 0.945rem;
+  }
+}
+
+/* ==========================================================================
+Media Queries para pantallas grandes (desktop)
+========================================================================== */
+@media (min-width: 768px) {
+  .popup-modulos-popup-container {
+    height: 630px;
+    max-height: none;
+  }
+  
+  .popup-modulos-popup-content {
+    flex-direction: row;
+  }
+  
+  .popup-modulos-popup-content.panel-animated .popup-modules-panel {
+    flex: 0 0 340px;
+    display: block;
+  }
+  
+  .popup-modules-panel {
+    border-right: 0.9px solid rgba(0, 123, 255, 0.18);
+  }
+  
+  .popup-header h3 {
+    font-size: 1.44rem;
+  }
+  
+  .close-button {
+    width: 38px;
+    height: 38px;
+    top: 50%;
+    right: var(--popup-space-md);
+    transform: translateY(-50%);
+  }
+  
+  .close-button svg {
+    width: 19px;
+    height: 19px;
+  }
+  
+  .panel-header h3 {
+    font-size: 1.44rem;
+  }
+  
+  .panel-header h3::before {
+    width: 9px;
+    height: 9px;
+  }
+  
+  .panel-header p {
+    font-size: 1rem;
+  }
+  
+  .popup-module-icon {
+    width: 27px;
+    height: 27px;
+    min-width: 27px;
+    min-height: 27px;
+  }
+  
+  .popup-module-item h4 {
+    font-size: 1.08rem;
+  }
+  
+  .popup-module-detail-header h3 {
+    font-size: 1.53rem;
+  }
+  
+  .popup-module-description {
+    font-size: 1.08rem;
+  }
+  
+  .popup-module-features h4 {
+    font-size: 1.17rem;
+  }
+  
+  .popup-module-features li {
+    font-size: 1rem;
+  }
+  
+  .popup-module-features li svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .popup-empty-state-icon svg {
+    width: 81px;
+    height: 81px;
+  }
+  
+  .popup-empty-state h4 {
+    font-size: 1.44rem;
+  }
+  
+  .popup-empty-state p {
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+Media Queries para pantallas extra grandes
+========================================================================== */
+@media (min-width: 1024px) {
+  .popup-modulos-popup-container {
+    height: 675px;
+  }
+}
+
+/* Efecto de brillo holográfico */
+.popup-module-detail-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, rgba(0, 174, 239, 0.09), transparent 70%);
+  animation: pulse 13.5s ease-in-out infinite alternate;
+  opacity: 0.45;
+  z-index: -1;
+}
+
+/* Grid tecnológico */
+.popup-cyber-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(0, 123, 255, 0.09) 0.9px, transparent 0.9px),
+    linear-gradient(90deg, rgba(0, 123, 255, 0.09) 0.9px, transparent 0.9px);
+  background-size: 36px 36px;
+  z-index: -1;
+  pointer-events: none;
+  animation: gridMove 54s linear infinite;
+  opacity: 0.27;
+}
+
+/* Efecto de partículas */
+.popup-particle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(54px);
+  animation: float 13.5s ease-in-out infinite;
+  opacity: 0.27;
+  mix-blend-mode: screen;
+  z-index: -1;
+}
+
+.popup-particle-1 {
+  width: 180px;
+  height: 180px;
+  top: 9%;
+  left: 9%;
+  background: var(--popup-primary-blue);
+  animation-delay: 0s;
+  animation-duration: 16.2s;
+}
+
+.popup-particle-2 {
+  width: 270px;
+  height: 270px;
+  bottom: 4.5%;
+  right: 4.5%;
+  background: var(--popup-innovative-blue);
+  animation-delay: 2.7s;
+  animation-duration: 19.8s;
+}
+
+/* Reutilizando animaciones del diseño original */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(4.5deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.09; transform: scale(0.9); }
+  50% { opacity: 0.27; transform: scale(0.945); }
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 36px 36px; }
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.72; }
+  90% { opacity: 0.72; }
+  100% { transform: translateY(-225px) translateX(36px); opacity: 0; }
+}
+
+@keyframes metalShine {
+  0% { left: -60%; opacity: 0; }
+  20% { opacity: 0.9; }
+  80% { opacity: 0.9; }
+  100% { left: 150%; opacity: 0; }
+}

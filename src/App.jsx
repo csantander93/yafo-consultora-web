@@ -5,6 +5,8 @@ import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
 import Services from "./components/product/Services"
+import Solutions from "./components/modules/Solutions"
+
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
         <About id="nosotros"/>
 
         <Services id="servicios"/>
+
+        <Solutions id="soluciones"/>
 
         <Clients id="clientes"/>
 

@@ -433,6 +433,7 @@
   filter: blur(1.8px);
   opacity: 0;
   animation: floatParticle linear infinite;
+  z-index: 10; /* Aumenta temporalmente para verificar */
 }
 
 /* Configuración de 25 partículas */

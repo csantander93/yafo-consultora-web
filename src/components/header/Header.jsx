@@ -7,39 +7,42 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#inicio");
 
+  // Función para scroll suave
+  const smoothScroll = (href) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  // Efecto para detectar scroll y sección activa
   useEffect(() => {
     const handleScroll = () => {
-      // Cambia el umbral a 0 para que se active inmediatamente al hacer scroll
       setIsScrolled(window.scrollY > 0);
       
-      const menuSectionIds = ["inicio", "servicios", "productos", "soluciones", "nosotros", "clientes", "contacto"];
+      const menuSectionIds = ["inicio", "servicios", "soluciones", "nosotros", "clientes", "contacto"];
       const sections = Array.from(document.querySelectorAll('section[id]'))
         .filter(section => menuSectionIds.includes(section.id));
       
-      let current = activeSection;
       const viewportMiddle = window.innerHeight / 2;
-  
+      
       for (const section of sections) {
         const rect = section.getBoundingClientRect();
-        const sectionId = `#${section.id}`;
-        
         if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
-          current = sectionId;
+          setActiveSection(`#${section.id}`);
           break;
         }
       }
-  
-      if (current !== activeSection) {
-        setActiveSection(current);
-      }
     };
-    
-    handleScroll();
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, []);
 
+  // Items del menú
   const menuItems = [
     { name: "Inicio", href: "#inicio" },
     { name: "Nosotros", href: "#nosotros" },
@@ -52,8 +55,16 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
-        {/* Logo con fondo claro para mejor contraste */}
-        <a href="#inicio" className="logo-link">
+        {/* Logo */}
+        <a 
+          href="#inicio" 
+          className="logo-link"
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveSection("#inicio");
+            smoothScroll("#inicio");
+          }}
+        >
           <div className="logo-glow"></div>
           <img src={logo} alt="YAFO Consultora" className="header-logo" />
         </a>
@@ -66,7 +77,11 @@ const Header = () => {
                 <a
                   href={item.href}
                   className={`nav-link ${activeSection === item.href ? 'active' : ''}`}
-                  onClick={() => setActiveSection(item.href)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveSection(item.href);
+                    smoothScroll(item.href);
+                  }}
                 >
                   {item.name}
                   <span className="nav-link-glow"></span>
@@ -91,6 +106,7 @@ const Header = () => {
         </button>
       </div>
 
+      {/* Menú móvil desplegable */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <ul className="mobile-nav-list">
           {menuItems.map((item) => (
@@ -98,9 +114,11 @@ const Header = () => {
               <a
                 href={item.href}
                 className={`mobile-nav-link ${activeSection === item.href ? 'active' : ''}`}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   setMenuOpen(false);
                   setActiveSection(item.href);
+                  smoothScroll(item.href);
                 }}
               >
                 {item.name}
