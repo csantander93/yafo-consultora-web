@@ -76,15 +76,7 @@ const Solutions = () => {
   };
 
   return (
-    <section id='software' className='software-section' role="region" aria-labelledby="software-heading">
-      <div className="software-backdrop">
-        <div className="software-gradient"></div>
-        <div className="tech-grid"></div>
-        <div className="software-orb software-orb-1"></div>
-        <div className="software-orb software-orb-2"></div>
-        <div className="software-orb software-orb-3"></div>
-        <div className="software-orb software-orb-4"></div>
-      </div>
+    <section id='soluciones' className='software-section' role="region" aria-labelledby="software-heading">
       
       <div className="software-wrapper">
         <header className="software-header">
