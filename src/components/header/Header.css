@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 65px;
+  height: 52px; /* Reducido de 65px (80%) */
   background-color: #F9FAFB;
   z-index: 1000;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -15,7 +15,7 @@
 
 /* Header cuando tiene scroll - Solo cambia la altura */
 .header.scrolled {
-  height: 55px;
+  height: 44px; /* Reducido de 55px (80%) */
 }
 
 .header-container {
@@ -23,7 +23,7 @@
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.6rem; /* Reducido de 2rem (80%) */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +36,7 @@
   height: 100%;
   position: relative;
   transition: transform 0.3s ease;
-  padding: 0 15px;
+  padding: 0 15px; /* Sin cambios para mantener posición a la izquierda */
 }
 
 .logo-link:hover {
@@ -60,7 +60,7 @@
 }
 
 .header-logo {
-  height: 38px;
+  height: 38px; /* Sin cambios */
   width: auto;
   transition: all 0.3s ease;
   filter: none;
@@ -75,7 +75,7 @@
 
 .nav-list {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem; /* Reducido de 1.5rem (80%) */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -84,7 +84,7 @@
 /* Enlaces de navegación */
 .nav-link {
   position: relative;
-  font-size: 0.95rem;
+  font-size: 0.76rem; /* Reducido de 0.95rem (80%) */
   font-weight: 600;
   text-decoration: none;
   color: #003366;
@@ -138,7 +138,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 28px;
-  height: 20px;
+  height: 16px; /* Reducido de 20px (80%) */
   background: none;
   border: none;
   cursor: pointer;
@@ -157,7 +157,7 @@
 }
 
 .mobile-menu-btn.open span:nth-child(1) {
-  transform: translateY(8.5px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg); /* Ajustado para nueva altura */
   background-color: #00AEEF;
 }
 
@@ -166,23 +166,23 @@
 }
 
 .mobile-menu-btn.open span:nth-child(3) {
-  transform: translateY(-8.5px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg); /* Ajustado para nueva altura */
   background-color: #00AEEF;
 }
 
 /* Menú móvil - Panel */
 .mobile-menu {
   position: fixed;
-  top: 65px;
+  top: 52px; /* Ajustado para nueva altura del header */
   left: 0;
   width: 100%;
-  height: calc(100vh - 65px);
+  height: calc(100vh - 52px); /* Ajustado para nueva altura */
   background-color: #F9FAFB;
   backdrop-filter: blur(12px);
   transform: translateX(100%);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 1000;
-  padding: 2rem;
+  padding: 1.6rem; /* Reducido de 2rem (80%) */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 }
@@ -197,13 +197,13 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.44rem; /* Reducido de 1.8rem (80%) */
 }
 
 .mobile-nav-link {
   position: relative;
   display: block;
-  font-size: 1.25rem;
+  font-size: 1rem; /* Reducido de 1.25rem (80%) */
   font-weight: 500;
   color: #003366;
   text-decoration: none;
@@ -242,28 +242,28 @@
   }
   
   .header-logo {
-    height: 40px;
+    height: 40px; /* Sin cambios */
   }
   
   .nav-list {
-    gap: 2rem;
+    gap: 1.6rem; /* Reducido de 2rem (80%) */
   }
 }
 
 @media (max-width: 480px) {
   .header-container {
-    padding: 0 1.5rem;
+    padding: 0 1.2rem; /* Reducido de 1.5rem (80%) */
   }
   
   .header-logo {
-    height: 32px;
+    height: 32px; /* Sin cambios */
   }
   
   .mobile-menu {
-    padding: 1.75rem;
+    padding: 1.4rem; /* Reducido de 1.75rem (80%) */
   }
   
   .mobile-nav-link {
-    font-size: 1.15rem;
+    font-size: 0.92rem; /* Reducido de 1.15rem (80%) */
   }
 }
