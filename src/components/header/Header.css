@@ -1,21 +1,26 @@
 /* Header base - Blanco desde el inicio */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 55px; /* Para compensar el header fijo */
+}
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 52px; /* Reducido de 65px (80%) */
+  height: 55px; /* Reducido de 65px (80%) */
   background-color: #F9FAFB;
   z-index: 1000;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #D1D5DB;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Header cuando tiene scroll - Solo cambia la altura */
-.header.scrolled {
-  height: 44px; /* Reducido de 55px (80%) */
 }
 
 .header-container {

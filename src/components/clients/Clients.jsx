@@ -83,7 +83,6 @@ const clientNames = [
   "Crédito Regional", "Balanz", "Galicia Más", "Banco Macro", "Interbank", "Sancor Seguros"
 ];
 
-
 const Clients = () => {
   // Dividimos las imágenes en filas según el dispositivo
   const desktopRows = [
@@ -121,143 +120,143 @@ const Clients = () => {
 
   return (
     <section 
-    id="clientes" 
-    className="clients-section"
-    aria-labelledby="clients-heading"
-  >
-    {/* Datos estructurados para clientes */}
-    <script type="application/ld+json">
-      {JSON.stringify(clientsStructuredData)}
-    </script>
+      id="clientes" 
+      className="clients-section"
+      aria-labelledby="clients-heading"
+    >
+      {/* Datos estructurados para clientes */}
+      <script type="application/ld+json">
+        {JSON.stringify(clientsStructuredData)}
+      </script>
 
-    <div className="clients-background" aria-hidden="true">
-      <div className="clients-curve clients-curve-1"></div>
-      <div className="clients-curve clients-curve-2"></div>
-      <div className="clients-curve clients-curve-3"></div>
-      <div className="clients-curve clients-curve-4"></div>
-    </div>
-    
-    <div className="clients-container">
-      <div className="clients-header">
-        <h2 id="clients-heading" className="clients-title">
-          NUESTROS CLIENTES
-        </h2>
-        <p className="clients-subtitle">
-          Empresas que confían en nuestros servicios
-        </p>
-      </div>
-
-      <div className="clients-counter-container">
-        <AnimatedCounter 
-          targetValue={53} 
-          label="Argentina" 
-          delay={0.3}
-          aria-label="53 clientes en Argentina"
-        />
+      <div className="clients-background" aria-hidden="true">
+        <div className="clients-curve clients-curve-1"></div>
+        <div className="clients-curve clients-curve-2"></div>
+        <div className="clients-curve clients-curve-3"></div>
+        <div className="clients-curve clients-curve-4"></div>
       </div>
       
-      <div className="clients-static-grid desktop-version" role="list" aria-label="Lista de clientes">
-        {desktopRows.map((row, rowIndex) => (
-          <div key={`desktop-row-${rowIndex}`} className="clients-static-row" role="listitem">
-            {row.map((image, index) => {
-              const clientIndex = rowIndex * 13 + index;
-              const clientName = clientNames[clientIndex] || 'cliente';
-              return (
-                <div 
-                  key={`desktop-row-${rowIndex}-${index}`} 
-                  className="client-item"
-                  itemScope
-                  itemType="https://schema.org/Organization"
-                >
-                  <img 
-                    src={image} 
-                    alt={`Logo de ${clientName}`}
-                    className="client-logo"
-                    loading="lazy"
-                    itemProp="logo"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      console.error(`Error al cargar imagen: ${clientName}`);
-                    }}
-                  />
-                  <meta itemProp="name" content={clientName} />
-                </div>
-              );
-            })}
-          </div>
-        ))}
-      </div>
+      <div className="clients-container">
+        <div className="clients-header">
+          <h2 id="clients-heading" className="clients-title">
+            NUESTROS CLIENTES
+          </h2>
+          <p className="clients-subtitle">
+            Empresas que confían en nuestros servicios
+          </p>
+        </div>
 
-      {/* Versión para móvil */}
-      <div className="clients-static-grid mobile-version" role="list" aria-label="Lista de clientes">
-        {mobileRows.map((row, rowIndex) => (
-          <div key={`mobile-row-${rowIndex}`} className="clients-static-row" role="listitem">
-            {row.map((image, index) => {
-              const clientIndex = rowIndex * 4 + index;
-              const clientName = clientNames[clientIndex] || 'cliente';
-              return (
-                <div 
-                  key={`mobile-row-${rowIndex}-${index}`} 
-                  className="client-item"
-                  itemScope
-                  itemType="https://schema.org/Organization"
-                >
-                  <img 
-                    src={image} 
-                    alt={`Logo de ${clientName}`}
-                    className="client-logo"
-                    loading="lazy"
-                    itemProp="logo"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      console.error(`Error al cargar imagen: ${clientName}`);
-                    }}
-                  />
-                  <meta itemProp="name" content={clientName} />
-                </div>
-              );
-            })}
-          </div>
-        ))}
-      </div>
+        <div className="clients-counter-container">
+          <AnimatedCounter 
+            targetValue={53} 
+            label="Argentina" 
+            delay={0.3}
+            aria-label="53 clientes en Argentina"
+          />
+        </div>
         
-      {/* Sección de contadores adicionales */}
-      <div 
-        className="additional-counters-container"
-        aria-label="Clientes internacionales"
-      >
-        <div className="additional-counters-grid" role="list">
-          {additionalCounters.map((item, index) => (
-            <div 
-              key={index} 
-              className="additional-counter-item"
-              role="listitem"
-              itemScope
-              itemType="https://schema.org/Country"
-            >
-              <AnimatedCounter 
-                targetValue={item.value} 
-                label={item.country}
-                delay={0.3 + (index * 0.1)}
-                aria-label={`${item.value} cliente en ${item.country}`}
-              />
-              <div className="client-item">
-                <img 
-                  src={item.image} 
-                  alt={`Logo de cliente en ${item.country}`}
-                  className="client-logo" 
-                  loading="lazy"
-                  itemProp="image"
-                />
-                <meta itemProp="name" content={item.country} />
-              </div>
+        <div className="clients-static-grid desktop-version" role="list" aria-label="Lista de clientes">
+          {desktopRows.map((row, rowIndex) => (
+            <div key={`desktop-row-${rowIndex}`} className="clients-static-row" role="listitem">
+              {row.map((image, index) => {
+                const clientIndex = rowIndex * 13 + index;
+                const clientName = clientNames[clientIndex] || 'cliente';
+                return (
+                  <div 
+                    key={`desktop-row-${rowIndex}-${index}`} 
+                    className="client-item"
+                    itemScope
+                    itemType="https://schema.org/Organization"
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Logo de ${clientName}`}
+                      className="client-logo"
+                      loading="lazy"
+                      itemProp="logo"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        console.error(`Error al cargar imagen: ${clientName}`);
+                      }}
+                    />
+                    <meta itemProp="name" content={clientName} />
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>
+
+        {/* Versión para móvil */}
+        <div className="clients-static-grid mobile-version" role="list" aria-label="Lista de clientes">
+          {mobileRows.map((row, rowIndex) => (
+            <div key={`mobile-row-${rowIndex}`} className="clients-static-row" role="listitem">
+              {row.map((image, index) => {
+                const clientIndex = rowIndex * 4 + index;
+                const clientName = clientNames[clientIndex] || 'cliente';
+                return (
+                  <div 
+                    key={`mobile-row-${rowIndex}-${index}`} 
+                    className="client-item"
+                    itemScope
+                    itemType="https://schema.org/Organization"
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Logo de ${clientName}`}
+                      className="client-logo"
+                      loading="lazy"
+                      itemProp="logo"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        console.error(`Error al cargar imagen: ${clientName}`);
+                      }}
+                    />
+                    <meta itemProp="name" content={clientName} />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+          
+        {/* Sección de contadores adicionales */}
+        <div 
+          className="additional-counters-container"
+          aria-label="Clientes internacionales"
+        >
+          <div className="additional-counters-grid" role="list">
+            {additionalCounters.map((item, index) => (
+              <div 
+                key={index} 
+                className="additional-counter-item"
+                role="listitem"
+                itemScope
+                itemType="https://schema.org/Country"
+              >
+                <AnimatedCounter 
+                  targetValue={item.value} 
+                  label={item.country}
+                  delay={0.3 + (index * 0.1)}
+                  aria-label={`${item.value} cliente en ${item.country}`}
+                />
+                <div className="client-item">
+                  <img 
+                    src={item.image} 
+                    alt={`Logo de cliente en ${item.country}`}
+                    className="international-client-logo" 
+                    loading="lazy"
+                    itemProp="image"
+                  />
+                  <meta itemProp="name" content={item.country} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 };
 
 export default Clients;

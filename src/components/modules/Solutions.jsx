@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import alephLogoGif from "../../assets/Gif-Aleph-una-vez.gif";
 import ModulosPopup from './ModulosPopup';
-import { modulesData } from '../modules/data/modulesData';
+import { modulesData } from './data/modulesData';
 import "./Solutions.css";
 
 const Solutions = () => {
@@ -9,21 +9,21 @@ const Solutions = () => {
   const [selectedModule, setSelectedModule] = useState(null);
   const [currentPopupTab, setCurrentPopupTab] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const canvasRef = useRef(null);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
+    
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
+    
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
   }, []);
 
+  // Efecto para bloquear el scroll del body cuando el popup está abierto
   useEffect(() => {
     if (showModulesPopup) {
       document.body.style.overflow = 'hidden';
@@ -38,94 +38,6 @@ const Solutions = () => {
       document.body.style.touchAction = '';
     };
   }, [showModulesPopup]);
-
-  useEffect(() => {
-    const section = document.querySelector('.software-section');
-    const logo = document.querySelector('.software-logo');
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          logo.classList.add('animate');
-        } else {
-          logo.classList.remove('animate');
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
-  // Particle Animation
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    let animationFrameId;
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const particles = [];
-    const particleCount = isMobile ? 50 : 100;
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 2,
-        speedY: (Math.random() - 0.5) * 2,
-        opacity: Math.random() * 0.5 + 0.2,
-      });
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((particle) => {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 212, 255, ${particle.opacity})`;
-        ctx.fill();
-      });
-
-      // Draw connecting lines
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < 100) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 * (1 - distance / 100)})`;
-            ctx.stroke();
-          }
-        }
-      }
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [isMobile]);
 
   const tabs = [
     'Net Discovery',
@@ -164,48 +76,125 @@ const Solutions = () => {
     setSelectedModule(null);
   };
 
-  return (
-    <section id='soluciones' className='software-section' role="region" aria-labelledby="software-heading">
-      <canvas ref={canvasRef} className="software-particles" />
-      <div className="software-wrapper">
-        <header className="software-header">
-          <h1 id="software-heading" className="software-title">
-            <span className="title-segment title-segment-1">SOLUCIONES</span>
-            <span className="title-segment title-segment-2">DE SOFTWARE</span>
-          </h1>
-        </header>
+  useEffect(() => {
+    const canvas = document.getElementById('partículas-canvas');
+    if (!canvas) return;
 
-        <div className='software-nav' role="tablist">
-          {tabs.map((tab, index) => (
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const partículas = [];
+    const partículasCount = isMobile ? 30 : Math.min(Math.floor(window.innerWidth / 10), 100);
+
+    class Partícula {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+        this.color = `rgba(0, 191, 255, ${Math.random() * 0.5 + 0.1})`;
+        this.alpha = Math.random() * 0.5 + 0.1;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width || this.x < 0) {
+          this.speedX = -this.speedX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.speedY = -this.speedY;
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < partículasCount; i++) {
+        partículas.push(new Partícula());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < partículas.length; i++) {
+        partículas[i].update();
+        partículas[i].draw();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMobile]);
+
+  return (
+    <section id='soluciones' className='seccion-principal' role="region" aria-labelledby="main-heading">
+      <canvas 
+        id="partículas-canvas" 
+        className="fondo-particulas"
+        aria-hidden="true"
+      ></canvas>
+      <div className="encabezado-principal">
+        <h1 id="main-heading" className="titulo-principal">SOLUCIONES DE SOFTWARE</h1>
+      </div>
+      <div className='contenedor-principal'>
+        <div className='contenedor-pestanas' role="tablist">
+          {tabs.map((tab) => (
             <button
               key={tab}
-              className={`software-nav-item ${currentPopupTab === tabMapping[tab] ? 'active' : ''}`}
+              className={`boton-pestana ${currentPopupTab === tabMapping[tab] ? 'active' : ''}`}
               onClick={() => handleTabClick(tab)}
               role="tab"
               aria-selected={currentPopupTab === tabMapping[tab]}
               aria-controls={`${tab.toLowerCase().replace(/\s+/g, '-')}-panel`}
-              aria-label={`Open ${tab} modules`}
-              data-animation-delay={`${0.1 * index}s`}
             >
               {tab}
-              <span className="software-nav-glow"></span>
+              <span className="resalte-pestana"></span>
             </button>
           ))}
         </div>
-
-        <div className='software-main'>
-          <img
-            src={alephLogoGif}
-            alt="Aleph Logo"
-            className="software-logo"
+        
+        <div className='contenido-principal'>
+          <img 
+            src={alephLogoGif} 
+            alt="Aleph Logo" 
+            className="logo-principal" 
             loading="lazy"
-            width="500"
-            height="250"
+            width="400"
+            height="200"
             decoding="async"
           />
         </div>
       </div>
-
+  
       {showModulesPopup && currentPopupTab && (
         <ModulosPopup
           initialCategory={currentPopupTab}

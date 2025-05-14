@@ -8,15 +8,17 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("#inicio");
 
   // Función para scroll suave
-  const smoothScroll = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
+const smoothScroll = (href) => {
+  const element = document.querySelector(href);
+  if (element) {
+    const headerHeight = document.querySelector('.header').offsetHeight;
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({
+      top: elementPosition - headerHeight,
+      behavior: "smooth"
+    });
+  }
+};
 
   // Efecto para detectar scroll y sección activa
   useEffect(() => {
