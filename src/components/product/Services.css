@@ -285,9 +285,7 @@
 
 .product-title {
   font-size: 1.62rem;
-  font-weight: 800;
   margin-bottom: 1.125rem;
-  color: var(--serv-dark-blue);
   position: relative;
   line-height: 1.3;
 }

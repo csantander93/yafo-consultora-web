@@ -79,19 +79,19 @@
 }
 
 .clients-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.1;
-  font-weight: 900;
-  margin-bottom: 1.2rem;
-  color: #1e40af;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin-bottom: 1.35rem;
+  color: transparent;
+  background: linear-gradient(135deg, #007BFF 0%, #00AEEf 50%, #007BFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   position: relative;
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  animation: fadeInUp 0.72s ease-out both;
+  transition: all 0.54s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .clients-subtitle {
