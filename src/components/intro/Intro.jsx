@@ -141,7 +141,7 @@ const Intro = () => {
               <h2 className="hero-tagline">
                 <span className="tagline-wrapper">
                   <span className="tagline-words">
-                    {['Protección ', 'Avanzada ', 'para tus ', 'Activos ', 'Digitales '].map((word, index) => (
+                    {['Protección ', 'Avanzada ', ' para tus ', 'Activos ', 'Digitales '].map((word, index) => (
                       <span key={index} className="word-container">
                         <span className="word-mask">
                           <span className={`word ${index === 1 ? 'text-highlight' : ''}`}>
