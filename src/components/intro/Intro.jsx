@@ -109,6 +109,13 @@ const Intro = () => {
     };
   }, [initParticles, holograms.length]);
 
+  const scrollToServices = () => {
+  const servicesSection = document.getElementById('servicios');
+  if (servicesSection) {
+    servicesSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
   return (
     <section id="inicio" className={`intro-hero ${isLoaded ? 'loaded' : ''}`}>
       <canvas 
@@ -152,7 +159,11 @@ const Intro = () => {
               </h3>
 
               <div className="hero-cta">
-                <button className="cyber-button" aria-label="Conoce nuestros servicios">
+                <button 
+                  className="cyber-button" 
+                  aria-label="Conoce nuestros servicios"
+                  onClick={scrollToServices}
+                >
                   <span className="cyber-button-text">Conoce Nuestros Servicios</span>
                   <span className="cyber-button-glitch"></span>
                 </button>
