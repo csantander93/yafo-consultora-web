@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './ContactForm.css';
-import logoYafo from '../../assets/Logo Yafo JPG_grises 300 dpi.jpg'; // Verify this path is correct
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +13,6 @@ const ContactForm = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Add loaded class after component mounts to trigger fade-in animation
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -61,7 +59,7 @@ const ContactForm = () => {
         </div>
 
         <div className="contact-row">
-          <div className="form-container">
+          <div className="form-container full-width">
             {submitSuccess ? (
               <div className="success-message">
                 <svg className="success-icon" viewBox="0 0 24 24" fill="none">
@@ -145,17 +143,6 @@ const ContactForm = () => {
                 </button>
               </form>
             )}
-          </div>
-          
-          <div className="info-container">
-            <img 
-              src={logoYafo} 
-              alt="Aleph Manager Logo" 
-              className="info-logo-contact"
-            />
-            <p className="info-text">
-              Estamos a disposición para responder cualquier duda o consulta que pueda surgirle.
-            </p>
           </div>
         </div>
       </div>

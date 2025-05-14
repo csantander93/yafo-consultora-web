@@ -1,4 +1,4 @@
-/* ContactForm.css - Compact version with cohesive style */
+/* ContactForm.css - Versión modificada sin info-container */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
@@ -58,7 +58,13 @@
   z-index: 0;
 }
 
-.contact-curve {
+.contact-background-curves {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.curve {
   position: absolute;
   height: 200px;
   width: 200%;
@@ -69,36 +75,18 @@
   opacity: 0.15;
 }
 
-.contact-curve-1 {
+.curve-1 {
   top: 10%;
   left: -50%;
   background: var(--contact-innovative-blue);
   animation-delay: 0s;
 }
 
-.contact-curve-2 {
+.curve-2 {
   top: 40%;
   left: -50%;
   background: var(--contact-primary-blue);
   animation-delay: -3s;
-}
-
-.contact-gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at 50% 30%, 
-    rgba(0, 136, 204, 0.15) 0%, 
-    transparent 70%
-  );
-}
-
-.contact-noise {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
 }
 
 /* Main container */
@@ -125,13 +113,6 @@
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
-}
-
-.title-highlight {
-  background: linear-gradient(90deg, var(--contact-primary-blue), var(--contact-innovative-blue));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 .contact-title::after {
@@ -170,89 +151,9 @@
 
 /* Form section */
 .form-container {
-  flex: 2;
-  padding: 2rem;
-}
-
-/* Info section */
-.info-container {
   flex: 1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(230, 240, 255, 0.3);
-  border-left: 1px solid rgba(0, 86, 179, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.info-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(0, 86, 179, 0.03) 0%, transparent 100%);
-  z-index: -1;
-}
-
-.info-logo-contact {
-  max-width: 140px;
-  height: auto;
-  margin: 0 auto 1.5rem;
-  filter: drop-shadow(0 4px 10px rgba(0, 86, 179, 0.2));
-}
-
-.info-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--contact-text-dark);
-  text-align: center;
-  position: relative;
-}
-
-.info-title::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--contact-primary-blue), var(--contact-innovative-blue));
-  border-radius: 2px;
-}
-
-.info-text {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--contact-text-secondary);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.info-email {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--contact-primary-blue);
-  text-align: center;
-  margin-top: auto;
-  transition: all 0.3s ease;
-}
-
-.info-email a {
-  color: inherit;
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 5px;
-  display: inline-block;
-}
-
-.info-email a:hover {
-  background: rgba(0, 86, 179, 0.1);
-  transform: translateY(-2px);
+  padding: 2.5rem;
 }
 
 /* Form styles */
@@ -260,6 +161,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .form-row {
@@ -297,7 +200,7 @@
 }
 
 .floating-input.textarea-input textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: none;
 }
 
@@ -448,13 +351,8 @@
     flex-direction: column;
   }
   
-  .form-container, .info-container {
+  .form-container {
     padding: 1.8rem;
-  }
-  
-  .info-container {
-    border-left: none;
-    border-top: 1px solid rgba(0, 86, 179, 0.1);
   }
   
   .form-row {
@@ -472,7 +370,7 @@
     font-size: 1.5rem;
   }
   
-  .form-container, .info-container {
+  .form-container {
     padding: 1.5rem;
   }
   
