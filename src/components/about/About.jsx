@@ -36,7 +36,7 @@ const About = () => {
 
     observerRef.current = new IntersectionObserver(handleIntersection, {
       threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px' // Aumenté el margen para activar antes
+      rootMargin: '0px 0px -100px 0px'
     });
 
     const currentElements = elementsRef.current;
@@ -75,18 +75,20 @@ const About = () => {
         {/* Team Section */}
         <div className="about-row" ref={addToRefs}>
           <div className="about-image-wrapper">
-            <div className="image-tech-border">
-              <img
-                src={teamImage}
-                alt="Equipo de Yafo Consultora"
-                className="about-image"
-                width="600"  // Dimensiones explícitas
-                height="400" // Para evitar layout shifts
-                loading="eager" // Priorizar imagen LCP
-                ref={addToRefs}
-              />
+            <div className="image-tech-border image-left-border">
+              <div className="image-blue-frame">
+                <img
+                  src={teamImage}
+                  alt="Equipo de Yafo Consultora"
+                  className="about-image"
+                  width="600"
+                  height="400"
+                  loading="eager"
+                  ref={addToRefs}
+                />
+              </div>
             </div>
-            <p className="image-caption" ref={addToRefs}>Nuestro equipo de consultores especializados</p>
+            <p className="image-caption" ref={addToRefs}>Equipo de consultores especializados</p>
           </div>
           <div className="about-content">
             <h3 className="content-title" ref={addToRefs}>
@@ -106,16 +108,18 @@ const About = () => {
         {/* Services Section */}
         <div className="about-row reverse-row" ref={addToRefs}>
           <div className="about-image-wrapper">
-            <div className="image-tech-border">
-              <img
-                src={alephabout}
-                alt="Plataforma de Yafo Consultora"
-                className="about-image"
-                width="600"  // Dimensiones explícitas
-                height="400" // Para evitar layout shifts
-                loading="lazy" // Diferir carga
-                ref={addToRefs}
-              />
+            <div className="image-tech-border image-right-border">
+              <div className="image-blue-frame">
+                <img
+                  src={alephabout}
+                  alt="Plataforma de Yafo Consultora"
+                  className="about-image"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  ref={addToRefs}
+                />
+              </div>
             </div>
             <p className="image-caption" ref={addToRefs}>Soluciones tecnológicas innovadoras</p>
           </div>
