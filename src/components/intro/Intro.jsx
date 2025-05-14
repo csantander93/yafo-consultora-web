@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './Intro.css';
 
-// Importamos las imágenes nuevas
-import padlockImg from '../../assets/padlock.png';
-import shieldImg from '../../assets/shield.png';
-import firewall from '../../assets/firewall.png';
+// Importamos las imágenes optimizadas (convertir a WebP previamente)
+import padlockImg from '../../assets/padlock.webp';
+import shieldImg from '../../assets/shield.webp';
+import firewall from '../../assets/firewall.webp';
+
+// Precargamos las imágenes críticas
+const preloadImages = [firewall, padlockImg, shieldImg];
 
 const Intro = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,24 +19,10 @@ const Intro = () => {
     { icon: shieldImg, label: 'Protección Integral' }
   ];
 
-  useEffect(() => {
-    setIsLoaded(true);
-
-    // Efecto de partículas para el fondo
-    const canvas = document.getElementById('particle-canvas');
-    if (canvas) {
-      initParticles(canvas);
-    }
-
-    // Rotación de hologramas
-    const hologramInterval = setInterval(() => {
-      setCurrentHologram((prev) => (prev + 1) % holograms.length);
-    }, 5000); // Changed from 3000ms to 5000ms
-
-    return () => clearInterval(hologramInterval);
-  }, []);
-
-  const initParticles = (canvas) => {
+  // Memoizamos la función de partículas
+  const initParticles = useCallback((canvas) => {
+    if (!canvas) return;
+    
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 
@@ -52,9 +41,11 @@ const Intro = () => {
       });
     }
 
+    let animationId;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Optimización: dibujamos solo conexiones visibles
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -85,17 +76,48 @@ const Intro = () => {
         ctx.fill();
       });
 
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     };
 
     animate();
-  };
+
+    return () => cancelAnimationFrame(animationId);
+  }, []);
+
+  useEffect(() => {
+    // Precargamos imágenes
+    preloadImages.forEach(img => {
+      const image = new Image();
+      image.src = img;
+    });
+
+    setIsLoaded(true);
+    const canvas = document.getElementById('particle-canvas');
+    const cleanUpParticles = initParticles(canvas);
+
+    // Rotación de hologramas con setTimeout en lugar de setInterval
+    let timeoutId;
+    const rotateHologram = () => {
+      setCurrentHologram(prev => (prev + 1) % holograms.length);
+      timeoutId = setTimeout(rotateHologram, 5000);
+    };
+    timeoutId = setTimeout(rotateHologram, 5000);
+
+    return () => {
+      clearTimeout(timeoutId);
+      cleanUpParticles && cleanUpParticles();
+    };
+  }, [initParticles, holograms.length]);
 
   return (
     <section id="inicio" className={`intro-hero ${isLoaded ? 'loaded' : ''}`}>
-      <canvas id="particle-canvas" className="particle-background"></canvas>
+      <canvas 
+        id="particle-canvas" 
+        className="particle-background"
+        aria-hidden="true" // Mejora accesibilidad
+      ></canvas>
 
-      <div className="cyber-grid-overlay"></div>
+      <div className="cyber-grid-overlay" aria-hidden="true"></div>
 
       <div className="hero-container">
         <div className="hero-content">
@@ -112,31 +134,15 @@ const Intro = () => {
               <h2 className="hero-tagline">
                 <span className="tagline-wrapper">
                   <span className="tagline-words">
-                    <span className="word-container">
-                      <span className="word-mask">
-                        <span className="word">Protección </span>
+                    {['Protección ', 'Avanzada ', 'para tus ', 'Activos ', 'Digitales '].map((word, index) => (
+                      <span key={index} className="word-container">
+                        <span className="word-mask">
+                          <span className={`word ${index === 1 ? 'text-highlight' : ''}`}>
+                            {word}
+                          </span>
+                        </span>
                       </span>
-                    </span>
-                    <span className="word-container">
-                      <span className="word-mask">
-                        <span className="word text-highlight">Avanzada </span>
-                      </span>
-                    </span>
-                    <span className="word-container">
-                      <span className="word-mask">
-                        <span className="word"> para tus </span>
-                      </span>
-                    </span>
-                    <span className="word-container">
-                      <span className="word-mask">
-                        <span className="word">Activos </span>
-                      </span>
-                    </span>
-                    <span className="word-container">
-                      <span className="word-mask">
-                        <span className="word">Digitales </span>
-                      </span>
-                    </span>
+                    ))}
                   </span>
                 </span>
               </h2>
@@ -146,7 +152,7 @@ const Intro = () => {
               </h3>
 
               <div className="hero-cta">
-                <button className="cyber-button">
+                <button className="cyber-button" aria-label="Conoce nuestros servicios">
                   <span className="cyber-button-text">Conoce Nuestros Servicios</span>
                   <span className="cyber-button-glitch"></span>
                 </button>
@@ -156,8 +162,8 @@ const Intro = () => {
 
           <div className="hologram-container">
             <div className="hologram-display">
-              <div className="hologram-base"></div>
-              <div className="hologram-light-rays"></div>
+              <div className="hologram-base" aria-hidden="true"></div>
+              <div className="hologram-light-rays" aria-hidden="true"></div>
               <div className="hologram-icon-container">
                 {holograms.map((hologram, index) => (
                   <div
@@ -168,24 +174,20 @@ const Intro = () => {
                       src={hologram.icon}
                       alt={hologram.label}
                       className="hologram-image"
+                      width="200"  // Dimensiones explícitas
+                      height="200" // Evita layout shifts
+                      loading={index === 0 ? 'eager' : 'lazy'} // Priorizamos la primera imagen
                     />
-                    <div className="hologram-grid"></div>
-                    <div className="hologram-particles">
-                      <div className="hologram-particle"></div>
-                      <div className="hologram-particle"></div>
-                      <div className="hologram-particle"></div>
-                      <div className="hologram-particle"></div>
-                      <div className="hologram-particle"></div>
+                    <div className="hologram-grid" aria-hidden="true"></div>
+                    <div className="hologram-particles" aria-hidden="true">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className="hologram-particle"></div>
+                      ))}
                     </div>
-                    <div className="hologram-rising-particles">
-                      <div className="rising-particle"></div>
-                      <div className="rising-particle"></div>
-                      <div className="rising-particle"></div>
-                      <div className="rising-particle"></div>
-                      <div className="rising-particle"></div>
-                      <div className="rising-particle"></div>
-                      <div className="rising-particle"></div>
-                      <div className="rising-particle"></div>
+                    <div className="hologram-rising-particles" aria-hidden="true">
+                      {[...Array(8)].map((_, i) => (
+                        <div key={i} className="rising-particle"></div>
+                      ))}
                     </div>
                   </div>
                 ))}
@@ -198,7 +200,7 @@ const Intro = () => {
         </div>
       </div>
 
-      <div className="scrolling-indicator">
+      <div className="scrolling-indicator" aria-label="Desplázate hacia abajo">
         <span className="scroll-text">Descubre Más</span>
         <div className="scroll-line"></div>
       </div>
@@ -206,4 +208,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default React.memo(Intro);

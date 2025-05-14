@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const AnimatedSection = ({ children, id, className = '' }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: false
-  });
+const [ref, inView] = useInView({
+  threshold: 0.1,
+  triggerOnce: true,
+  rootMargin: '-50px 0px' // Añade un margen negativo para activar la animación antes
+});
 
   const variants = {
     hidden: { opacity: 0, y: 50 },

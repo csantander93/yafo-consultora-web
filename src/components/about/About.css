@@ -255,6 +255,8 @@
   display: block;
   border-radius: 8px;
   transition: transform var(--transition-fast);
+  content-visibility: auto; /* Mejora renderizado */
+  will-change: transform; /* Optimiza animaciones */
 }
 
 .about-image-wrapper:hover .about-image {

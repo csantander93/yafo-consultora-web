@@ -1,54 +1,61 @@
-import React, { useEffect, useRef } from 'react';
-import teamImage from '../../assets/development.jpg';
-import alephabout from '../../assets/aleph-about.png';
+import React, { useEffect, useRef, useCallback } from 'react';
+import teamImage from '../../assets/development.webp'; // Convertida a WebP
+import alephabout from '../../assets/aleph-about.webp'; // Convertida a WebP
 import './About.css';
 
 const About = () => {
   const sectionRef = useRef(null);
   const elementsRef = useRef([]);
+  const observerRef = useRef(null);
 
+  // Precarga de imágenes
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      }
-    );
-
-    if (elementsRef.current.length > 0) {
-      elementsRef.current.forEach((el) => {
-        if (el) observer.observe(el);
-      });
-    }
-
-    return () => {
-      if (elementsRef.current.length > 0) {
-        elementsRef.current.forEach((el) => {
-          if (el) observer.unobserve(el);
-        });
-      }
-    };
+    const images = [teamImage, alephabout];
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
   }, []);
 
-  const addToRefs = (el) => {
+  const addToRefs = useCallback((el) => {
     if (el && !elementsRef.current.includes(el)) {
       elementsRef.current.push(el);
     }
-  };
+  }, []);
+
+  // Observer optimizado
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observerRef.current?.unobserve(entry.target);
+        }
+      });
+    };
+
+    observerRef.current = new IntersectionObserver(handleIntersection, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px' // Aumenté el margen para activar antes
+    });
+
+    const currentElements = elementsRef.current;
+    currentElements.forEach(el => {
+      if (el) observerRef.current.observe(el);
+    });
+
+    return () => {
+      currentElements.forEach(el => {
+        if (el) observerRef.current?.unobserve(el);
+      });
+    };
+  }, []);
 
   return (
     <section id="nosotros" className="about-section" ref={sectionRef}>
-      <div className="about-background-tech">
+      {/* Fondo optimizado con menos elementos animados */}
+      <div className="about-background-tech" aria-hidden="true">
         <div className="tech-grid-animated"></div>
-        <div className="tech-dots-animated"></div>
         <div className="gradient-overlay"></div>
       </div>
       
@@ -73,6 +80,9 @@ const About = () => {
                 src={teamImage}
                 alt="Equipo de Yafo Consultora"
                 className="about-image"
+                width="600"  // Dimensiones explícitas
+                height="400" // Para evitar layout shifts
+                loading="eager" // Priorizar imagen LCP
                 ref={addToRefs}
               />
             </div>
@@ -82,14 +92,14 @@ const About = () => {
             <h3 className="content-title" ref={addToRefs}>
               <span className="title-decoration">Quiénes somos</span>
             </h3>
-            <p className="content-text" ref={addToRefs}>
-              En Yafo Consultora, combinamos experiencia técnica y estratégica para ofrecer soluciones integrales en gestión de riesgos, 
-              ciberseguridad y cumplimiento normativo.
-            </p>
-            <p className="content-text" ref={addToRefs}>
-              Desde startups hasta grandes empresas, ayudamos a nuestros clientes a navegar entornos complejos con herramientas innovadoras 
-              y un compromiso inquebrantable con la calidad.
-            </p>
+            {[
+              "En Yafo Consultora, combinamos experiencia técnica y estratégica para ofrecer soluciones integrales en gestión de riesgos, ciberseguridad y cumplimiento normativo.",
+              "Desde startups hasta grandes empresas, ayudamos a nuestros clientes a navegar entornos complejos con herramientas innovadoras y un compromiso inquebrantable con la calidad."
+            ].map((text, index) => (
+              <p key={index} className="content-text" ref={addToRefs}>
+                {text}
+              </p>
+            ))}
           </div>
         </div>
 
@@ -101,6 +111,9 @@ const About = () => {
                 src={alephabout}
                 alt="Plataforma de Yafo Consultora"
                 className="about-image"
+                width="600"  // Dimensiones explícitas
+                height="400" // Para evitar layout shifts
+                loading="lazy" // Diferir carga
                 ref={addToRefs}
               />
             </div>
@@ -135,4 +148,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default React.memo(About);
