@@ -13,7 +13,7 @@
   
   /* Degradados profesionales */
   --blue-gradient: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
-  --light-gradient: linear-gradient(180deg, #e0f2fe 0%, #f8fafc 100%);
+  --light-gradient: linear-gradient(to bottom, #f0f7ff 0%, #f8fafc 100%);
   
   /* Sombras */
   --soft-shadow: 0 4px 12px rgba(0, 86, 179, 0.1);

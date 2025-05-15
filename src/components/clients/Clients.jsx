@@ -128,13 +128,6 @@ const Clients = () => {
       <script type="application/ld+json">
         {JSON.stringify(clientsStructuredData)}
       </script>
-
-      <div className="clients-background" aria-hidden="true">
-        <div className="clients-curve clients-curve-1"></div>
-        <div className="clients-curve clients-curve-2"></div>
-        <div className="clients-curve clients-curve-3"></div>
-        <div className="clients-curve clients-curve-4"></div>
-      </div>
       
       <div className="clients-container">
         <div className="clients-header">

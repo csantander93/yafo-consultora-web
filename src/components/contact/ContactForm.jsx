@@ -45,12 +45,6 @@ const ContactForm = () => {
 
   return (
     <section id='contacto' className={`contact-section ${isLoaded ? 'loaded' : ''}`}>
-      <div className="contact-background">
-        <div className="contact-background-curves">
-          <div className="curve curve-1"></div>
-          <div className="curve curve-2"></div>
-        </div>
-      </div>
       
       <div className="contact-container">
         <div className="contact-header">

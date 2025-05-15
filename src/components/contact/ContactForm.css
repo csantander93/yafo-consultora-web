@@ -47,48 +47,6 @@
   isolation: isolate;
 }
 
-/* Background elements */
-.contact-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.contact-background-curves {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.curve {
-  position: absolute;
-  height: 200px;
-  width: 200%;
-  background: transparent;
-  border-radius: 45%;
-  animation: float 12s infinite ease-in-out;
-  filter: blur(30px);
-  opacity: 0.15;
-}
-
-.curve-1 {
-  top: 10%;
-  left: -50%;
-  background: var(--contact-innovative-blue);
-  animation-delay: 0s;
-}
-
-.curve-2 {
-  top: 40%;
-  left: -50%;
-  background: var(--contact-primary-blue);
-  animation-delay: -3s;
-}
-
 /* Main container */
 .contact-container {
   max-width: 900px;
