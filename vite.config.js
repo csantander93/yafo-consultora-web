@@ -1,15 +1,43 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    visualizer({ 
+      open: true,
+      filename: 'stats.html'
+    }),
+  ],
   base: '/',
   server: {
-    host: '0.0.0.0',   // Esto hace que el servidor escuche en todas las interfaces de red disponibles
-    port: 5174,         // Puedes elegir el puerto que desees
+    host: '0.0.0.0',
+    port: 5174,
   },
   css: {
-    postcss: './postcss.config.mjs'
-  }
-})
+    postcss: './postcss.config.mjs',
+    devSourcemap: false,
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        assetFileNames: '[name]-[hash][extname]',
+        entryFileNames: '[name]-[hash].js',
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
+  },
+});
