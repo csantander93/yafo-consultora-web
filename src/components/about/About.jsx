@@ -56,7 +56,6 @@ const About = () => {
       {/* Fondo optimizado con menos elementos animados */}
       <div className="about-background-tech" aria-hidden="true">
         <div className="tech-grid-animated"></div>
-        <div className="gradient-overlay"></div>
       </div>
       
       <div className="about-container">
@@ -112,7 +111,7 @@ const About = () => {
               <div className="image-blue-frame">
                 <img
                   src={alephabout}
-                  alt="Plataforma de Yafo Consultora"
+                  alt="Plataforma Aleph Manager"
                   className="about-image"
                   width="600"
                   height="400"

@@ -195,9 +195,9 @@
     margin-bottom: 3rem;
     line-height: 1.2;
     padding: 0 1rem;
-    background-image: linear-gradient(to right, #67e8f9, #6ee7b7);
-    background-size: 200% 200%;
-    animation: gradientShift 5s ease infinite;
+    background: linear-gradient(135deg, #007BFF 0%, #00AEEf 50%, #007BFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   @keyframes gradientShift {
@@ -266,7 +266,10 @@
 @media (max-width: 480px) {
   .titulo-principal {
     font-size: 1.6rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #007BFF 0%, #00AEEf 50%, #007BFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   .boton-pestana {

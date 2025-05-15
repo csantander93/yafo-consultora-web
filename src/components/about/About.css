@@ -201,6 +201,10 @@
   direction: ltr;
 }
 
+.reverse-row .about-image-wrapper {
+  margin-top: 6rem; /* Adjusts the image downward by 32px; modify as needed */
+}
+
 /* Image styling */
 .about-image-wrapper {
   position: relative;
@@ -433,6 +437,10 @@
   
   .reverse-row {
     direction: ltr;
+  }
+
+  .reverse-row .about-image-wrapper {
+    margin-top: 1.5rem; /* Smaller offset for mobile */
   }
 }
 
