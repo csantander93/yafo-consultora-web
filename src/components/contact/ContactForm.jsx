@@ -45,6 +45,14 @@ const ContactForm = () => {
 
   return (
     <section id='contacto' className={`contact-section ${isLoaded ? 'loaded' : ''}`}>
+      {/* Elementos de fondo estilo Services */}
+      <div className="contact-background">
+        <div className="contact-gradient"></div>
+        <div className="contact-particle contact-particle-1"></div>
+        <div className="contact-particle contact-particle-2"></div>
+        <div className="contact-particle contact-particle-3"></div>
+        <div className="contact-particle contact-particle-4"></div>
+      </div>
       
       <div className="contact-container">
         <div className="contact-header">
@@ -57,8 +65,8 @@ const ContactForm = () => {
             {submitSuccess ? (
               <div className="success-message">
                 <svg className="success-icon" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M22 4 12 14.01l-3-3" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M22 4 12 14.01l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 <h4>¡Mensaje enviado!</h4>
                 <p>Nos pondremos en contacto contigo pronto.</p>

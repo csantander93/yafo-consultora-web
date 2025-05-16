@@ -1,16 +1,16 @@
-/* ContactForm.css - Versión modificada sin info-container */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Theme variables */
-  --contact-primary-blue: #0056b3;
-  --contact-innovative-blue: #0088cc;
-  --contact-cyber-blue: #007a9e;
+  /* Theme variables from products-section for consistency */
+  --contact-main-bg: #050f21;
+  --contact-primary-blue: #007BFF;
+  --contact-innovative-blue: #00AEEf;
   --contact-secondary-text: #B0C4DE;
   --contact-text-dark: #111827;
   --contact-text-secondary: #4b5563;
-  --contact-background-light: #f8fafc;
-  --contact-border-light: #e5e7eb;
+  --contact-cyber-glow: 0 0 9px rgba(0, 123, 255, 0.7);
+  --contact-cyber-glow-intense: 0 0 18px rgba(0, 174, 239, 0.9);
+  --contact-metal-gradient: linear-gradient(135deg, var(--contact-primary-blue) 0%, var(--contact-innovative-blue) 50%, var(--contact-primary-blue) 100%);
   
   /* Form-specific variables */
   --contact-form-bg: rgba(255, 255, 255, 0.95);
@@ -26,9 +26,18 @@
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(4.5deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.09; transform: scale(0.9); }
+  50% { opacity: 0.27; transform: scale(0.945); }
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 36px 36px; }
 }
 
 @keyframes pulseGlow {
@@ -40,11 +49,81 @@
 /* Base styles for contact section */
 .contact-section {
   position: relative;
-  padding: 4rem 1rem;
+  padding: 5rem 0;
+  background: var(--contact-main-bg);
   overflow: hidden;
-  background: linear-gradient(to bottom, #f0f7ff 0%, #f8fafc 100%);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   isolation: isolate;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Background container */
+.contact-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Gradient effect similar to products-section */
+.contact-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, rgba(0, 174, 239, 0.09), transparent 70%);
+  animation: pulse 13.5s ease-in-out infinite alternate;
+  opacity: 0.45;
+}
+
+/* Particle effects */
+.contact-particle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(54px);
+  animation: float 13.5s ease-in-out infinite;
+  opacity: 0.27;
+  mix-blend-mode: screen;
+}
+
+.contact-particle-1 {
+  width: 180px;
+  height: 180px;
+  top: 9%;
+  left: 9%;
+  background: var(--contact-primary-blue);
+  animation-delay: 0s;
+  animation-duration: 16.2s;
+}
+
+.contact-particle-2 {
+  width: 270px;
+  height: 270px;
+  bottom: 4.5%;
+  right: 4.5%;
+  background: var(--contact-innovative-blue);
+  animation-delay: 2.7s;
+  animation-duration: 19.8s;
+}
+
+.contact-particle-3 {
+  width: 135px;
+  height: 135px;
+  top: 45%;
+  left: 63%;
+  background: var(--contact-primary-blue);
+  animation-delay: 5.4s;
+  animation-duration: 13.5s;
+}
+
+.contact-particle-4 {
+  width: 225px;
+  height: 225px;
+  top: 63%;
+  left: 18%;
+  background: var(--contact-innovative-blue);
+  animation-delay: 8.1s;
+  animation-duration: 18s;
 }
 
 /* Main container */
@@ -52,7 +131,7 @@
   max-width: 900px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   animation: fadeIn 0.6s ease-out;
 }
 
@@ -67,7 +146,7 @@
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--contact-text-dark);
+  color: var(--contact-secondary-text);
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
@@ -81,14 +160,15 @@
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, var(--contact-primary-blue), var(--contact-innovative-blue));
+  background: var(--contact-metal-gradient);
   border-radius: 2px;
+  box-shadow: var(--contact-cyber-glow);
 }
 
 .contact-subtitle {
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--contact-text-secondary);
+  color: var(--contact-secondary-text);
 }
 
 /* Form container */
@@ -292,7 +372,7 @@
 /* Responsive */
 @media (max-width: 992px) {
   .contact-section {
-    padding: 3rem 1rem;
+    padding: 7.2rem 0;
   }
   
   .contact-title {
@@ -303,25 +383,101 @@
     font-size: 0.9rem;
   }
 }
+/* Añade esto al final de tu ContactForm.css, en la sección de media queries */
 
 @media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1rem; /* Reducimos el padding superior/inferior */
+  }
+
+  .contact-container {
+    padding: 0 1rem; /* Menos padding lateral */
+  }
+
   .contact-row {
-    flex-direction: column;
+    margin: 0 auto;
+    width: 90%; /* Hacemos el formulario un poco más estrecho */
+    max-width: 400px; /* Limitamos el ancho máximo */
   }
-  
+
   .form-container {
-    padding: 1.8rem;
+    padding: 1.5rem; /* Reducimos el padding interno */
   }
-  
-  .form-row {
-    flex-direction: column;
-    gap: 1.2rem;
+
+  .contact-title {
+    font-size: 1.8rem; /* Título un poco más pequeño */
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.9rem; /* Subtítulo más pequeño */
+    margin-bottom: 1.5rem;
+  }
+
+  .floating-input input,
+  .floating-input textarea {
+    padding: 0.7rem 0.9rem 0.4rem; /* Padding más ajustado */
+    font-size: 0.85rem; /* Texto un poco más pequeño */
+  }
+
+  .floating-input label {
+    font-size: 0.85rem; /* Labels más pequeños */
+    top: 0.7rem;
+  }
+
+  .floating-input input:focus + label,
+  .floating-input input:not(:placeholder-shown) + label,
+  .floating-input textarea:focus + label,
+  .floating-input textarea:not(:placeholder-shown) + label {
+    top: -0.4rem;
+    font-size: 0.6rem;
+  }
+
+  .form-submit {
+    padding: 0.7rem 1.2rem; /* Botón más compacto */
+    font-size: 0.85rem;
+  }
+
+  /* Ajustamos las partículas para móviles */
+  .contact-particle-1,
+  .contact-particle-2,
+  .contact-particle-3,
+  .contact-particle-4 {
+    filter: blur(30px); /* Menos blur para que ocupen menos espacio */
+  }
+
+  .contact-particle-1 {
+    width: 120px;
+    height: 120px;
+    top: 5%;
+    left: 5%;
+  }
+
+  .contact-particle-2 {
+    width: 180px;
+    height: 180px;
+    bottom: 3%;
+    right: 3%;
+  }
+
+  .contact-particle-3 {
+    width: 90px;
+    height: 90px;
+    top: 40%;
+    left: 60%;
+  }
+
+  .contact-particle-4 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    left: 15%;
   }
 }
 
 @media (max-width: 576px) {
   .contact-section {
-    padding: 2.5rem 1rem;
+    padding: 5.4rem 0;
   }
   
   .contact-title {
@@ -335,5 +491,35 @@
   .floating-input input,
   .floating-input textarea {
     padding: 0.8rem 0.9rem 0.5rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 2rem 0.5rem; /* Aún más compacto en móviles muy pequeños */
+  }
+
+  .contact-row {
+    width: 95%; /* Ocupa casi todo el ancho pero con margen */
+    max-width: 360px;
+  }
+
+  .form-container {
+    padding: 1.2rem; /* Más compacto */
+  }
+
+  .contact-title {
+    font-size: 1.6rem;
+  }
+
+  .form-row {
+    gap: 0.8rem; /* Menos espacio entre campos */
+  }
+
+  /* Ajustamos el grid para que sea más visible */
+  .cyber-grid-overlay {
+    background-size: 24px 24px; /* Grid más pequeño */
+    opacity: 0.35; /* Un poco más visible */
   }
 }
