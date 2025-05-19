@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from '../../assets/Logo Yafo JPG_grises 300 dpi.jpg';
+import logo from '../../assets/yafo_invert_logo.png';
 import './Header.css';
 
 const Header = () => {
