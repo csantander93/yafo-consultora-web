@@ -12,6 +12,7 @@ const preloadImages = [firewall, padlockImg, shieldImg];
 const Intro = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentHologram, setCurrentHologram] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const holograms = [
     { icon: firewall, label: 'Defensa Proactiva Digital' },
@@ -21,7 +22,7 @@ const Intro = () => {
 
   // Memoizamos la función de partículas
   const initParticles = useCallback((canvas) => {
-    if (!canvas) return;
+    if (!canvas || isMobile) return;
     
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -82,9 +83,17 @@ const Intro = () => {
     animate();
 
     return () => cancelAnimationFrame(animationId);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    // Verificamos si es móvil
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
     // Precargamos imágenes
     preloadImages.forEach(img => {
       const image = new Image();
@@ -106,23 +115,26 @@ const Intro = () => {
     return () => {
       clearTimeout(timeoutId);
       cleanUpParticles && cleanUpParticles();
+      window.removeEventListener('resize', checkIfMobile);
     };
   }, [initParticles, holograms.length]);
 
   const scrollToServices = () => {
-  const servicesSection = document.getElementById('servicios');
-  if (servicesSection) {
-    servicesSection.scrollIntoView({ behavior: 'smooth' });
-  }
-};
+    const servicesSection = document.getElementById('servicios');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="inicio" className={`intro-hero ${isLoaded ? 'loaded' : ''}`}>
-      <canvas 
-        id="particle-canvas" 
-        className="particle-background"
-        aria-hidden="true" // Mejora accesibilidad
-      ></canvas>
+      {!isMobile && (
+        <canvas 
+          id="particle-canvas" 
+          className="particle-background"
+          aria-hidden="true"
+        ></canvas>
+      )}
 
       <div className="cyber-grid-overlay" aria-hidden="true"></div>
 
@@ -172,41 +184,56 @@ const Intro = () => {
           </div>
 
           <div className="hologram-container">
-            <div className="hologram-display">
-              <div className="hologram-base" aria-hidden="true"></div>
-              <div className="hologram-light-rays" aria-hidden="true"></div>
-              <div className="hologram-icon-container">
-                {holograms.map((hologram, index) => (
-                  <div
-                    key={index}
-                    className={`hologram-icon ${index === currentHologram ? 'fade' : ''}`}
-                  >
-                    <img
-                      src={hologram.icon}
-                      alt={hologram.label}
-                      className="hologram-image"
-                      width="200"  // Dimensiones explícitas
-                      height="200" // Evita layout shifts
-                      loading={index === 0 ? 'eager' : 'lazy'} // Priorizamos la primera imagen
-                    />
-                    <div className="hologram-grid" aria-hidden="true"></div>
-                    <div className="hologram-particles" aria-hidden="true">
-                      {[...Array(5)].map((_, i) => (
-                        <div key={i} className="hologram-particle"></div>
-                      ))}
-                    </div>
-                    <div className="hologram-rising-particles" aria-hidden="true">
-                      {[...Array(8)].map((_, i) => (
-                        <div key={i} className="rising-particle"></div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+            {isMobile ? (
+              <div className="mobile-icon-container">
+                <img
+                  src={holograms[currentHologram].icon}
+                  alt={holograms[currentHologram].label}
+                  className="mobile-icon-image"
+                  width="200"
+                  height="200"
+                />
+                <div className="mobile-icon-label">
+                  {holograms[currentHologram].label}
+                </div>
               </div>
-              <div className={`hologram-label ${currentHologram === currentHologram ? 'fade' : ''}`}>
-                {holograms[currentHologram].label}
+            ) : (
+              <div className="hologram-display">
+                <div className="hologram-base" aria-hidden="true"></div>
+                <div className="hologram-light-rays" aria-hidden="true"></div>
+                <div className="hologram-icon-container">
+                  {holograms.map((hologram, index) => (
+                    <div
+                      key={index}
+                      className={`hologram-icon ${index === currentHologram ? 'fade' : ''}`}
+                    >
+                      <img
+                        src={hologram.icon}
+                        alt={hologram.label}
+                        className="hologram-image"
+                        width="200"
+                        height="200"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                      <div className="hologram-grid" aria-hidden="true"></div>
+                      <div className="hologram-particles" aria-hidden="true">
+                        {[...Array(5)].map((_, i) => (
+                          <div key={i} className="hologram-particle"></div>
+                        ))}
+                      </div>
+                      <div className="hologram-rising-particles" aria-hidden="true">
+                        {[...Array(8)].map((_, i) => (
+                          <div key={i} className="rising-particle"></div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className={`hologram-label ${currentHologram === currentHologram ? 'fade' : ''}`}>
+                  {holograms[currentHologram].label}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

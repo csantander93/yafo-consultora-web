@@ -32,7 +32,7 @@
   opacity: 1;
 }
 
-/* Fondo de partículas */
+/* Fondo de partículas (solo desktop) */
 .particle-background {
   position: absolute;
   top: 0;
@@ -240,7 +240,56 @@
   50% { opacity: 0.18; }
 }
 
-/* HOLOGRAMA PROFESIONAL MEJORADO */
+/* ---------------------------------- */
+/* ESTILOS PARA VERSIÓN MÓVIL SIMPLIFICADA */
+/* ---------------------------------- */
+
+.mobile-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.mobile-icon-image {
+  width: 180px;
+  height: 180px;
+  filter: 
+    drop-shadow(0 0 10px rgba(0, 174, 239, 0.7))
+    brightness(1.4)
+    contrast(1.2);
+  animation: mobileIconPulse 3s ease-in-out infinite;
+}
+
+.mobile-icon-label {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 174, 239, 0.15);
+  border-radius: 15px;
+  box-shadow: 
+    0 0 10px rgba(0, 174, 239, 0.5),
+    inset 0 0 5px rgba(0, 174, 239, 0.3);
+  text-shadow: 
+    0 0 8px var(--intro-innovative-blue);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes mobileIconPulse {
+  0%, 100% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1); opacity: 1; }
+}
+
+/* ---------------------------------- */
+/* HOLOGRAMA COMPLETO (SOLO DESKTOP) */
+/* ---------------------------------- */
+
 .hologram-container {
   flex: 0 0 31.5%;
   max-width: 31.5%;
@@ -300,57 +349,6 @@
   border-radius: 50%;
   z-index: 1;
   animation: basePulse 2.25s ease-in-out infinite alternate;
-}
-
-/* Efecto de partículas ascendentes */
-.hologram-rising-particles {
-  position: absolute;
-  width: 80%;
-  height: 60%;
-  bottom: -18px;
-  z-index: 3;
-}
-
-.rising-particle {
-  position: absolute;
-  background: rgba(0, 174, 239, 0.72);
-  border-radius: 50%;
-  filter: blur(2.7px);
-  opacity: 0;
-  animation: riseParticle 4.5s linear infinite;
-}
-
-.rising-particle:nth-child(1) { width: 3.6px; height: 3.6px; left: 10%; animation-duration: 3.6s; animation-delay: 0s; }
-.rising-particle:nth-child(2) { width: 2.7px; height: 2.7px; left: 20%; animation-duration: 4.5s; animation-delay: 0.45s; }
-.rising-particle:nth-child(3) { width: 4.5px; height: 4.5px; left: 30%; animation-duration: 4.05s; animation-delay: 0.9s; }
-.rising-particle:nth-child(4) { width: 1.8px; height: 1.8px; left: 40%; animation-duration: 4.5s; animation-delay: 1.35s; }
-.rising-particle:nth-child(5) { width: 3.6px; height: 3.6px; left: 50%; animation-duration: 3.6s; animation-delay: 1.8s; }
-.rising-particle:nth-child(6) { width: 2.7px; height: 2.7px; left: 60%; animation-duration: 4.5s; animation-delay: 2.25s; }
-.rising-particle:nth-child(7) { width: 4.5px; height: 4.5px; left: 70%; animation-duration: 4.05s; animation-delay: 2.7s; }
-.rising-particle:nth-child(8) { width: 1.8px; height: 1.8px; left: 80%; animation-duration: 4.5s; animation-delay: 3.15s; }
-
-@keyframes riseParticle {
-  0% { transform: translateY(0) translateX(0); opacity: 0.18; }
-  20% { opacity: 0.72; }
-  80% { opacity: 0.72; }
-  100% { transform: translateY(-180px) translateX(calc(-18px + (36px * var(--random-direction, 1)))); opacity: 0; }
-}
-
-/* Neblina de partículas */
-.hologram-particle-fog {
-  position: absolute;
-  bottom: -63px;
-  width: 220%;
-  height: 162px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 174, 239, 0.63) 0%,
-    rgba(0, 174, 239, 0.36) 50%,
-    transparent 80%
-  );
-  filter: blur(31.5px);
-  z-index: 2;
-  animation: fogPulse 3.6s ease-in-out infinite alternate;
 }
 
 /* Contenedor de iconos holográficos */
@@ -416,52 +414,6 @@
     pulseGrid 2.25s ease-in-out infinite alternate;
   z-index: 3;
 }
-
-/* Partículas */
-.hologram-particles {
-  position: absolute;
-  width: 140%;
-  height: 140%;
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.hologram-particle {
-  position: absolute;
-  background: var(--intro-innovative-blue);
-  border-radius: 50%;
-  filter: blur(1.8px);
-  opacity: 0;
-  animation: floatParticle linear infinite;
-  z-index: 10; /* Aumenta temporalmente para verificar */
-}
-
-/* Configuración de 25 partículas */
-.hologram-particle:nth-child(1) { width: 1.8px; height: 1.8px; top: 10%; left: 15%; animation-duration: 13.5s; animation-delay: 0s; }
-.hologram-particle:nth-child(2) { width: 2.7px; height: 2.7px; top: 20%; left: 75%; animation-duration: 16.2s; animation-delay: 0.9s; }
-.hologram-particle:nth-child(3) { width: 1.8px; height: 1.8px; top: 15%; left: 40%; animation-duration: 12.6s; animation-delay: 1.8s; }
-.hologram-particle:nth-child(4) { width: 3.6px; height: 3.6px; top: 25%; left: 60%; animation-duration: 14.4s; animation-delay: 0.45s; }
-.hologram-particle:nth-child(5) { width: 2.7px; height: 2.7px; top: 30%; left: 30%; animation-duration: 15.3s; animation-delay: 1.35s; }
-.hologram-particle:nth-child(6) { width: 1.8px; height: 1.8px; top: 35%; left: 80%; animation-duration: 11.7s; animation-delay: 0.72s; }
-.hologram-particle:nth-child(7) { width: 2.7px; height: 2.7px; top: 40%; left: 20%; animation-duration: 17.1s; animation-delay: 2.25s; }
-.hologram-particle:nth-child(8) { width: 1.8px; height: 1.8px; top: 45%; left: 50%; animation-duration: 13.5s; animation-delay: 1.08s; }
-.hologram-particle:nth-child(9) { width: 3.6px; height: 3.6px; top: 20%; left: 10%; animation-duration: 12.6s; animation-delay: 0.27s; }
-.hologram-particle:nth-child(10) { width: 2.7px; height: 2.7px; top: 50%; left: 70%; animation-duration: 14.4s; animation-delay: 1.8s; }
-.hologram-particle:nth-child(11) { width: 1.8px; height: 1.8px; top: 55%; left: 90%; animation-duration: 10.8s; animation-delay: 1.53s; }
-.hologram-particle:nth-child(12) { width: 2.7px; height: 2.7px; top: 25%; left: 30%; animation-duration: 13.5s; animation-delay: 0.81s; }
-.hologram-particle:nth-child(13) { width: 1.8px; height: 1.8px; top: 60%; left: 60%; animation-duration: 11.7s; animation-delay: 1.98s; }
-.hologram-particle:nth-child(14) { width: 3.6px; height: 3.6px; top: 65%; left: 40%; animation-duration: 14.4s; animation-delay: 0.99s; }
-.hologram-particle:nth-child(15) { width: 2.7px; height: 2.7px; top: 70%; left: 10%; animation-duration: 12.6s; animation-delay: 0.54s; }
-.hologram-particle:nth-child(16) { width: 1.8px; height: 1.8px; top: 75%; left: 80%; animation-duration: 16.2s; animation-delay: 1.62s; }
-.hologram-particle:nth-child(17) { width: 2.7px; height: 2.7px; top: 30%; left: 25%; animation-duration: 13.5s; animation-delay: 0.63s; }
-.hologram-particle:nth-child(18) { width: 1.8px; height: 1.8px; top: 80%; left: 55%; animation-duration: 15.3s; animation-delay: 2.07s; }
-.hologram-particle:nth-child(19) { width: 3.6px; height: 3.6px; top: 35%; left: 85%; animation-duration: 12.6s; animation-delay: 1.26s; }
-.hologram-particle:nth-child(20) { width: 2.7px; height: 2.7px; top: 40%; left: 15%; animation-duration: 14.4s; animation-delay: 0.36s; }
-.hologram-particle:nth-child(21) { width: 1.8px; height: 1.8px; top: 85%; left: 65%; animation-duration: 11.7s; animation-delay: 1.89s; }
-.hologram-particle:nth-child(22) { width: 2.7px; height: 2.7px; top: 45%; left: 35%; animation-duration: 13.5s; animation-delay: 1.17s; }
-.hologram-particle:nth-child(23) { width: 1.8px; height: 1.8px; top: 50%; left: 95%; animation-duration: 15.3s; animation-delay: 0.72s; }
-.hologram-particle:nth-child(24) { width: 3.6px; height: 3.6px; top: 55%; left: 45%; animation-duration: 12.6s; animation-delay: 2.16s; }
-.hologram-particle:nth-child(25) { width: 2.7px; height: 2.7px; top: 60%; left: 5%; animation-duration: 14.4s; animation-delay: 1.35s; }
 
 /* Etiqueta mejorada */
 .hologram-label {
@@ -553,7 +505,7 @@
 /* Indicador de scroll */
 .scrolling-indicator {
   position: absolute;
-  bottom: 100px;
+  bottom: 30px;
   transform: translateX(-50%);
   z-index: 3;
   animation: fadeIn 0.9s 1.8s both;
@@ -602,17 +554,39 @@
   to { width: 72%; opacity: 1; }
 }
 
-/* Responsive */
+/* ---------------------------------- */
+/* MEDIA QUERIES PARA RESPONSIVE */
+/* ---------------------------------- */
+
 @media (max-width: 1200px) {
-  .yafo-text { font-size: 4.95rem; }
-  .consultora-sub { font-size: 1.8rem; }
-  .hologram-icon { width: 252px; height: 252px; }
-  .hologram-projector { width: 216px; height: 189px; bottom: -117px; }
+  .yafo-text {
+    font-size: 4.95rem;
+  }
+  .consultora-sub {
+    font-size: 1.8rem;
+  }
+  .hologram-icon {
+    width: 252px;
+    height: 252px;
+  }
+  .hologram-projector {
+    width: 216px;
+    height: 189px;
+    bottom: -117px;
+  }
+  .hologram-label {
+    margin-top: 2.5rem;
+    font-size: 1.35rem;
+  }
+  .scrolling-indicator {
+    bottom: 50px;
+  }
 }
 
 @media (max-width: 992px) {
   .hero-content {
     flex-direction: column;
+    gap: 2rem;
   }
   
   .hero-text-content,
@@ -624,6 +598,7 @@
   
   .hero-titles {
     text-align: center;
+    padding: 1.2rem 0;
   }
   
   .tagline-words {
@@ -638,51 +613,145 @@
   .cyber-line {
     left: 50%;
     transform: translateX(-50%);
+    width: 60%;
   }
   
   .hero-subtitle {
     margin-left: auto;
     margin-right: auto;
+    max-width: 95%;
   }
   
   .hologram-container {
-    height: 360px;
-    margin-top: 2.7rem;
+    height: 340px;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
   }
   
   .hologram-icon {
-    width: 225px;
-    height: 225px;
+    width: 220px;
+    height: 220px;
   }
   
   .hologram-projector {
-    width: 198px;
-    height: 162px;
-    bottom: -108px;
+    width: 190px;
+    height: 155px;
+    bottom: -100px;
+    filter: blur(20px);
+  }
+  
+  .hologram-label {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    padding: 0.4rem 1.2rem;
+    letter-spacing: 0.8px;
+  }
+  
+  .scrolling-indicator {
+    bottom: 70px;
+  }
+  
+  .scroll-text {
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+  }
+  
+  .scroll-line {
+    height: 30px;
   }
 }
 
 @media (max-width: 768px) {
-  .yafo-text { font-size: 4.05rem; }
-  .consultora-sub { font-size: 1.44rem; }
-  .hero-tagline { font-size: 1.62rem; }
-  .hero-subtitle { font-size: 1.17rem; }
-  .hologram-label { font-size: 1.26rem; }
-  .hologram-icon { width: 198px; height: 198px; }
+  /* Ocultamos el canvas de partículas en móvil */
+  .particle-background {
+    display: none;
+  }
+  
+  /* Ajustamos el grid overlay para móvil */
+  .cyber-grid-overlay {
+    opacity: 0.3;
+    background-size: 25px 25px;
+  }
+  
+  /* Ajustamos el efecto de onda para móvil */
+  .intro-hero::before {
+    animation: waveMove 15s infinite ease-in-out;
+  }
+  
+  .yafo-text {
+    font-size: 3.8rem;
+  }
+  .consultora-sub {
+    font-size: 1.3rem;
+  }
+  .hero-tagline {
+    font-size: 1.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+  
+  /* Estilos específicos para el contenedor móvil */
+  .hologram-container {
+    height: 280px;
+    margin-top: 1.5rem;
+    margin-bottom: 6rem;
+  }
+  
+  .mobile-icon-label {
+    font-size: 1.2rem;
+    margin-top: 1.8rem;
+  }
+  
+  .scrolling-indicator {
+    bottom: 80px;
+  }
 }
 
 @media (max-width: 576px) {
-  .yafo-text { font-size: 3.15rem; }
-  .consultora-sub { font-size: 1.17rem; }
-  .hero-tagline { font-size: 1.35rem; }
-  .hero-subtitle { font-size: 0.99rem; }
-  .cyber-button { padding: 0.72rem 1.35rem; font-size: 0.9rem; }
-  .hologram-icon { width: 180px; height: 180px; }
-  .hologram-projector {
-    width: 162px;
-    height: 135px;
-    bottom: -90px;
-    filter: blur(18px);
+  .yafo-text {
+    font-size: 2.8rem;
   }
-  .hologram-label { font-size: 1.17rem; }
+  .consultora-sub {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+  .hero-tagline {
+    font-size: 1.2rem;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  .cyber-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  /* Ajustamos el icono móvil */
+  .mobile-icon-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .mobile-icon-label {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    padding: 0.3rem 1rem;
+  }
+  
+  .hologram-container {
+    height: 250px;
+    margin-bottom: 7rem;
+  }
+  
+  .scrolling-indicator {
+    bottom: 90px;
+  }
+  .scroll-text {
+    font-size: 0.65rem;
+  }
+  .scroll-line {
+    height: 25px;
+  }
 }
