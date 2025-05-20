@@ -1,6 +1,17 @@
 import './Services.css';
+import React from 'react';
 
 const Services = () => {
+  React.useEffect(() => {
+    const elements = document.querySelectorAll('.product-card, .products-title, .products-subtitle');
+    elements.forEach(el => {
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.style.opacity = '1';
+      }, 100);
+    });
+  }, []);
+
   return (
     <section id="servicios" className="products-section">
       <div className="products-background">
@@ -41,13 +52,13 @@ const Services = () => {
                 Servicios expertos para gestionar riesgos, asegurar la continuidad del negocio y optimizar tu infraestructura tecnológica.
               </p>
               <div className="product-features">
-                <span className="product-feature">Gestión de Riesgos de Tecnología y Seguridad de la Información</span>
-                <span className="product-feature">Gestión de Tecnología y Seguridad de la Información</span>
-                <span className="product-feature">Gestión de Continuidad del Negocio</span>
-                <span className="product-feature">Infraestructura tecnológica y procesamiento</span>
+                <span className="product-feature">Gestión de Riesgos</span>
+                <span className="product-feature">Seguridad de la Información</span>
+                <span className="product-feature">Continuidad del Negocio</span>
+                <span className="product-feature">Infraestructura tecnológica</span>
                 <span className="product-feature">Gestión de ciberincidentes</span>
-                <span className="product-feature">Gestión de la relación con terceras partes</span>
-                <span className="product-feature">Gestión de Servicios Financieros Digitales</span>
+                <span className="product-feature">Relación con terceros</span>
+                <span className="product-feature">Servicios Financieros Digitales</span>
               </div>
               <div className="product-glow"></div>
             </div>
@@ -68,11 +79,11 @@ const Services = () => {
                 Evaluaciones exhaustivas para identificar vulnerabilidades y fortalecer tus defensas contra amenazas cibernéticas.
               </p>
               <div className="product-features">
-                <span className="product-feature">OSINT + Discovery Assessment</span>
+                <span className="product-feature">OSINT + Discovery</span>
                 <span className="product-feature">Test de intrusión externo</span>
                 <span className="product-feature">Web Application Assessment</span>
                 <span className="product-feature">Test de Intrusión Interno</span>
-                <span className="product-feature">Análisis de seguridad aplicaciones móviles</span>
+                <span className="product-feature">Seguridad apps móviles</span>
                 <span className="product-feature">Vulnerability Management</span>
               </div>
               <div className="product-glow"></div>
