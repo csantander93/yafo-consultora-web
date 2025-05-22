@@ -14,6 +14,35 @@ const ModulosPopup = ({
   const [isPanelAnimated, setIsPanelAnimated] = useState(false);
   const descriptionPanelRef = useRef(null);
 
+  // Schema Markup para módulos (SEO)
+  useEffect(() => {
+    if (selectedModule && modulesData[initialCategory]?.[selectedModule]) {
+      const moduleSchema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": selectedModule,
+        "description": modulesData[initialCategory][selectedModule].description,
+        "applicationCategory": "BusinessApplication",
+        "featureList": modulesData[initialCategory][selectedModule].features,
+        "operatingSystem": "Web-based",
+        "offers": {
+          "@type": "Offer",
+          "category": "SoftwareAsAService"
+        }
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(moduleSchema);
+      document.head.appendChild(script);
+
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [selectedModule, initialCategory, modulesData]);
+
+  // Resto del código original sin cambios...
   const getShortCategoryName = (category) => {
     return category.includes('(') ? category.split('(')[0].trim() : category;
   };
@@ -36,7 +65,6 @@ const ModulosPopup = ({
     }
   }, [selectedModule]);
 
-  // Efecto para controlar el scroll dentro del popup
   useEffect(() => {
     const handleWheel = (e) => {
       if (!descriptionPanelRef.current) return;
@@ -76,13 +104,13 @@ const ModulosPopup = ({
       <div className={`popup-modulos-popup-container ${animate ? 'animate-in' : ''}`}>
         <div className="popup-header">
           <div className="breadcrumbs">
-            <span className="breadcrumb">
+            <span className="breadcrumb" itemProp="applicationCategory">
               {categoryMapping[initialCategory] || initialCategory}
             </span>
             {selectedModule && (
               <>
                 <span className="breadcrumb-divider">/</span>
-                <span className="breadcrumb active">{selectedModule}</span>
+                <span className="breadcrumb active" itemProp="name">{selectedModule}</span>
               </>
             )}
           </div>
@@ -114,6 +142,8 @@ const ModulosPopup = ({
                   className={`popup-module-item ${selectedModule === moduleName ? 'selected' : ''}`}
                   onClick={() => handleModuleClick(moduleName)}
                   style={{ '--delay': `${index * 0.05 + 0.1}s` }}
+                  itemScope
+                  itemType="https://schema.org/SoftwareApplication"
                 >
                   <div className="popup-module-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -121,13 +151,18 @@ const ModulosPopup = ({
                       <path d="M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" />
                     </svg>
                   </div>
-                  <h4>{moduleName}</h4>
+                  <h4 itemProp="name">{moduleName}</h4>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="popup-module-detail-panel" ref={descriptionPanelRef}>
+          <div 
+            className="popup-module-detail-panel" 
+            ref={descriptionPanelRef}
+            itemScope
+            itemType="https://schema.org/SoftwareApplication"
+          >
             {selectedModule && (
               <>
                 <div className="popup-module-detail-header">
@@ -143,23 +178,23 @@ const ModulosPopup = ({
                       Volver
                     </button>
                   </div>
-                  <h3 title={selectedModule}>{selectedModule}</h3>
-                  <div className="popup-module-category-badge">
+                  <h3 title={selectedModule} itemProp="name">{selectedModule}</h3>
+                  <div className="popup-module-category-badge" itemProp="applicationCategory">
                     {getShortCategoryName(initialCategory)}
                   </div>
                 </div>
                 
                 <div className="popup-module-detail-content">
-                  <p className="popup-module-description">
+                  <p className="popup-module-description" itemProp="description">
                     {modulesData[initialCategory][selectedModule].description}
                   </p>
                   
                   {modulesData[initialCategory][selectedModule].features && (
-                    <div className="popup-module-features">
+                    <div className="popup-module-features" itemProp="featureList">
                       <h4>Características principales:</h4>
                       <ul>
                         {modulesData[initialCategory][selectedModule].features.map((feature, i) => (
-                          <li key={i}>
+                          <li key={i} itemProp="feature">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                               <path d="M20 6L9 17l-5-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>

@@ -14,38 +14,37 @@ function App() {
     <>
 
       <Seo
-        title="YAFO Consultora - Ciberseguridad Avanzada"
-        description="Protección proactiva de activos digitales con soluciones de ciberseguridad de YAFO Consultora."
-        keywords="ciberseguridad, protección digital, consultoría, YAFO, seguridad avanzada"
-        image="https://yafoconsultora.com/assets/Logo Yafo JPG_grises 300 dpi.jpg"
+        title="YAFO Consultora - Ciberseguridad Avanzada y Consultoría Tecnológica"
+        description="Protección proactiva de activos digitales con soluciones integrales de ciberseguridad, gestión de riesgos y desarrollo seguro."
+        keywords="ciberseguridad, protección digital, consultoría IT, YAFO, seguridad avanzada, pentesting, desarrollo seguro, compliance"        image="https://yafoconsultora.com/assets/Logo Yafo JPG_grises 300 dpi.jpg"
         url="https://yafoconsultora.com"
       />
       
       <Header />
 
-      <AnimatedSection id="inicio">
-        <Intro />
-      </AnimatedSection>
-      
-      <AnimatedSection id="nosotros">
-        <About />
-      </AnimatedSection>
-      
-      <AnimatedSection id="servicios">
-        <Services />
-      </AnimatedSection>
-      
-      <AnimatedSection id="soluciones">
-        <Solutions />
-      </AnimatedSection>
-      
-      <AnimatedSection id="clientes">
-        <Clients />
-      </AnimatedSection>
-      
-      <AnimatedSection id="contacto">
-        <ContactForm />
-      </AnimatedSection>
+<AnimatedSection id="inicio" aria-label="Sección de inicio">
+          <Intro />
+        </AnimatedSection>
+        
+        <AnimatedSection id="nosotros" aria-label="Sobre nosotros">
+          <About />
+        </AnimatedSection>
+        
+        <AnimatedSection id="servicios" aria-label="Nuestros servicios">
+          <Services />
+        </AnimatedSection>
+        
+        <AnimatedSection id="soluciones" aria-label="Soluciones tecnológicas">
+          <Solutions />
+        </AnimatedSection>
+        
+        <AnimatedSection id="clientes" aria-label="Casos de éxito">
+          <Clients />
+        </AnimatedSection>
+        
+        <AnimatedSection id="contacto" aria-label="Contacto">
+          <ContactForm />
+        </AnimatedSection>
       
       <Footer />
     </>

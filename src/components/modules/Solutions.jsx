@@ -10,6 +10,52 @@ const Solutions = () => {
   const [currentPopupTab, setCurrentPopupTab] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Efecto para Schema Markup (SEO)
+  useEffect(() => {
+    const tabs = [
+      'Net Discovery',
+      'GRC',
+      'Continuidad de Negocio',
+      'Pérdida Crediticia Esperada',
+      'PLAFT'
+    ];
+
+    const tabMapping = {
+      'Net Discovery': 'Net Discovery',
+      'GRC': 'GRC (Gobierno, Riesgo y Cumplimiento)',
+      'Continuidad de Negocio': 'Continuidad de Negocio',
+      'Pérdida Crediticia Esperada': 'Pérdida Crediticia Esperada',
+      'PLAFT': 'PLAFT (Prevención de Lavado de Activos y Financiamiento del Terrorismo)'
+    };
+
+    const softwareSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": tabs.map((tab, index) => ({
+        "@type": "SoftwareApplication",
+        "position": index + 1,
+        "name": tabMapping[tab] || tab,
+        "description": `Solución ${tabMapping[tab] || tab} de YAFO Consultora`,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web-based",
+        "offers": {
+          "@type": "Offer",
+          "category": "SoftwareAsAService"
+        }
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(softwareSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  // Resto del código original sin cambios...
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -23,7 +69,6 @@ const Solutions = () => {
     };
   }, []);
 
-  // Efecto para bloquear el scroll del body cuando el popup está abierto
   useEffect(() => {
     if (showModulesPopup) {
       document.body.style.overflow = 'hidden';
@@ -156,14 +201,25 @@ const Solutions = () => {
   }, [isMobile]);
 
   return (
-    <section id='soluciones' className='seccion-principal' role="region" aria-labelledby="main-heading">
+    <section 
+      id='soluciones' 
+      className='seccion-principal' 
+      role="region" 
+      aria-labelledby="main-heading"
+      itemScope
+      itemType="https://schema.org/SoftwareApplication"
+    >
+      {/* Meta tags SEO invisibles */}
+      <meta itemProp="name" content="Soluciones de Software YAFO" />
+      <meta itemProp="description" content="Plataformas especializadas en GRC, continuidad de negocio y compliance financiero" />
+      
       <canvas 
         id="partículas-canvas" 
         className="fondo-particulas"
         aria-hidden="true"
       ></canvas>
       <div className="encabezado-principal">
-        <h1 id="main-heading" className="titulo-principal">SOLUCIONES DE SOFTWARE</h1>
+        <h1 id="main-heading" className="titulo-principal" itemProp="headline">SOLUCIONES DE SOFTWARE</h1>
       </div>
       <div className='contenedor-principal'>
         <div className='contenedor-pestanas' role="tablist">
@@ -175,9 +231,13 @@ const Solutions = () => {
               role="tab"
               aria-selected={currentPopupTab === tabMapping[tab]}
               aria-controls={`${tab.toLowerCase().replace(/\s+/g, '-')}-panel`}
+              itemProp="itemListElement"
+              itemScope
+              itemType="https://schema.org/ListItem"
             >
-              {tab}
-              <span className="resalte-pestana"></span>
+              <meta itemProp="position" content={tabs.indexOf(tab) + 1} />
+              <span itemProp="name">{tab}</span>
+              <span className="resalte-pestana" aria-hidden="true"></span>
             </button>
           ))}
         </div>
@@ -185,12 +245,13 @@ const Solutions = () => {
         <div className='contenido-principal'>
           <img 
             src={alephLogoGif} 
-            alt="Aleph Logo" 
+            alt="Plataforma Aleph Manager - Soluciones GRC y gestión de riesgos" 
             className="logo-principal" 
             loading="lazy"
             width="400"
             height="200"
             decoding="async"
+            itemProp="image"
           />
         </div>
       </div>
