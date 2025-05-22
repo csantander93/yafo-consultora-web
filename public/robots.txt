@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+
+# Sitemaps
+Sitemap: https://www.yafo-consultora.com/sitemap.xml
+Sitemap: https://www.yafo-consultora.com/sitemap-images.xml (si tienes imágenes importantes)
