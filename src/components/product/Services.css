@@ -219,16 +219,6 @@
     0 0 0 1px rgba(26, 140, 255, 0.1);
 }
 
-.product-card:hover .product-card-inner {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(26, 140, 255, 0.4);
-  box-shadow: 
-    0 12px 40px rgba(0, 123, 255, 0.3),
-    var(--serv-cyber-glow),
-    0 0 0 1px rgba(26, 140, 255, 0.2);
-  background: rgba(15, 30, 60, 0.85);
-}
-
 .product-badge {
   position: absolute;
   top: 15px;
@@ -247,12 +237,6 @@
   box-shadow: 0 0 12px rgba(26, 140, 255, 0.3);
 }
 
-.product-card:hover .product-badge {
-  transform: translateY(-4px);
-  background: rgba(26, 140, 255, 0.4);
-  box-shadow: 0 0 18px rgba(26, 140, 255, 0.5);
-}
-
 .product-icon {
   width: 50px;
   height: 50px;
@@ -267,15 +251,6 @@
   box-shadow: 
     inset 0 0 9px rgba(26, 140, 255, 0.3),
     0 0 9px rgba(26, 140, 255, 0.2);
-}
-
-.product-card:hover .product-icon {
-  background: rgba(26, 140, 255, 0.35);
-  color: var(--serv-dark-blue);
-  transform: scale(1.08) rotate(7.2deg);
-  box-shadow: 
-    inset 0 0 15px rgba(26, 140, 255, 0.5),
-    0 0 20px rgba(26, 140, 255, 0.4);
 }
 
 .product-icon svg {
@@ -304,11 +279,6 @@
   transition: all 0.54s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.product-card:hover .product-title::after {
-  width: 90px;
-  box-shadow: var(--serv-cyber-glow-intense);
-}
-
 .product-description {
   color: var(--serv-secondary-text);
   line-height: 1.6;
@@ -316,10 +286,6 @@
   flex-grow: 1;
   font-size: 0.9rem;
   transition: color 0.27s ease;
-}
-
-.product-card:hover .product-description {
-  color: var(--serv-dark-blue);
 }
 
 .product-features {
@@ -344,15 +310,6 @@
     0 0 6px rgba(26, 140, 255, 0.2);
 }
 
-.product-card:hover .product-feature {
-  background: rgba(26, 140, 255, 0.35);
-  color: var(--serv-dark-blue);
-  transform: translateY(-2px);
-  box-shadow: 
-    inset 0 0 9px rgba(26, 140, 255, 0.5),
-    0 0 12px rgba(26, 140, 255, 0.3);
-}
-
 .product-glow {
   position: absolute;
   top: 0;
@@ -365,8 +322,54 @@
   z-index: -1;
 }
 
-.product-card:hover .product-glow {
-  opacity: 0.8;
+/* Apply hover effects only on devices that support hover (e.g., desktop) */
+@media (hover: hover) {
+  .product-card:hover .product-card-inner {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(26, 140, 255, 0.4);
+    box-shadow: 
+      0 12px 40px rgba(0, 123, 255, 0.3),
+      var(--serv-cyber-glow),
+      0 0 0 1px rgba(26, 140, 255, 0.2);
+    background: rgba(15, 30, 60, 0.85);
+  }
+
+  .product-card:hover .product-badge {
+    transform: translateY(-4px);
+    background: rgba(26, 140, 255, 0.4);
+    box-shadow: 0 0 18px rgba(26, 140, 255, 0.5);
+  }
+
+  .product-card:hover .product-icon {
+    background: rgba(26, 140, 255, 0.35);
+    color: var(--serv-dark-blue);
+    transform: scale(1.08) rotate(7.2deg);
+    box-shadow: 
+      inset 0 0 15px rgba(26, 140, 255, 0.5),
+      0 0 20px rgba(26, 140, 255, 0.4);
+  }
+
+  .product-card:hover .product-title::after {
+    width: 90px;
+    box-shadow: var(--serv-cyber-glow-intense);
+  }
+
+  .product-card:hover .product-description {
+    color: var(--serv-dark-blue);
+  }
+
+  .product-card:hover .product-feature {
+    background: rgba(26, 140, 255, 0.35);
+    color: var(--serv-dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 
+      inset 0 0 9px rgba(26, 140, 255, 0.5),
+      0 0 12px rgba(26, 140, 255, 0.3);
+  }
+
+  .product-card:hover .product-glow {
+    opacity: 0.8;
+  }
 }
 
 /* Animaciones */
