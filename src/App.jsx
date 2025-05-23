@@ -14,7 +14,7 @@ function App() {
     <>
 
       <Seo
-        title="YAFO Consultora - Ciberseguridad Avanzada y Consultoría Tecnológica"
+        title="YAFO Consultora SRL"
         description="Protección proactiva de activos digitales con soluciones integrales de ciberseguridad, gestión de riesgos y desarrollo seguro."
         keywords="ciberseguridad, protección digital, consultoría IT, YAFO, seguridad avanzada, pentesting, desarrollo seguro, compliance"        image="https://yafoconsultora.com/assets/Logo Yafo JPG_grises 300 dpi.jpg"
         url="https://yafoconsultora.com"
