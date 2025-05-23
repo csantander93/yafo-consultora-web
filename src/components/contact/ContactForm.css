@@ -495,31 +495,120 @@
 }
 
 
+/* Añade esto al final de tu ContactForm.css */
+
 @media (max-width: 480px) {
+  /* Ajustes generales para móviles pequeños */
   .contact-section {
-    padding: 2rem 0.5rem; /* Aún más compacto en móviles muy pequeños */
+    padding: 2rem 0.5rem;
   }
-
+  
   .contact-row {
-    width: 95%; /* Ocupa casi todo el ancho pero con margen */
-    max-width: 360px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
   }
-
+  
   .form-container {
-    padding: 1.2rem; /* Más compacto */
+    padding: 1.2rem;
   }
-
-  .contact-title {
-    font-size: 1.6rem;
+  
+  /* Ajustes específicos para los inputs */
+  .floating-input input,
+  .floating-input textarea {
+    padding: 0.8rem 0.8rem 0.4rem;
+    font-size: 0.8rem;
+    min-height: 42px;
   }
-
+  
+  .floating-input label {
+    font-size: 0.8rem;
+    top: 0.8rem;
+    left: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+  }
+  
+  .floating-input input:focus + label,
+  .floating-input input:not(:placeholder-shown) + label,
+  .floating-input textarea:focus + label,
+  .floating-input textarea:not(:placeholder-shown) + label {
+    top: -0.5rem;
+    left: 0.6rem;
+    font-size: 0.6rem;
+    max-width: 95%;
+  }
+  
+  /* Ajuste especial para el campo de nombre */
+  .floating-input#name-input label {
+    font-size: 0.75rem; /* Un poco más pequeño para caber */
+  }
+  
+  /* Hacer que los campos en fila se apilen verticalmente */
   .form-row {
-    gap: 0.8rem; /* Menos espacio entre campos */
+    flex-direction: column;
+    gap: 0.8rem;
   }
+  
+  /* Ajustar el botón de enviar */
+  .form-submit {
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Ajustar el título y subtítulo */
+  .contact-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-subtitle {
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+  }
+  
+  /* Reducir el tamaño de las partículas de fondo */
+  .contact-particle {
+    filter: blur(20px);
+  }
+  
+  .contact-particle-1 {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .contact-particle-2 {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .contact-particle-3 {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .contact-particle-4 {
+    width: 100px;
+    height: 100px;
+  }
+}
 
-  /* Ajustamos el grid para que sea más visible */
-  .cyber-grid-overlay {
-    background-size: 24px 24px; /* Grid más pequeño */
-    opacity: 0.35; /* Un poco más visible */
+/* Añadir para pantallas muy pequeñas (menos de 360px) */
+@media (max-width: 360px) {
+  .floating-input label {
+    font-size: 0.7rem;
+  }
+  
+  .floating-input input:focus + label,
+  .floating-input input:not(:placeholder-shown) + label,
+  .floating-input textarea:focus + label,
+  .floating-input textarea:not(:placeholder-shown) + label {
+    font-size: 0.55rem;
+  }
+  
+  .contact-title {
+    font-size: 1.3rem;
   }
 }
