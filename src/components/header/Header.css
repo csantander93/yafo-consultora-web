@@ -41,6 +41,7 @@
   position: relative;
   transition: all 0.3s ease;
   padding: 0 20px;
+  background-color: transparent; /* Asegura que el fondo sea transparente */
 }
 
 .logo-link:hover {
@@ -65,14 +66,16 @@
 }
 
 .header-logo {
-  height: 120px !important;
+  height: auto;
+  max-height: 50px; /* Ajusta según necesites */
   width: auto;
+  max-width: 180px; /* Controla el ancho máximo */
   transition: all 0.3s ease;
   filter: 
-    brightness(0) invert(1) 
-    drop-shadow(0 0 3px rgba(0, 174, 239, 0.7));
+    drop-shadow(0 0 3px rgba(0, 174, 239, 0.7)); /* Mantenemos solo el dropshadow */
   position: relative;
   z-index: 2;
+  object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
 }
 
 /* Navegación desktop */

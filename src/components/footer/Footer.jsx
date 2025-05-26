@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { FaLinkedin } from 'react-icons/fa';
-import logoYafo from '../../assets/Logo Yafo JPG_grises 300 dpi.jpg';
+import logoYafo from '../../assets/Logo-Yafo-JPG_grises-150dpi.webp';
 
 const Footer = () => {
   return (
