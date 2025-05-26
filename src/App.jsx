@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 import About from "./components/about/About"
 import Clients from "./components/clients/Clients"
 import ContactForm from "./components/contact/ContactForm"
@@ -10,6 +12,23 @@ import AnimatedSection from './components/section/AnimatedSection';
 import Seo from "./components/seo/Seo"
 
 function App() {
+
+   useEffect(() => {
+    // Deshabilitar el scroll restoration del navegador
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Asegurar que la página comience en el top al recargar
+    window.scrollTo(0, 0);
+
+    return () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'auto';
+      }
+    };
+  }, []);
+
   return (
     <>
 
