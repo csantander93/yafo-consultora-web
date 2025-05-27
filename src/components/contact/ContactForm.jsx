@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ContactForm.css';
+import { sendContactEmail } from '../../services/emailServices';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setIsLoaded(true);
@@ -25,27 +27,40 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+    setErrorMessage('');
 
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
+    try {
+      const result = await sendContactEmail(formData);
+
+      if (result && result.status === 1) {
+        setSubmitSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setErrorMessage('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+        console.error('Error al enviar el formulario:', result?.message || 'Error desconocido');
+      }
+    } catch (error) {
+      setErrorMessage('Error de conexión. Por favor, verifica tu conexión e inténtalo de nuevo.');
+      console.error('Error en la petición:', error);
+    } finally {
+      setIsSubmitting(false);
+      
+      if (submitSuccess) {
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      }
+    }
   };
 
   return (
     <section id='contacto' className={`contact-section ${isLoaded ? 'loaded' : ''}`}>
-      {/* Elementos de fondo estilo Services */}
       <div className="contact-background">
         <div className="contact-gradient"></div>
         <div className="contact-particle contact-particle-1"></div>
@@ -73,6 +88,11 @@ const ContactForm = () => {
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
+                {errorMessage && (
+                  <div className="error-message">
+                    <p>{errorMessage}</p>
+                  </div>
+                )}
                 <div className="form-row">
                   <div className="floating-input">
                     <input 
@@ -111,7 +131,7 @@ const ContactForm = () => {
                     placeholder=" "
                     required 
                   />
-                  <label htmlFor="subject">Asunto</label>
+                    <label htmlFor="subject">Asunto</label>
                 </div>
                 
                 <div className="floating-input textarea-input">

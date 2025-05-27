@@ -1,6 +1,6 @@
 export const sendContactEmail = async (formData) => {
-  const api_key = process.env.REACT_APP_EMAIL_API_KEY;
-  const to = process.env.REACT_APP_EMAIL_TO;
+  const api_key = import.meta.env.VITE_EMAIL_API_KEY;
+  const to = import.meta.env.VITE_EMAIL_TO;
   
   const content = `
     <p><strong>Nombre:</strong> ${formData.name}</p>
