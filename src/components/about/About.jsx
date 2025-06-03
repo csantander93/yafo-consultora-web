@@ -200,7 +200,7 @@ const About = () => {
                   itemScope
                   itemType="https://schema.org/Service"
                 >
-                  <span className="service-icon">⟫</span>
+                  <span className="service-icon">•</span>
                   <span itemProp="name">{item.name}</span>
                   <meta itemProp="description" content={item.description} />
                   <meta itemProp="provider" content="YAFO Consultora"/>
