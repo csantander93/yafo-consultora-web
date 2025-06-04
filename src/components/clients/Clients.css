@@ -242,6 +242,22 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+
+  .additional-counter-item {
+    pointer-events: none; /* Desactiva interacciones en móvil */
+  }
+  
+  .additional-counter-item .client-item,
+  .international-client-logo {
+    pointer-events: none; /* Asegura que los elementos hijos tampoco respondan */
+  }
+  
+  /* Opcional: Elimina transformaciones hover en móvil si existen */
+  .additional-counter-item:hover .international-client-logo {
+    transform: none !important;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1)) !important;
+  }
+
   .desktop-version {
     display: none;
   }
