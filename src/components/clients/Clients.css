@@ -263,12 +263,14 @@
     transform: scale(1.6);
     transform-origin: center;
     border-radius: 12px;
+    pointer-events: none; /* Esta línea desactiva los eventos táctiles */
   }
   
   .client-logo {
     max-width: 100%;
     max-height: 100%;
     opacity: 0.9;
+    pointer-events: none; /* Esta línea desactiva los eventos táctiles */
   }
   
   .client-item.has-white-bg {
@@ -312,6 +314,7 @@
     }
   }
 }
+
 
 @media (min-width: 992px) {
   :root {
