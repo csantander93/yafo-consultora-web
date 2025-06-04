@@ -433,21 +433,30 @@
 }
 
 @media (max-width: 768px) {
-  .products-section {
-    padding: 4rem 0;
+  .product-feature {
+    background: transparent;
+    padding: 0.2rem 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    position: relative;
+    padding-left: 0.8rem;
   }
-  
-  .products-header {
-    margin-bottom: 2rem;
+
+  .product-feature::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--serv-primary-blue);
+    font-size: 1rem;
+    line-height: 0.8;
   }
-  
-  .product-card-inner {
-    padding: 1.5rem;
-    min-height: 380px;
-  }
-  
+
   .product-features {
-    gap: 0.35rem;
+    gap: 0.6rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

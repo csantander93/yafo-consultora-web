@@ -187,19 +187,15 @@ const About = () => {
             </div>
             <p className="image-caption" ref={addToRefs}>Soluciones tecnológicas innovadoras para <span itemProp="keywords">gestión de compliance</span></p>
           </div>
-          <div className="about-content">
+          <div className="about-content about-approach">
             <h2 className="content-title" ref={addToRefs}>
               <span className="title-decoration">Nuestro enfoque</span>
             </h2>
+            
+            {/* Lista oculta en móviles/tablets (max-width: 1024px) */}
             <ul className="services-list">
               {approachData.map((item, index) => (
-                <li 
-                  className="service-item" 
-                  key={index}
-                  ref={addToRefs}
-                  itemScope
-                  itemType="https://schema.org/Service"
-                >
+                <li className="service-item" key={index} ref={addToRefs} itemScope itemType="https://schema.org/Service">
                   <span className="service-icon">•</span>
                   <span itemProp="name">{item.name}</span>
                   <meta itemProp="description" content={item.description} />
@@ -210,6 +206,7 @@ const About = () => {
                 </li>
               ))}
             </ul>
+
           </div>
         </div>
       </div>

@@ -404,8 +404,9 @@
 .service-item:hover .service-icon {
   transform: translateX(3px);
 }
-
-/* Responsive design */
+/* ==================== RESPONSIVE DESIGN ==================== */
+/* ==================== RESPONSIVE DESIGN ==================== */
+/* Tablet Landscape y pantallas medianas (1024px o menos) */
 @media (max-width: 1024px) {
   .about-container {
     max-width: 900px;
@@ -413,56 +414,154 @@
   
   .about-title {
     font-size: 2.2rem;
+    line-height: 1.3;
+  }
+
+  /* Ocultar título "Nuestro enfoque" y lista de servicios */
+  .about-approach .content-title,
+  .services-list {
+    display: none !important;
+  }
+
+  /* Mensaje alternativo para móviles */
+  .mobile-alternative {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0.5rem 0 1rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-medium);
+  }
+
+  .about-row.animate-in .mobile-alternative {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp var(--transition-medium) 0.3s forwards;
   }
 }
 
+/* Tablet Portrait y móviles grandes (768px o menos) */
 @media (max-width: 768px) {
   .about-section {
-    padding: 4rem 1rem;
+    padding: 3rem 1.25rem;
   }
   
   .about-row {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
+    gap: 2.25rem;
+    margin-bottom: 3rem;
   }
   
   .about-title {
-    font-size: 2rem;
+    font-size: 1.85rem;
+    margin-bottom: 1rem;
   }
   
-  .content-title {
-    font-size: 1.5rem;
+  .about-description {
+    font-size: 1.025rem;
+    margin-bottom: 1.25rem;
   }
   
+  .content-title:not(.about-approach .content-title) {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
   .reverse-row {
     direction: ltr;
   }
 
   .reverse-row .about-image-wrapper {
-    margin-top: 1.5rem; /* Smaller offset for mobile */
+    margin-top: 0.75rem;
+    order: -1;
+  }
+
+  /* Ajustes para el mensaje alternativo */
+  .mobile-alternative {
+    font-size: 0.925rem;
+    margin: 0.25rem 0 0.75rem;
+  }
+
+  /* Ajustes de imagen */
+  .about-image-wrapper {
+    margin-bottom: 0.75rem;
   }
 }
 
+/* Móviles medianos (480px o menos) */
 @media (max-width: 480px) {
+  .about-section {
+    padding: 2.25rem 1rem;
+  }
+  
   .about-title {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
   
   .about-description {
-    font-size: 1rem;
+    font-size: 0.925rem;
+    margin-bottom: 1.25rem;
   }
   
-  .content-title {
-    font-size: 1.3rem;
+  .content-title:not(.about-approach .content-title) {
+    font-size: 1.275rem;
   }
   
   .content-text {
-    font-size: 0.95rem;
-  }
-  
-  .service-item {
-    padding: 0.8rem 1rem;
     font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .image-caption {
+    font-size: 0.78rem;
+  }
+
+  /* Mensaje alternativo más compacto */
+  .mobile-alternative {
+    font-size: 0.875rem;
+    margin: 0.25rem 0 0.5rem;
+    padding: 0 0.25rem;
+  }
+}
+
+/* Móviles pequeños (420px o menos) */
+@media (max-width: 420px) {
+  .about-title {
+    font-size: 1.5rem;
+  }
+
+  .content-title:not(.about-approach .content-title) {
+    font-size: 1.225rem;
+  }
+
+  .mobile-alternative {
+    font-size: 0.825rem;
+    line-height: 1.45;
+  }
+
+  .about-row {
+    gap: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Móviles muy pequeños (360px o menos) */
+@media (max-width: 360px) {
+  .about-title {
+    font-size: 1.4rem;
+  }
+
+  .about-description {
+    font-size: 0.875rem;
+  }
+
+  .content-text {
+    font-size: 0.85rem;
+  }
+
+  .mobile-alternative {
+    font-size: 0.8rem;
   }
 }

@@ -119,12 +119,36 @@ const Intro = () => {
     };
   }, [initParticles, holograms.length]);
 
-  const scrollToServices = () => {
-    const servicesSection = document.getElementById('servicios');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
+const scrollToServices = () => {
+  const servicesSection = document.getElementById('soluciones');
+  const header = document.querySelector('header');
+  const headerHeight = header ? header.offsetHeight : 0;
+  const targetPosition = servicesSection.offsetTop - headerHeight;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  const duration = Math.min(2000, Math.max(800, distance * 1.2)); // Duración dinámica
+  
+  let startTime = null;
+
+  const animateScroll = (timestamp) => {
+    if (!startTime) startTime = timestamp;
+    const progress = timestamp - startTime;
+    const percentage = Math.min(progress / duration, 1);
+    const easedPercentage = easeInOutCubic(percentage);
+    
+    window.scrollTo(0, startPosition + (distance * easedPercentage));
+    
+    if (progress < duration) {
+      requestAnimationFrame(animateScroll);
     }
   };
+
+  const easeInOutCubic = (t) => {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+
+  requestAnimationFrame(animateScroll);
+};
 
   return (
     <section id="inicio" className={`intro-hero ${isLoaded ? 'loaded' : ''}`}>
@@ -238,9 +262,17 @@ const Intro = () => {
         </div>
       </div>
 
-      <div className="scrolling-indicator" aria-label="Desplázate hacia abajo">
-        <span className="scroll-text">Descubre Más</span>
-        <div className="scroll-line"></div>
+      <div 
+        className="scroll-down-arrow" 
+        aria-label="Desplázate hacia abajo"
+        onClick={scrollToServices}
+      >
+        <span className="scroll-hint">Desplázate</span>
+        <div className="arrow-container">
+          <svg className="arrow" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M7 10l5 5 5-5z" fill="currentColor" />
+          </svg>
+        </div>
       </div>
     </section>
   );
