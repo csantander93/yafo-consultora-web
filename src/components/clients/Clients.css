@@ -241,6 +241,7 @@
 }
 
 /* Responsive */
+/* Responsive */
 @media (max-width: 768px) {
   .desktop-version {
     display: none;
@@ -263,71 +264,58 @@
     transform: scale(1.6);
     transform-origin: center;
     border-radius: 12px;
+    /* Desactivar interacciones táctiles */
+    pointer-events: none;
   }
   
   .client-logo {
     max-width: 100%;
     max-height: 100%;
     opacity: 0.9;
+    /* Desactivar transformaciones en hover */
+    transform: none !important;
+    filter: 
+      drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1))
+      contrast(1.05) !important;
+  }
+  
+  /* Desactivar efectos hover */
+  .client-item:hover {
+    transform: scale(1.6) !important;
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.05),
+      0 0 0 1px rgba(0, 0, 0, 0.02) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  .client-item:hover::before {
+    border-color: transparent !important;
   }
   
   .client-item.has-white-bg {
     transform: scale(1.6);
+    pointer-events: none;
   }
   
   .additional-counter-item .client-item {
-    width: 120px; /* Adjusted for mobile */
+    width: 120px;
     height: 80px;
+    /* Desactivar interacciones táctiles */
+    pointer-events: none;
   }
   
   .international-client-logo {
-    max-width: 110px; /* Adjusted for mobile */
+    max-width: 110px;
     max-height: 70px;
+    /* Desactivar transformaciones en hover */
+    transform: none !important;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1)) !important;
   }
   
-  @media (max-width: 480px) {
-    .client-item {
-      width: calc(25% - 8px);
-      height: 80px;
-      padding: 0.6rem;
-      transform: scale(1.4);
-    }
-
-    .client-item.has-white-bg {
-      transform: scale(1.4);
-    }
-
-    .clients-static-row {
-      gap: 8px;
-    }
-    
-    .additional-counter-item .client-item {
-      width: 100px; /* Further reduced for smaller screens */
-      height: 70px;
-    }
-    
-    .international-client-logo {
-      max-width: 90px;
-      max-height: 60px;
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  :root {
-    --row-height: 64px;
-    --row-gap: 24px;
-  }
-  
-  .client-item {
-    padding: 0.8rem 1.6rem;
-    width: 130px;
-    height: 60px;
-  }
-  
-  .client-logo {
-    max-width: 130px;
-    max-height: 45px;
+  /* Desactivar hover en los items de contadores adicionales */
+  .additional-counter-item:hover .international-client-logo {
+    transform: none !important;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1)) !important;
   }
 }
 
@@ -344,35 +332,118 @@
     min-width: 72px;
     margin: 1.6px 0;
     border-radius: 6.4px;
+    /* Mantener desactivado el touch */
+    pointer-events: none;
   }
   
   .client-logo {
     max-width: 64px;
     max-height: 24px;
+    transform: none !important;
   }
   
   .client-item.has-white-bg {
     padding: 0.25rem;
+    pointer-events: none;
   }
   
   .client-item.has-white-bg .client-logo {
     padding: 2px;
   }
   
-  @media (max-width: 400px) {
-    :root {
-      --row-height: 36px;
-      --row-gap: 6.4px;
-    }
-    
-    .client-item {
-      width: 64px;
-      min-width: 64px;
-      height: 32px;
-    }
-    
-    .client-logo {
-      max-width: 56px;
-    }
+  /* Asegurar que no hay hover effects */
+  .client-item:hover {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .client-item {
+    width: calc(25% - 8px);
+    height: 80px;
+    padding: 0.6rem;
+    transform: scale(1.4);
+    pointer-events: none;
+  }
+
+  .client-item.has-white-bg {
+    transform: scale(1.4);
+    pointer-events: none;
+  }
+
+  .clients-static-row {
+    gap: 8px;
+  }
+  
+  .additional-counter-item .client-item {
+    width: 100px;
+    height: 70px;
+    pointer-events: none;
+  }
+  
+  .international-client-logo {
+    max-width: 90px;
+    max-height: 60px;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --row-height: 36px;
+    --row-gap: 6.4px;
+  }
+  
+  .client-item {
+    width: 64px;
+    min-width: 64px;
+    height: 32px;
+    pointer-events: none;
+  }
+  
+  .client-logo {
+    max-width: 56px;
+    transform: none !important;
+  }
+}
+
+/* Estilos para desktop (mantener interactividad) */
+@media (min-width: 992px) {
+  :root {
+    --row-height: 64px;
+    --row-gap: 24px;
+  }
+  
+  .client-item {
+    padding: 0.8rem 1.6rem;
+    width: 130px;
+    height: 60px;
+    /* Habilitar interacciones solo en desktop */
+    pointer-events: auto;
+  }
+  
+  .client-logo {
+    max-width: 130px;
+    max-height: 45px;
+    /* Restaurar transformaciones para hover */
+    transform: none;
+    filter: 
+      drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1))
+      contrast(1.05);
+  }
+  
+  /* Restaurar efectos hover solo en desktop */
+  .client-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+  
+  .client-item:hover .client-logo {
+    transform: scale(1.1);
+    filter: 
+      drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15))
+      contrast(1.1);
   }
 }

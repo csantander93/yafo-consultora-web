@@ -119,11 +119,13 @@ const Intro = () => {
     };
   }, [initParticles, holograms.length]);
 
-const scrollToServices = () => {
-  const servicesSection = document.getElementById('soluciones');
+const scrollToSection = (sectionId) => {
+  const targetSection = document.getElementById(sectionId);
+  if (!targetSection) return; // Salir si no existe la sección
+
   const header = document.querySelector('header');
   const headerHeight = header ? header.offsetHeight : 0;
-  const targetPosition = servicesSection.offsetTop - headerHeight;
+  const targetPosition = targetSection.offsetTop - headerHeight;
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
   const duration = Math.min(2000, Math.max(800, distance * 1.2)); // Duración dinámica
@@ -148,6 +150,15 @@ const scrollToServices = () => {
   };
 
   requestAnimationFrame(animateScroll);
+};
+
+// Funciones específicas que reutilizan la función genérica
+const scrollToServices = () => {
+  scrollToSection('servicios');
+};
+
+const scrollToSolutions = () => {
+  scrollToSection('soluciones');
 };
 
   return (
@@ -265,7 +276,7 @@ const scrollToServices = () => {
       <div 
         className="scroll-down-arrow" 
         aria-label="Desplázate hacia abajo"
-        onClick={scrollToServices}
+        onClick={scrollToSolutions}
       >
         <span className="scroll-hint">Desplázate</span>
         <div className="arrow-container">
