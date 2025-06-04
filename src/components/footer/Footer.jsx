@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-logo-section" itemScope itemType="https://schema.org/Organization">
           <a 
-            href="https://yafoconsultora.com/" 
+            href="/" 
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="Visitar sitio de Yafo Consultora"
