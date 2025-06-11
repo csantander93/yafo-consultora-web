@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const BASE_URL = "https://www.yafoconsultora.com";
+const BASE_URL = "https://yafoconsultora.com";
 
 const Seo = ({ 
   title = "YAFO Consultora | Expertos en Ciberseguridad y Gestión de Riesgos", 
